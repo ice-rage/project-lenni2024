@@ -4,9 +4,9 @@
       <h1 class="main-header__title">Арт — пространство</h1>
 
       <picture class="main-header__picture">
-        <source type="image/webp" srcset="assets/images/lenni.webp">
+        <source type="image/webp" srcset="/images/lenni.webp">
 
-        <img src="assets/images/lenni.png" alt="lenni" class="main-header__img">
+        <img src="/images/lenni.png" alt="lenni" class="main-header__img">
       </picture>
 
       <p class="main-header__text">

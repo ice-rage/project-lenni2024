@@ -49,9 +49,6 @@
 </template>
 
 <script setup>
-import SvgIcon from '../SvgIcon.vue';
-
-
 </script>
 
 <style lang="less">

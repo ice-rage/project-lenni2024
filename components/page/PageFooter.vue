@@ -85,7 +85,7 @@
             <span class="page-footer__creator-label">Создание и продвижение</span>
             <a href="https://tagree.ru/" target="_blank" rel="nofollow norefferer noopener"
               class="page-footer__creator-link">
-              <img src="assets/images/tagree.png" alt="tagree" class="page-footer__creator-img">
+              <img src="/images/tagree.png" alt="tagree" class="page-footer__creator-img">
             </a>
           </div>
         </div>
