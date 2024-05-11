@@ -1,38 +1,38 @@
 <template>
   <header class="page-header" id="js-pageHeader">
     <div class="page-header__container">
-      <a href="/" class="page-header__logo">
+      <NuxtLink to="/" class="page-header__logo">
         <SvgIcon
           class="page-header__logo-icon" 
           name="logo" 
           width="202" 
           height="147"
         />
-      </a>
+      </NuxtLink>
 
       <nav class="page-header__nav" id="js-nav">
-        <a href="index.html#upcoming" class="page-header__nav-link">Мероприятия</a>
-        <a href="index.html#blog" class="page-header__nav-link">Блог</a>
-        <a href="index.html#about" class="page-header__nav-link">О нас</a>
-        <a href="index.html#contacts" class="page-header__nav-link">Контакты</a>
+        <NuxtLink to="/events" class="page-header__nav-link">Мероприятия</NuxtLink>
+        <NuxtLink to="/" class="page-header__nav-link">Блог</NuxtLink>
+        <NuxtLink to="/" class="page-header__nav-link">О нас</NuxtLink>
+        <NuxtLink to="/" class="page-header__nav-link">Контакты</NuxtLink>
 
         <div class="page-header__nav-user">
-          <a href="#" class="page-header__nav-user-link">Александр С.</a>
+          <NuxtLink to="/" class="page-header__nav-user-link">Александр С.</NuxtLink>
 
-          <a href="#" class="page-header__nav-logout">
+          <button type="button" class="page-header__nav-logout">
             <SvgIcon 
               class="page-header__logout-icon" 
               name="logout" 
               width="24" 
               height="24"
             />
-          </a>
+          </button>
         </div>
 
       </nav>
       
       <div class="page-header__right-block">
-        <a href="#" class="page-header__user-btn">
+        <button type="button" class="page-header__user-btn">
           Войти
           <SvgIcon
             class="page-header__user-icon" 
@@ -40,7 +40,7 @@
             width="24" 
             height="24"
           />
-        </a>
+        </button>
 
         <button type="button" class="page-header__nav-toggle" id="js-navToggle"></button>
       </div>
