@@ -1,13 +1,127 @@
 <template>
-  <div class="">
-    Детальная страница мероприятия
-  </div>
+  <article class="event">
+    <h1 class="event__title title">Вечер | The Best of Sade</h1>
+
+    <div class="event__info">
+      <div class="event__info-wrapper">
+        <div class="event__info-block event__info-block--left">
+          <div class="event__decoration decoration decoration--invert"></div>
+
+          <span class="event__label event__label--f30">16/12/2022</span>
+          <span class="event__label event__label--f16">Кафе «Птичка»</span>
+
+          <div class="event__decoration decoration decoration--invert"></div>
+        </div>
+
+        <div class="event__info-block event__info-block--right">
+          <div class="event__decoration decoration"></div>
+
+          <div class="event__time">
+            <span class="event__label event__label--f30">20.00</span>
+            <span class="event__label event__label--f16">начало</span>
+          </div>
+
+          <span class="event__label event__label--f16">Ленина 10 | 2 этаж</span>
+
+          <div class="event__decoration decoration"></div>
+        </div>
+      </div>
+
+      <div class="event__picture-wrapper">
+        <picture class="event__picture">
+          <source
+            media="(max-width: 1169px)"
+            type="image/webp"
+            srcset="/images/event/main_245w.webp"
+          />
+
+          <source
+            media="(max-width: 1169px)"
+            srcset="/images/event/main_245w.jpg"
+          />
+
+          <source
+            media="(max-width: 1659px)"
+            type="image/webp"
+            srcset="/images/event/main_426w.webp"
+          />
+
+          <source
+            media="(max-width: 1659px)"
+            srcset="/images/event/main_426w.jpg"
+          />
+
+          <source
+            type="image/webp"
+            srcset="/images/event/main_497w.webp"
+          />
+
+          <img
+            src="/images/event/main_497w.jpg"
+            alt="sade"
+            class="event__img"
+          />
+        </picture>
+      </div>
+    </div>
+
+    <div class="event__container">
+      <section class="event__program">
+        <div class="event__content content">
+          <h5>Программа мероприятия:</h5>
+          <ul>
+            <li>20:15 — Приветствие гостей</li>
+            <li>20:30 — Первая подача блюд | Салаты</li>
+            <li>20:40 — Живой вокал | Композиции 1-3</li>
+            <li>21:20 — Подача горячих блюд</li>
+            <li>21:30 — Живой вокал | Композиции 4-7</li>
+            <li>22:15 — Подача десерта</li>
+            <li>22:30 — Живой вокал | Композиции 8-9</li>
+            <li>23:00 — Завершение вечера</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="event__description">
+        <div class="event__content content">
+          <h5>The Best of Sade</h5>
+          <p>
+            Первый альбом-компиляция Sade, выпущенный в 1994 году. Он содержит 9
+            треков, включая самые популярные хиты группы, раритеты и их любимые
+            треки.
+          </p>
+          <p>
+            Группа продемонстрировала необычайное долголетие и креативность
+            своей творческой карьеры.
+            <br />
+            Она лидировала музыкальных чартах с 1994 по 1995 год, став
+            четырехкратно платиновой в США и продав более 2 миллионов копий в
+            Европе.
+          </p>
+        </div>
+      </section>
+
+      <div class="event__tracklist">
+        <div class="event__content content">
+          <ol>
+            <li>Your Love Is King</li>
+            <li>Hang On To Your Love</li>
+            <li>Smooth Operator</li>
+            <li>Jezebel</li>
+            <li>The Sweetest Taboo</li>
+            <li>Is It A Crime</li>
+            <li>Never As Good As The First Time</li>
+            <li>Love Is Stronger Than Pride</li>
+            <li>Paradise</li>
+          </ol>
+        </div>
+      </div>
+
+      @@include('blocks/reserve.html', { "class": "event__reserve" })
+    </div>
+  </article>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="less">
-
-</style>
+<style lang="less"></style>

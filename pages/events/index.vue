@@ -3,12 +3,16 @@
     <section class="listing events__listing">
       <h2 class="listing__title section-title">Мероприятия</h2>
 
-      <div class="listing__list-events">
+      <div class="listing__events-list" v-if="cards.length">
         <CardEvent 
-          :className="'listing__card-event'" 
+          :className="'listing__event-card'" 
           v-for="(card, cardIndex) in cards" :key="cardIndex"
           :data="card"
         />
+      </div>
+
+      <div class="listing__events-list" v-else>
+        На данный момент мероприятия отсутствуют
       </div>
     </section>
   </div>
