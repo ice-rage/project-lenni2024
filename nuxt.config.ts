@@ -1,6 +1,9 @@
 import svgLoader from "vite-svg-loader";
 
 export default defineNuxtConfig({
+  head: {
+    charset: "utf-8",
+  },
   css: ["@/styles/styles.less"],
   vite: {
     css: {

@@ -1,0 +1,360 @@
+<template>
+  <footer class="page-footer">
+    <div class="page-footer__container">
+      <div class="page-footer__border">
+        <div class="page-footer__decoration decoration decoration--invert"></div>
+        <div class="page-footer__decoration decoration"></div>
+      </div>
+
+      <div class="page-footer__wrapper">
+        <div class="page-footer__left-block">
+          <nav class="page-footer__nav">
+            <a href="" class="page-footer__nav-link link">Календарь мероприятий</a>
+            <a href="" class="page-footer__nav-link link">Провести мероприятие</a>
+            <a href="" class="page-footer__nav-link link">Стать арендатором</a>
+            <a href="" class="page-footer__nav-link link">Наши проекты</a>
+            <a href="" class="page-footer__nav-link link">Контакты</a>
+          </nav>
+    
+          <div class="page-footer__copyright">© Millennials 2022</div>
+    
+          <div class="page-footer__politics">
+            <a href="#" target="_blank" class="page-footer__confidentiality">
+              Политика конфиденциальности
+            </a>
+            <a href="#" target="_blank" class="page-footer__cookies">Cookies</a>
+          </div>
+        </div>
+
+        <div class="page-footer__center-block">
+          <a 
+            href="#" 
+            target="_blank" 
+            rel="nofollow norefferer noopener" 
+            class="page-footer__sn-link link"
+          >
+            <SvgIcon
+              class="page-footer__sn-icon"
+              name="instagram"
+              width="58" 
+              height="58"
+            />
+          </a>
+    
+          <a 
+            href="#" 
+            target="_blank" 
+            rel="nofollow norefferer noopener"
+            class="page-footer__sn-link link"
+          >
+            <SvgIcon
+              class="page-footer__sn-icon"
+              name="vkontakte"
+              width="58" 
+              height="58"
+            />
+          </a>
+        </div>
+
+        <div class="page-footer__right-block">
+          <form 
+            action="https://jsonplaceholder.typicode.com/posts" 
+            class="page-footer__subscription-form subscription-form" 
+            id="js-subscriptionForm">
+            <h4 class="subscription-form__title">Подпишись и будь в курсе происходящего</h4>
+      
+            <div class="subscription-form__wrapper">
+              <div class="subscription-form__input-wrapper">
+                <input type="email" name="email" placeholder="Email" class="subscription-form__input" 
+                    id="#js-subscriptionEmail" required>
+              </div>
+              
+              <button type="submit" class="subscription-form__submit">Подписаться</button>
+            </div>
+    
+            <label class="subscription-form__check check">
+              <span class="check__label check__label--fsz14 check__label--fw300">
+                Согласен на обработку персональных данных
+              </span>
+              <input type="checkbox" class="check__input" name="agreement" required checked>
+              <span class="check__mark"></span>
+            </label>
+          </form>
+
+          <div class="page-footer__creator">
+            <span class="page-footer__creator-label">Создание и продвижение</span>
+            <a href="https://tagree.ru/" target="_blank" rel="nofollow norefferer noopener"
+              class="page-footer__creator-link">
+              <img src="assets/images/tagree.png" alt="tagree" class="page-footer__creator-img">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup>
+
+</script>
+
+<style lang="less">
+  .page-footer {
+    box-sizing: border-box;
+    padding: 65px 0 75px;
+
+    @media @bw1660 {
+      padding-top: 100px;
+    }
+
+    @media @bw1020 {
+      padding-bottom: 50px;
+    }
+
+    &__container {
+      .container();
+
+      @media @bw650 {
+        max-width: 428px;
+        margin: 0 auto;
+      }
+    }
+
+    &__border {
+      display: flex;
+      justify-content: space-between;
+      gap: 7.346%;
+      margin-bottom: 60px;
+    }
+
+    &__decoration {
+      height: 2px;
+    }
+
+    &__wrapper {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+
+      @media @bw650 {
+        flex-direction: column;
+      }
+    }
+
+    &__left-block {
+      width: 100%;
+      max-width: 384px;
+      margin-right: 3.107%;
+
+      @media @bw1020 {
+        max-width: 298px;
+      }
+    }
+
+    &__nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 60px;
+      padding-left: 26px;
+
+      @media @bw1660 {
+        margin-bottom: 58px;
+      }
+
+      @media @bw1020 {
+        margin-bottom: 178px;
+      }
+
+      @media @bw650 {
+        gap: 27px;
+        margin-bottom: 59px;
+        padding: 1px 0 3px 26px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background-color: @red_BC;
+      }
+    }
+
+    &__nav-link,
+    &__confidentiality,
+    &__cookies, 
+    &__creator-label {
+      font-weight: 600;
+    }
+
+    &__nav-link,
+    &__confidentiality,
+    &__cookies {
+      display: block;
+      transition: color 0.2s;
+
+      &:hover {
+        @media (hover :hover) {
+          color: @red_A5;
+        }
+      }
+
+      &:active {
+        color: @red_A5;
+      }
+    }
+
+    &__nav-link {
+      min-height: 22px;
+
+      @media @bw768 {
+        min-height: 19px;
+      }
+    }
+
+    &__copyright,
+    &__confidentiality,
+    &__cookies,
+    &__creator-label {
+      @media @bw1020 {
+        font-size: 14px;
+      }
+    }
+
+    &__copyright {
+      @media @bw650 {
+        position: absolute;
+        right: 0;
+        bottom: 27px;
+      }
+    }
+
+    &__politics {
+      display: flex;
+      gap: 60px;
+      margin-top: 20px;
+
+      @media @bw1170 {
+        gap: 30px;
+        margin-top: 14px;
+      }
+
+      @media @bw1020 {
+        gap: 15px;
+      }
+
+      @media @bw768 {
+        gap: 30px;
+      }
+
+      @media @bw650 {
+        position: absolute;
+        flex-direction: column;
+        gap: 20px;
+        left: 0;
+        bottom: 62px;
+        margin-top: 0;
+      }
+    }
+
+    &__confidentiality {
+      @media @bw768 {
+        max-width: 160px;
+      }
+
+      @media @bw650 {
+        max-width: 100%;
+      }
+    }
+
+    &__cookies {
+      @media @bw768 {
+        align-self: center;
+      }
+
+      @media @bw650 {
+        align-self: flex-start;
+      }
+    }
+
+    &__center-block {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      left: calc(50% - 80px);
+      bottom: 0;
+      width: 160px;
+
+      @media @bw1020 {
+        bottom: calc(50% - 102px);
+      }
+
+      @media @bw650 {
+        left: calc(50% - 63px);
+        bottom: calc(50% - 160px);
+        width: 126px;
+      }
+    }
+
+    &__sn-link {
+      height: 58px;
+
+      @media @bw650 {
+        height: 48px;
+      }
+    }
+
+    &__sn-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__right-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 410px;
+
+      @media @bw1660 {
+        max-width: 388px;
+      }
+    }
+
+    &__creator {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      height: 22px;
+
+      @media @bw1020 {
+        height: 19px;
+      }
+
+      @media @bw650 {
+        height: 22px;
+        margin-top: 266px;
+      }
+    }
+
+    &__creator-img {
+      width: 56px;
+      height: 17px;
+      margin: 3px 0 2px 0;
+
+      @media @bw1020 {
+        margin: 2px 0 0 0;
+      }
+
+      @media @bw650 {
+        width: 58px;
+        height: 20px;
+        margin: 1px 0;
+      }
+    }
+  }
+</style>
