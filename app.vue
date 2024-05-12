@@ -1,14 +1,16 @@
 <template>
   <div id="app" class="app">
-    <div class="app__body body">
-      <PageHeader ref="page-header" class="app__page-header"/>
+    <Body class="app__body body">
+      <PageHeader class="app__page-header"/>
 
       <main class="app__main main">
         <NuxtPage/>
       </main>
     
       <PageFooter class="app__page-footer"/>
-    </div>
+      
+      <ModalPp/>
+    </Body>
   </div>
 </template>
 

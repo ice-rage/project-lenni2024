@@ -13,13 +13,36 @@
         Для людей, горящих сердцем и делом <br>место для настоящего
       </p>
     </header>
+
+    <section class="offers home__offers">
+      <h2 class="offers__title">Я хочу:</h2>
+
+      <div class="offers__btns">
+        <button 
+          type="button" 
+          class="offers__event-btn btn" 
+          id="js-openEventBtn"
+          @click="openModalPp"
+        >
+          Провести мероприятие
+        </button>
+        <button 
+          type="button" 
+          class="offers__rent-btn btn"
+        >
+          Стать арендатором
+        </button>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup>
+  import { useStore } from "~/store";
 
+  const store = useStore();
+
+  const { openModalPp } = store;
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>
