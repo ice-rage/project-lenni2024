@@ -1,11 +1,11 @@
 <template>
   <div class="events">
-    <section class="listing events__listing">
+    <section class="events__listing listing">
       <h2 class="listing__title section-title">Мероприятия</h2>
 
       <div class="listing__events-list" v-if="cards.length">
-        <CardEvent 
-          :className="'listing__event-card'" 
+        <CardEvent
+          class="listing__event-card"
           v-for="(card, cardIndex) in cards" :key="cardIndex"
           :data="card"
         />

@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="app">
-    <Body class="app__body body">
+    <Body 
+      class="app__body body" 
+      :class="{ 'body--no-scrolling': !isBodyScrollable }"
+    >
       <PageHeader class="app__page-header"/>
 
       <main class="app__main main">
@@ -15,6 +18,12 @@
 </template>
 
 <script setup>
+  import { useStore } from "./store";
+
+  const store = useStore();
+
+  const isBodyScrollable = computed(() => !store.isModalActive);
+
   useHead({
     meta: [
       {

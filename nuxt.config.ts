@@ -8,14 +8,14 @@ export default defineNuxtConfig({
         "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
     },
   },
-  css: ["@/styles/styles.less"],
+  css: ["~/styles/styles.less"],
   vite: {
     css: {
       preprocessorOptions: {
         less: {
           additionalData: `
-            @import "@/styles/variables.less";
-            @import "@/styles/mixins.less";
+            @import "~/styles/variables.less";
+            @import "~/styles/mixins.less";
           `,
         }
       },

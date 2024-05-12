@@ -1,5 +1,5 @@
 <template>
-  <article class="event-card" :class="className">
+  <article class="event-card">
     <a href="#" class="event-card__link">
       <picture class="event-card__picture">
         <source 
@@ -41,13 +41,11 @@
   const { data } = defineProps({
     data: {
       type: Object,
-      required: true,
       default: () => {},
+      required: true,
     },
   });
 
-  const className = computed(() => data.className || "");
-  
   const img_webp = computed(() => data.img_webp || "");
 
   const img = computed(() => data.img);
