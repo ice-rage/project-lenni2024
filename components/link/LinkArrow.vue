@@ -1,15 +1,13 @@
 <template>
   <div class="arrow-link">
-    <a href="#" class="arrow-link__link link">{{ props.label }}</a>
+    <a href="#" class="arrow-link__link link">{{ label }}</a>
     
-    <a href="#" class="arrow-link__arrow arrow">
-      <SvgIcon class="arrow__icon" name="arrow"/>
-    </a>
+    <ArrowPlain class="arrow-link__arrow"/>
   </div>
 </template>
 
 <script setup>
-  const props = defineProps({
+  const { label } = defineProps({
     label: {
       type: String,
       default: "",
@@ -38,8 +36,6 @@
     }
 
     &--vertical &__arrow {
-      height: 91px;
-
       @media @bw1020 {
         height: 67px;
         padding-bottom: 4px;
