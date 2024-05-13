@@ -141,7 +141,6 @@
 </template>
 
 <script setup>
-  import ModalRadio from "./ModalRadio.vue";
   import { useStore } from "~/store";
 
   const store = useStore();

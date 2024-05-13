@@ -1,106 +1,195 @@
 <template>
   <div class="events">
-    <section class="events__listing listing">
-      <h2 class="listing__title section-title">Мероприятия</h2>
-
-      <div class="listing__events-list" v-if="cards.length">
-        <CardEvent
-          class="listing__event-card"
-          v-for="(card, cardIndex) in cards" :key="cardIndex"
-          :data="card"
-        />
-      </div>
-
-      <div class="listing__events-list" v-else>
-        На данный момент мероприятия отсутствуют
-      </div>
-    </section>
+    <CardListing 
+      class="events__listing" 
+      :title="'Мероприятия'"
+      :cardComponent="cardData"
+      :linkComponent="linkData"
+    />
   </div>
 </template>
 
 <script setup>
-  const cards = [
-    {
-      "img": "/images/events/nirvana_405w.jpg",
-      "img_1660vw": "/images/events/nirvana_393w.jpg",
-      "img_1170vw": "/images/events/nirvana_339w.jpg",
-      "img_webp": "/images/events/nirvana_405w.webp",
-      "img_1660vw_webp": "/images/events/nirvana_393w.webp",
-      "img_1170vw_webp": "/images/events/nirvana_339w.webp",
-      "alt": "nirvana",
-      "title": "Собираемся и слушаем альбом Nirvana. Nirvana",
-      "description": "Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.",
-      "time": "07.12.2022 | начало 18.00",
-      "dateTime": "2022-12-07T18:00",
-    },
-    {
-      "img": "/images/events/stuff_405w.jpg",
-      "img_1660vw": "/images/events/stuff_393w.jpg",
-      "img_1170vw": "/images/events/stuff_339w.jpg",
-      "img_webp": "/images/events/stuff_405w.webp",
-      "img_1660vw_webp": "/images/events/stuff_393w.webp",
-      "img_1170vw_webp": "/images/events/stuff_339w.webp",
-      "alt": "stuff",
-      "title": "Есть тема, нужно обсудить с HowStuffWorks",
-      "description": "Один из самых популярных подкастов в мире. В нем авторы объясняют, как устроены разные вещи.",
-      "time": "14.12.2022 | начало 18.30",
-      "dateTime": "2022-12-14T18:30",
-    },
-    {
-      "img": "/images/events/sade_405w.jpg",
-      "img_1660vw": "/images/events/sade_393w.jpg",
-      "img_1170vw": "/images/events/sade_339w.jpg",
-      "img_webp": "/images/events/sade_405w.webp",
-      "img_1660vw_webp": "/images/events/sade_393w.webp",
-      "img_1170vw_webp": "/images/events/sade_339w.webp",
-      "alt": "sade",
-      "title": "Вечер | The Best of Sade",
-      "description": "Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм‑блюза и фанка.",
-      "time": "16.12.2022 | начало 20.00",
-      "dateTime": "2022-12-16T20:00",
-    },
-    {
-      "img": "/images/events/malevich_405w.jpg",
-      "img_1660vw": "/images/events/malevich_393w.jpg",
-      "img_1170vw": "/images/events/malevich_339w.jpg",
-      "img_webp": "/images/events/malevich_405w.webp",
-      "img_1660vw_webp": "/images/events/malevich_393w.webp",
-      "img_1170vw_webp": "/images/events/malevich_339w.webp",
-      "alt": "malevich",
-      "title": "Выставка Малевича в Томске",
-      "description": "Это будет самая полная выставка с 1988 года, времени, когда впервые заговорили о Малевиче. Экспозиция займёт два этажа павильона.",
-      "time": "16.12.2022 | начало 20.00",
-      "dateTime": "2022-12-16T20:00",
-    },
-    {
-      "img": "/images/events/tatler_405w.jpg",
-      "img_1660vw": "/images/events/tatler_393w.jpg",
-      "img_1170vw": "/images/events/tatler_339w.jpg",
-      "img_webp": "/images/events/tatler_405w.webp",
-      "img_1660vw_webp": "/images/events/tatler_393w.webp",
-      "img_1170vw_webp": "/images/events/tatler_339w.webp",
-      "alt": "tatler",
-      "title": "Мастер — класс по студийной съемке от Tatler",
-      "description": "Фотографы издания расскажут, как им удается создавать потрясающие кадры и что может испортить весь процесс.",
-      "time": "25.12.2022 | начало 13.00",
-      "dateTime": "2022-12-25T13:00",
-    },
-    {
-      "img": "/images/events/hatters_405w.jpg",
-      "img_1660vw": "/images/events/hatters_393w.jpg",
-      "img_1170vw": "/images/events/hatters_339w.jpg",
-      "img_webp": "/images/events/hatters_405w.webp",
-      "img_1660vw_webp": "/images/events/hatters_393w.webp",
-      "img_1170vw_webp": "/images/events/hatters_339w.webp",
-      "alt": "hatters",
-      "title": "Повеселимся на славу на концерте The Hatters",
-      "description": "Российская джипси-фолк-рок-группа, основанная в 2016 году в Санкт-Петербурге. В основной состав группы входят Юрий Музыченко",
-      "time": "27.12.2022 | начало 10.00",
-      "dateTime": "2022-12-27T10:00",
-    },
-  ];
+  const cardData = {
+    name: "CardEvent",
+    listClass: "listing__events-list",
+    cardClass: "listing__event-card",
+    cards: [
+      {
+        "img": "/images/events/nirvana_405w.jpg",
+        "img_1660vw": "/images/events/nirvana_393w.jpg",
+        "img_1170vw": "/images/events/nirvana_339w.jpg",
+        "img_webp": "/images/events/nirvana_405w.webp",
+        "img_1660vw_webp": "/images/events/nirvana_393w.webp",
+        "img_1170vw_webp": "/images/events/nirvana_339w.webp",
+        "alt": "nirvana",
+        "title": "Собираемся и слушаем альбом Nirvana. Nirvana",
+        "description": "Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.",
+        "time": "07.12.2022 | начало 18.00",
+        "dateTime": "2022-12-07T18:00",
+      },
+      {
+        "img": "/images/events/stuff_405w.jpg",
+        "img_1660vw": "/images/events/stuff_393w.jpg",
+        "img_1170vw": "/images/events/stuff_339w.jpg",
+        "img_webp": "/images/events/stuff_405w.webp",
+        "img_1660vw_webp": "/images/events/stuff_393w.webp",
+        "img_1170vw_webp": "/images/events/stuff_339w.webp",
+        "alt": "stuff",
+        "title": "Есть тема, нужно обсудить с HowStuffWorks",
+        "description": "Один из самых популярных подкастов в мире. В нем авторы объясняют, как устроены разные вещи.",
+        "time": "14.12.2022 | начало 18.30",
+        "dateTime": "2022-12-14T18:30",
+      },
+      {
+        "img": "/images/events/sade_405w.jpg",
+        "img_1660vw": "/images/events/sade_393w.jpg",
+        "img_1170vw": "/images/events/sade_339w.jpg",
+        "img_webp": "/images/events/sade_405w.webp",
+        "img_1660vw_webp": "/images/events/sade_393w.webp",
+        "img_1170vw_webp": "/images/events/sade_339w.webp",
+        "alt": "sade",
+        "title": "Вечер | The Best of Sade",
+        "description": "Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм‑блюза и фанка.",
+        "time": "16.12.2022 | начало 20.00",
+        "dateTime": "2022-12-16T20:00",
+      },
+      {
+        "img": "/images/events/malevich_405w.jpg",
+        "img_1660vw": "/images/events/malevich_393w.jpg",
+        "img_1170vw": "/images/events/malevich_339w.jpg",
+        "img_webp": "/images/events/malevich_405w.webp",
+        "img_1660vw_webp": "/images/events/malevich_393w.webp",
+        "img_1170vw_webp": "/images/events/malevich_339w.webp",
+        "alt": "malevich",
+        "title": "Выставка Малевича в Томске",
+        "description": "Это будет самая полная выставка с 1988 года, времени, когда впервые заговорили о Малевиче. Экспозиция займёт два этажа павильона.",
+        "time": "16.12.2022 | начало 20.00",
+        "dateTime": "2022-12-16T20:00",
+      },
+      {
+        "img": "/images/events/tatler_405w.jpg",
+        "img_1660vw": "/images/events/tatler_393w.jpg",
+        "img_1170vw": "/images/events/tatler_339w.jpg",
+        "img_webp": "/images/events/tatler_405w.webp",
+        "img_1660vw_webp": "/images/events/tatler_393w.webp",
+        "img_1170vw_webp": "/images/events/tatler_339w.webp",
+        "alt": "tatler",
+        "title": "Мастер — класс по студийной съемке от Tatler",
+        "description": "Фотографы издания расскажут, как им удается создавать потрясающие кадры и что может испортить весь процесс.",
+        "time": "25.12.2022 | начало 13.00",
+        "dateTime": "2022-12-25T13:00",
+      },
+      {
+        "img": "/images/events/hatters_405w.jpg",
+        "img_1660vw": "/images/events/hatters_393w.jpg",
+        "img_1170vw": "/images/events/hatters_339w.jpg",
+        "img_webp": "/images/events/hatters_405w.webp",
+        "img_1660vw_webp": "/images/events/hatters_393w.webp",
+        "img_1170vw_webp": "/images/events/hatters_339w.webp",
+        "alt": "hatters",
+        "title": "Повеселимся на славу на концерте The Hatters",
+        "description": "Российская джипси-фолк-рок-группа, основанная в 2016 году в Санкт-Петербурге. В основной состав группы входят Юрий Музыченко",
+        "time": "27.12.2022 | начало 10.00",
+        "dateTime": "2022-12-27T10:00",
+      },
+    ],
+  };
+
+  const linkData = {
+    name: "LinkArrow",
+    class: "listing__arrow-link arrow-link--vertical",
+    label: "Показать еще",
+  }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+  .events {
+    padding-bottom: 85px;
 
+    @media @bw1660 {
+      padding-bottom: 48px;
+    }
+
+    @media @bw1020 {
+      padding-bottom: 0;
+    }
+
+    &__breadcrumbs {
+      margin-top: 40px;
+    }
+
+    &__listing {
+      margin-top: 138px;
+
+      @media @bw1020 {
+        margin-top: 90px;
+      }
+
+      @media @bw450 {
+        margin-top: 80px;
+      }
+    }
+
+    &__additional-services {
+      padding-top: 100px;
+    }
+
+    &__price-table {
+      max-width: 1334px;
+      margin: 60px auto 50px;
+
+      @media @bw1660 {
+        margin-bottom: 40px;
+      }
+
+      @media @bw1020 {
+        margin-top: 50px;
+      }
+
+      @media @bw450 {
+        margin: 30px -20px 40px;
+      }
+    }
+
+    &__offers {
+      gap: 50px;
+
+      @media @bw1660 {
+        max-width: 624px;
+      }
+
+      @media @bw1340 {
+        gap: 50px;
+      }
+    }
+
+    &__offers .offers__event-btn,
+    &__offers .offers__rent-btn {
+      @media @bw1020 {
+        max-height: 49px;
+        font-size: 14px;
+      }
+    }
+
+    &__offers .offers__event-btn {
+      @media @bw1020 {
+        padding: 15px 52px;
+      }
+    }
+
+    &__offers .offers__rent-btn {
+      @media @bw1020 {
+        padding: 15px 49px;
+      }
+    }
+
+    &__info {
+      margin-top: 100px;
+
+      @media @bw450 {
+        margin: 90px 0 5px;
+      }
+    }
+  }
 </style>

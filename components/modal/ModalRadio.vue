@@ -1,5 +1,5 @@
 <template>
-  <div class="radio" :class="className">
+  <div class="radio">
     <label 
       class="radio__label" 
       v-for="(item, index) in data"
@@ -18,11 +18,7 @@
 </template>
 
 <script setup>
-  const { className, data } = defineProps({
-    className: {
-      type: String,
-      default: "",
-    },
+  const { data } = defineProps({
     data: {
       type: Object,
       default: () => {},

@@ -24,6 +24,6 @@
   });
 
   const iconPath = props.name 
-    ? defineAsyncComponent(() => import(`@/assets/svg-icons/${props.name}.svg`)) 
+    ? defineAsyncComponent(() => import(`~/assets/svg-icons/${props.name}.svg`)) 
     : null;
 </script>

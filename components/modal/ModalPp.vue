@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-  import ModalForm from "./ModalForm.vue";
   import { useStore } from "~/store";
 
   const store = useStore();
