@@ -1,14 +1,7 @@
 .field {
   &__title {
-    margin: 0 0 10px;
-    color: @black;
-    font-family: @font1;
-    font-weight: 700;
-    font-size: 18px;
-
-    &--mb7 {
-      margin-bottom: 7px;
-    }
+    display: block;
+    margin-bottom: 5px;
   }
 
   &__select,
@@ -83,36 +76,18 @@
     opacity: 0;
     cursor: pointer;
   }
-  
-  &__label {
-    display: block;
-    margin-bottom: 5px;
-    color: @black;
-
-    &--textarea {
-      margin: 0 0 10px;
-      color: @black;
-      font-family: @font1;
-      font-weight: 700;
-      font-size: 18px;
-
-      @media @bw1340 {
-        margin-bottom: 12px;
-      }
-
-      @media @bw650 {
-        max-width: 95.833%;
-        margin-bottom: 20px;
-        font-size: 16px;
-      }
-    }
-  }
 
   &__textarea {
     height: 149px;
+    color: @black;
+    font-family: @font1;
+    font-weight: 700;
+    font-size: 18px;
 
     @media @bw650 {
+      margin-top: 10px;
       height: 234px;
+      font-size: 16px;
     }
   }
 }

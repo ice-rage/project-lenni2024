@@ -67,18 +67,25 @@
   }
 }
 
+.form-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px 60px;
+  width: 100%;
+
+  @media @bw1340 {
+    gap: 3.906vw;
+  }
+
+  @media @bw650 {
+    gap: 0;
+  }
+}
+
 .width_624 {
   box-sizing: border-box;
   width: 100%;
   max-width: 624px;
-
-  @media @bw1340 {
-    max-width: 566px;
-  }
-
-  @media @bw650 {
-    max-width: 280px;
-  }
 }
 
 .responsive-parent(@w: 100%; @after-pt) {

@@ -4,10 +4,10 @@
       <div class="pp__sticky-close">
         <button
           type="button"
-          class="pp__x-btn x-btn js-ppCloseBtn"
+          class="pp__x-btn x-btn"
           @click="closeModalPp"
         >
-          <SvgIcon class="x-btn__icon" name="x" width="24" height="24" />
+          <SvgIcon class="x-btn__icon" name="x" width="24" height="24"/>
         </button>
       </div>
 
@@ -17,7 +17,7 @@
           и мы подберем площадку
         </h2>
 
-        <ModalForm class="pp__form" />
+        <ModalForm class="pp__form"/>
       </div>
     </div>
   </div>
@@ -44,7 +44,6 @@
     bottom: 0;
     padding: 90px 50px 50px;
     background-color: @gray;
-    backdrop-filter: blur(25px);
     overflow-y: auto;
     z-index: 100;
 
@@ -156,9 +155,8 @@
       font-weight: 400;
       font-size: 22px;
       line-height: 1.364;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.02em;      
       text-transform: uppercase;
-      z-index: 1;
 
       @media @bw1660 {
         margin-left: -52px;

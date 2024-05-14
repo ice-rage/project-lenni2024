@@ -14,7 +14,7 @@
       </p>
     </header>
 
-    <section class="offers home__offers">
+    <section class="home__offers offers">
       <h2 class="offers__title">Я хочу:</h2>
 
       <div class="offers__btns">

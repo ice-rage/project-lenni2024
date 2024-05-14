@@ -1,9 +1,6 @@
 <template>
   <a href="#" class="arrow">
-    <SvgIcon 
-      class="arrow__icon" 
-      name="arrow"
-    />
+    <SvgIcon class="arrow__icon" name="arrow"/>
   </a>
 </template>
 
