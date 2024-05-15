@@ -1,5 +1,5 @@
 <template>
-  <header class="page-header" id="js-pageHeader">
+  <header class="page-header">
     <div class="page-header__container">
       <NuxtLink to="/" class="page-header__logo">
         <SvgIcon
@@ -10,7 +10,7 @@
         />
       </NuxtLink>
 
-      <nav class="page-header__nav" id="js-nav">
+      <nav class="page-header__nav">
         <NuxtLink to="/events" class="page-header__nav-link">Мероприятия</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">Блог</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">О нас</NuxtLink>
@@ -42,14 +42,13 @@
           />
         </button>
 
-        <button type="button" class="page-header__nav-toggle" id="js-navToggle"></button>
+        <button type="button" class="page-header__nav-toggle"></button>
       </div>
     </div>
   </header>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style lang="less">
   .page-header {

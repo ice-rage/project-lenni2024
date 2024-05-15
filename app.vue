@@ -1,19 +1,14 @@
 <template>
   <div id="app" class="app">
-    <Body 
-      class="app__body body" 
-      :class="{ 'body--no-scrolling': store.isModalActive }"
-    >
-      <PageHeader class="app__page-header"/>
+    <PageHeader class="app__page-header"/>
 
-      <main class="app__main main">
-        <NuxtPage/>
+    <main class="app__main main">
+      <NuxtPage/>
       </main>
     
       <PageFooter class="app__page-footer"/>
       
       <ModalPp/>
-    </Body>
   </div>
 </template>
 
@@ -44,5 +39,11 @@
         href: "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap",
       },
     ],
+    bodyAttrs: {
+      class: computed(() => [
+        "body",
+        store.isModalActive ? "body--no-scrolling" : "",
+      ].join(" ")),
+    },
   });
 </script>

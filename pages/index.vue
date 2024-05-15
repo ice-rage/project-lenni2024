@@ -20,8 +20,7 @@
       <div class="offers__btns">
         <button 
           type="button" 
-          class="offers__event-btn btn" 
-          id="js-openEventBtn"
+          class="offers__event-btn btn"
           @click="openModalPp"
         >
           Провести мероприятие
