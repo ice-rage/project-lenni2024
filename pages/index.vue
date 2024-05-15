@@ -99,4 +99,81 @@
   }
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+  .home {
+    &__offers,
+    .section-title {
+      @media @bw1340{
+        max-width: 566px;
+      }
+      
+      @media @bw768 {
+        max-width: 50vw;
+      }
+    }
+
+    &__offers {
+      margin-bottom: 200px;
+      
+      @media @bw768 {
+        margin-bottom: 100px;
+      }
+    }
+
+    &__about {
+      margin-bottom: 90px;
+
+      @media @bw1660 {
+        margin-bottom: 100px;
+      }
+
+      @media @bw960 {
+        margin-bottom: 50px;
+      }
+    }
+
+    &__upcoming {
+      margin-bottom: 64px;
+
+      @media @bw1660 {
+        margin-bottom: 71px;
+      }
+
+      @media @bw1340{
+        margin-bottom: 35px;
+      }
+
+      @media @bw768 {
+        margin-bottom: 41px;
+      }
+    }
+
+    &__blog-listing {
+      margin-bottom: 78px;
+
+      @media @bw1660 {
+        margin-bottom: 90px;
+      }
+
+      @media @bw1170 {
+        margin-bottom: 58px;
+      }
+
+      @media @bw768 {
+        margin-bottom: 60px;
+      }
+    }
+
+    &__contacts {
+      margin-bottom: 227px;
+
+      @media @bw1660 {
+        margin-bottom: 130px;
+      }
+
+      @media @bw1340 {
+        margin-bottom: 100px;
+      }
+    }
+  }
+</style>

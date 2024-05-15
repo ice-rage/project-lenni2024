@@ -2,7 +2,7 @@
   <div id="app" class="app">
     <Body 
       class="app__body body" 
-      :class="{ 'body--no-scrolling': !isBodyScrollable }"
+      :class="{ 'body--no-scrolling': store.isModalActive }"
     >
       <PageHeader class="app__page-header"/>
 
@@ -21,8 +21,6 @@
   import { useStore } from "./store";
 
   const store = useStore();
-
-  const isBodyScrollable = computed(() => !store.isModalActive);
 
   useHead({
     meta: [

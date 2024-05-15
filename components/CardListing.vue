@@ -158,7 +158,6 @@
     }
 
     &__plain-link {
-      align-self: flex-end;
       margin-top: 70px;
 
       @media @bw1660 {

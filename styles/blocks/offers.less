@@ -10,8 +10,9 @@
     gap: 42px;
   }
 
-  @media @bw650 {
+  @media @bw768 {
     gap: 25px;
+    min-width: 280px;
   }
 
   &__title {
@@ -24,6 +25,7 @@
     text-transform: uppercase;
 
     @media @bw1340 {
+      margin: 0 auto;
       font-weight: 500;
       font-size: 16px;
       line-height: 1.28;
@@ -31,7 +33,6 @@
     }
 
     @media @bw650 {
-      margin: 0 auto;
       font-weight: 400;
       font-size: 13px;
       line-height: 1.308;
@@ -44,7 +45,7 @@
     justify-content: space-between;
     width: 100%;
 
-    @media @bw650 {
+    @media @bw768 {
       gap: 25px;
       flex-direction: column-reverse;
     }
@@ -59,7 +60,7 @@
 
   &__event-btn,
   &__rent-btn {
-    @media @bw650 {
+    @media @bw768 {
       max-width: 100%;
       padding: 15px 30px;
     }
@@ -74,7 +75,7 @@
       padding: 15px 39px;
     }
 
-    @media @bw650 {
+    @media @bw768 {
       width: 100%;
     }
   }
