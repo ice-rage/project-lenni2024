@@ -9,13 +9,13 @@
         :class="cardClass"
         :data="card">
       </component>
-
-      <component
-        :is="linkName" 
-        :class="linkClass" 
-        :label="linkLabel">
-      </component>
     </div>
+
+    <component v-if="cards.length"
+      :is="linkName" 
+      :class="linkClass" 
+      :label="linkLabel">
+    </component>
 
     <div v-else class="listing__empty-list">
       Пока что здесь пусто... Но это ненадолго :)
@@ -70,29 +70,29 @@
     flex-direction: column;
 
     &__events-list {
-      position: relative;
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -30px;
+      margin: 0 -30px -120px;
 
       @media @bw1660 {
-        margin: 0 -20px;
+        margin: 0 -20px -100px;
       }
 
       @media @bw1340 {
-        margin: 0 -15px;
+        margin: 0 -15px -100px;
       }
 
       @media @bw1020 {
         justify-content: center;
+        margin: 0 -15px -80px;
       }
 
       @media @bw768 {
-        margin: 0 -10px;
+        margin: 0 -10px -80px;
       }
 
       @media @bw650 {
-        margin: 0;
+        margin: 0 0 -60px;
       }
     }
 
@@ -137,23 +137,19 @@
     }
 
     &__arrow-link {
-      position: absolute;
-      left: calc(50% - 64px);
-      bottom: -82px;
       width: 128px;
+      margin: 70px auto 50px;
 
       @media @bw1660 {
-        bottom: -92px;
+        margin-top: 60px;
       }
 
       @media @bw1020 {
-        left: calc(50% - 50px);
         width: 99px;
-        bottom: -86px;
       }
 
       @media @bw650 {
-        bottom: -96px;
+        margin-top: 50px;
       }
     }
 

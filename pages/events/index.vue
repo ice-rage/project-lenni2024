@@ -2,11 +2,12 @@
   <div class="events">
     <CardListing 
       class="events__listing"
-      :titleClass="'section-title--w624'" 
       :title="'Мероприятия'"
       :cardComponent="cardData"
       :linkComponent="linkData"
     />
+
+    <UserOffers class="events__offers"/>
   </div>
 </template>
 
@@ -156,12 +157,12 @@
     &__offers {
       gap: 50px;
 
-      @media @bw1660 {
-        max-width: 624px;
-      }
-
       @media @bw1340 {
         gap: 50px;
+      }
+
+      @media @bw768 {
+        max-width: 50vw;
       }
     }
 

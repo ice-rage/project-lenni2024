@@ -14,25 +14,7 @@
       </p>
     </header>
 
-    <section class="home__offers offers">
-      <h2 class="offers__title">Я хочу:</h2>
-
-      <div class="offers__btns">
-        <button 
-          type="button" 
-          class="offers__event-btn btn"
-          @click="toggleModalPp"
-        >
-          Провести мероприятие
-        </button>
-        <button 
-          type="button" 
-          class="offers__rent-btn btn"
-        >
-          Стать арендатором
-        </button>
-      </div>
-    </section>
+    <UserOffers class="home__offers"/>
 
     <CardListing 
       class="home__blog-listing"
@@ -44,12 +26,6 @@
 </template>
 
 <script setup>
-  import { useStore } from "~/store";
-
-  const store = useStore();
-
-  const { toggleModalPp } = store;
-
   const cardData = {
     name: "CardArticle",
     listClass: "listing__article-list",
@@ -106,12 +82,8 @@
         max-width: 604px;
       }
 
-      @media @bw1340{
+      @media @bw1340 {
         max-width: 566px;
-      }
-
-      @media @bw768 {
-        max-width: 50vw;
       }
     }
 
@@ -119,6 +91,7 @@
       margin-bottom: 200px;
       
       @media @bw768 {
+        max-width: 50vw;
         margin-bottom: 100px;
       }
     }
