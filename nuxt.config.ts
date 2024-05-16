@@ -2,6 +2,8 @@ import svgLoader from "vite-svg-loader";
 
 export default defineNuxtConfig({
   app: {
+    pageTransition: false,
+    layoutTransition: false,
     head: {
       charset: "utf-8",
       viewport: 
@@ -25,6 +27,14 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
-    "@pinia/nuxt",
+    [
+      "@pinia/nuxt",
+      {
+        autoImports: [
+          "defineStore",
+          ["defineStore", "definePiniaStore"],
+        ],
+      },
+    ],
   ],
 })

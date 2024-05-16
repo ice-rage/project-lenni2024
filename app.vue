@@ -13,9 +13,7 @@
 </template>
 
 <script setup>
-  import { useStore } from "~/store";
-
-  const store = useStore();
+  const store = useMainStore();
 
   useHead({
     meta: [

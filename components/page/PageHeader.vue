@@ -53,11 +53,7 @@
 </template>
 
 <script setup>
-  import { useStore } from "~/store";
-
-  const store = useStore();
-
-  const { toggleNavMenu } = store;
+  const { toggleNavMenu } = useMainStore();
 </script>
 
 <style lang="less">

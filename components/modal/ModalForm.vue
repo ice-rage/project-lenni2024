@@ -48,7 +48,7 @@
       <div class="form__btns">
         <button type="submit" class="form__submit-btn btn">Отправить</button>
 
-        <button type="button" class="form__close-btn btn" @click="closeModalPp">
+        <button type="button" class="form__close-btn btn" @click="toggleModalPp">
           Закрыть
         </button>
       </div>
@@ -57,11 +57,7 @@
 </template>
 
 <script setup>
-  import { useStore } from "~/store";
-
-  const store = useStore();
-
-  const { closeModalPp } = store;
+  const { toggleModalPp } = useMainStore();
 
   const contactLabels = [
     {
