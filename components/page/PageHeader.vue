@@ -42,13 +42,23 @@
           />
         </button>
 
-        <button type="button" class="page-header__nav-toggle"></button>
+        <button 
+          type="button" 
+          class="page-header__nav-toggle"
+          @click="toggleNavMenu"
+        ></button>
       </div>
     </div>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+  import { useStore } from "~/store";
+
+  const store = useStore();
+
+  const { toggleNavMenu } = store;
+</script>
 
 <style lang="less">
   .page-header {

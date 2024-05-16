@@ -1,11 +1,11 @@
 <template>
-  <div class="pp" v-if="isActive" @click.self="closeModalPp">
+  <div class="pp" v-if="isActive" @click.self="toggleModalPp">
     <div class="pp__wrapper">
       <div class="pp__sticky-close">
         <button
           type="button"
           class="pp__x-btn x-btn"
-          @click="closeModalPp"
+          @click="toggleModalPp"
         >
           <SvgIcon class="x-btn__icon" name="x" width="24" height="24"/>
         </button>
@@ -28,9 +28,9 @@
 
   const store = useStore();
 
-  const { closeModalPp } = store;
+  const { toggleModalPp } = store;
 
-  const isActive = computed(() => store.isModalActive);
+  const isActive = computed(() => store.isModalPpActive);
 </script>
 
 <style lang="less">

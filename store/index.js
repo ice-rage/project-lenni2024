@@ -2,14 +2,15 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore("index", {
   state: () => ({
-    isModalActive: false,
+    isModalPpActive: false,
+    isNavMenuOpened: false,
   }),
   actions: {
-    openModalPp() {
-      this.isModalActive = true;
+    toggleModalPp () {
+      this.isModalPpActive = !this.isModalPpActive;
     },
-    closeModalPp() {
-      this.isModalActive = false;
-    },
+    toggleNavMenu() {
+      this.isNavMenuOpened = !this.isNavMenuOpened;
+    }
   },
 });

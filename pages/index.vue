@@ -21,7 +21,7 @@
         <button 
           type="button" 
           class="offers__event-btn btn"
-          @click="openModalPp"
+          @click="toggleModalPp"
         >
           Провести мероприятие
         </button>
@@ -48,7 +48,7 @@
 
   const store = useStore();
 
-  const { openModalPp } = store;
+  const { toggleModalPp } = store;
 
   const cardData = {
     name: "CardArticle",
