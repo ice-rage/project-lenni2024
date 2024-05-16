@@ -10,7 +10,7 @@
         />
       </NuxtLink>
 
-      <nav class="page-header__nav">
+      <nav class="page-header__nav" @click.self="toggleNavMenu">
         <NuxtLink to="/events" class="page-header__nav-link">Мероприятия</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">Блог</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">О нас</NuxtLink>
@@ -201,6 +201,7 @@
     &__nav-logout {
       width: 24px;
       height: 24px;
+      background-color: transparent;
       font-size: 0;
     }
 

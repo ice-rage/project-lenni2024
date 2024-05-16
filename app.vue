@@ -42,7 +42,9 @@
     bodyAttrs: {
       class: computed(() => [
         "body",
-        store.isModalPpActive ? "body--no-scrolling" : "",
+        store.isModalPpActive || store.isNavMenuOpened 
+          ? "body--no-scrolling" 
+          : "",
         store.isNavMenuOpened ? "show-nav" : "",
       ].join(" ")),
     },
