@@ -19,7 +19,6 @@
 
 <style lang="less">
   .arrow {
-    position: relative;
     display: flex;
     width: 91px;
     height: 60px;

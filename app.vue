@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  import { useStore } from "./store";
+  import { useStore } from "~/store";
 
   const store = useStore();
 

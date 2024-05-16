@@ -1,7 +1,8 @@
 <template>
   <div class="events">
     <CardListing 
-      class="events__listing" 
+      class="events__listing"
+      :titleClass="'section-title--w624'" 
       :title="'Мероприятия'"
       :cardComponent="cardData"
       :linkComponent="linkData"

@@ -102,10 +102,14 @@
   .home {
     &__offers,
     .section-title {
+      @media @bw1660 {
+        max-width: 604px;
+      }
+
       @media @bw1340{
         max-width: 566px;
       }
-      
+
       @media @bw768 {
         max-width: 50vw;
       }
