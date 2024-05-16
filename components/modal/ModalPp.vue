@@ -1,5 +1,12 @@
 <template>
-  <div class="pp" v-if="isActive" @click.self="toggleModalPp">
+  <div 
+    v-if="isActive" 
+    ref="modalPp" 
+    class="pp"
+    :tabindex="isActive ? '0': '-1'"
+    @click.self="toggleModalPp" 
+    @keyup.esc="toggleModalPp"
+  >
     <div class="pp__wrapper">
       <div class="pp__sticky-close">
         <button
@@ -30,7 +37,17 @@
 
   const { toggleModalPp } = store;
 
-  const isActive = computed(() => store.isModalPpActive);
+  const modalPp = ref();
+
+  const isActive = computed(() => {
+    const state = store.isModalPpActive;
+
+    if (state) {
+      nextTick(() => modalPp.value.focus());
+    }
+
+    return state;
+  });
 </script>
 
 <style lang="less">

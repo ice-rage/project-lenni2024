@@ -6,11 +6,11 @@ export const useStore = defineStore("index", {
     isNavMenuOpened: false,
   }),
   actions: {
-    toggleModalPp () {
+    toggleModalPp() {
       this.isModalPpActive = !this.isModalPpActive;
     },
     toggleNavMenu() {
       this.isNavMenuOpened = !this.isNavMenuOpened;
-    }
+    },
   },
 });
