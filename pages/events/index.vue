@@ -3,8 +3,9 @@
     <CardListing 
       class="events__listing"
       :title="'Мероприятия'"
-      :cardComponent="cardData"
-      :linkComponent="linkData"
+      :listClass="'listing__events-list'"
+      :cardData="eventCards"
+      :linkData="link"
     />
 
     <UserOffers class="events__offers"/>
@@ -14,14 +15,13 @@
 <script setup>
   import jsonCards from "~/json/eventCards.json";
 
-  const cardData = {
+  const eventCards = {
     name: "CardEvent",
-    listClass: "listing__events-list",
-    cardClass: "listing__event-card",
+    class: "listing__event-card",
     cards: jsonCards,
   };
 
-  const linkData = {
+  const link = {
     name: "LinkArrow",
     class: "listing__arrow-link arrow-link--vertical",
     label: "Показать еще",

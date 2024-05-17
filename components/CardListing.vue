@@ -5,16 +5,16 @@
     <div :class="listClass" v-if="cards.length">
       <component 
         v-for="(card, cardIndex) in cards" :key="cardIndex"
-        :is="cardName"
-        :class="cardClass"
+        :is="cardComponent"
+        :class="cardData.class"
         :data="card">
       </component>
     </div>
 
     <component v-if="cards.length"
-      :is="linkName" 
-      :class="linkClass" 
-      :label="linkLabel">
+      :is="linkComponent" 
+      :class="linkData.class" 
+      :label="linkData.label">
     </component>
 
     <div v-else class="listing__empty-list">
@@ -24,42 +24,38 @@
 </template>
 
 <script setup>
-  const { title, cardComponent, linkComponent } = defineProps({
+  const { title, listClass, cardData, linkData } = defineProps({
     title: {
       type: String,
       default: "",
     },
-    cardComponent: {
+    listClass: {
+      type: String,
+      default: "",
+    },
+    cardData: {
       type: Object,
       default: () => {},
       required: true,
     },
-    linkComponent: {
+    linkData: {
       type: Object,
       default: () => {},
       required: true,
     },
   });
 
-  const listClass = computed(() => cardComponent.listClass || "");
+  const cards = computed(() => cardData.cards || []);
 
-  const cards = computed(() => cardComponent.cards || []);
-
-  const cardName = cardComponent.name
+  const cardComponent = cardData.name
     ? defineAsyncComponent(() => 
-      import(`~/components/card/${cardComponent.name}.vue`)) 
+      import(`~/components/card/${cardData.name}.vue`)) 
     : null;
 
-  const cardClass = computed(() => cardComponent.cardClass || "");
-
-  const linkName = linkComponent.name
+  const linkComponent = linkData.name
     ? defineAsyncComponent(() => 
-      import(`~/components/link/${linkComponent.name}.vue`)) 
+      import(`~/components/link/${linkData.name}.vue`)) 
     : null;
-
-  const linkClass = computed(() => linkComponent.class || "");
-
-  const linkLabel = computed(() => linkComponent.label || "");
 </script>
 
 <style lang="less" scoped>
