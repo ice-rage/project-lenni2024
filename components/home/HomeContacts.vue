@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-  import ContactMap from "~/components/home/map/MapContacts.vue";
+  import ContactMap from "./map/MapContacts.vue";
 
   const contacts = [
     {
