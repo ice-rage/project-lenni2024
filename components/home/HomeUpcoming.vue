@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-  import cards from "~/json/eventCards.json";
+  import cards from "~/data/eventCards.json";
 </script>
 
 <style lang="less">

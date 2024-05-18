@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  import jsonCards from "~/json/eventCards.json";
+  import jsonCards from "~/data/eventCards.json";
 
   const eventCards = {
     name: "CardEvent",

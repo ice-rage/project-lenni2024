@@ -29,7 +29,7 @@
   import HomeContacts from "~/components/home/HomeContacts.vue";
   import HomeQuote from "~/components/home/HomeQuote.vue";
 
-  import jsonCards from "~/json/articleCards.json";
+  import jsonCards from "~/data/articleCards.json";
 
   const articleCards = {
     name: "CardArticle",

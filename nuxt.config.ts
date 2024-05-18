@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
+    "vue-yandex-maps/nuxt",
     [
       "@pinia/nuxt",
       {
@@ -37,4 +38,7 @@ export default defineNuxtConfig({
       },
     ],
   ],
-})
+  yandexMaps: {
+    apikey: "664ae998-4da0-4bbe-9d13-109fe362cc4e",
+  },
+});

@@ -1,16 +1,12 @@
 <template>
   <section class="contacts">
     <div class="contacts__container">
-      <h2 
-        class="contacts__title section-title" 
-        id="contacts"
-      >
+      <h2 class="contacts__title section-title" id="contacts">
         Контакты
       </h2>
 
       <div class="contacts__wrapper">
-        <div class="contacts__items"
-        >
+        <div class="contacts__items">
           <InfoItem 
             v-for="(contact, contactIndex) in contacts" 
             :key="contactIndex" 
@@ -19,14 +15,14 @@
           />
         </div>
         
-        <ContactsMap class="contacts__map"/>
+        <ContactMap class="contacts__map"/>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-  import ContactsMap from "~/components/home/contacts/ContactsMap.vue";
+  import ContactMap from "~/components/home/map/MapContacts.vue";
 
   const contacts = [
     {
@@ -34,9 +30,9 @@
       iconWidth: "24",
       iconName: "location",
       content: `
-        <h4 class='contacts-item__title'>Томск, Белая 8</h4>
-        <p class='contacts-item__data'>2 этаж</p>
-        <p class='contacts-item__data'>оф. 207-208</p>
+        <h4 class='info-item__title'>Томск, Белая 8</h4>
+        <p class='info-item__data'>2 этаж</p>
+        <p class='info-item__data'>оф. 207-208</p>
       `,
     },
     {
@@ -44,11 +40,11 @@
       iconWidth: "24",
       iconName: "rent",
       content: `
-        <h4 class='contacts-item__title'>Отдел аренды</h4>
-        <a href='tel:74993500730' class='contacts-item__data'>
+        <h4 class='info-item__title'>Отдел аренды</h4>
+        <a href='tel:74993500730' class='info-item__data'>
           +7 499 350 0730
         </a>
-        <a href='mailto:hi@tagree.ru' class='contacts-item__data'>
+        <a href='mailto:hi@tagree.ru' class='info-item__data'>
           hi@tagree.ru
         </a>
       `,
@@ -58,11 +54,11 @@
       iconWidth: "24",
       iconName: "rent",
       content: `
-        <h4 class='contacts-item__title'>Отдел мероприятий</h4>
-        <a href='tel:74993500730' class='contacts-item__data'>
+        <h4 class='info-item__title'>Отдел мероприятий</h4>
+        <a href='tel:74993500730' class='info-item__data'>
           +7 499 350 0730
         </a>
-        <a href='mailto:hi@tagree.ru' class='contacts-item__data'>
+        <a href='mailto:hi@tagree.ru' class='info-item__data'>
           hi@tagree.ru
         </a>
       `,
