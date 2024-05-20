@@ -10,6 +10,11 @@ export default defineNuxtConfig({
         "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
     },
   },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith("swiper-"),
+    },
+  },
   css: ["~/styles/styles.less"],
   vite: {
     css: {

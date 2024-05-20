@@ -4,28 +4,29 @@
       <div class="upcoming__container">
         <h2 class="upcoming__title section-title" id="upcoming">Мероприятия</h2>
 
-        <div class="upcoming__swiper swiper swiper--3s js-swiper">
-          <div class="swiper-wrapper">
-            <CardEvent 
-              class="swiper-slide"
-              v-for="(card, cardIndex) in cards"
-              :key="cardIndex"
-              :data="card"
-            />
-          </div>
+        <swiper-container 
+          class="upcoming__swiper swiper swiper--3s"
+          ref="swiperElement"
+          init="false"
+        >
+          <swiper-slide 
+            v-for="(card, cardIndex) in cards" 
+            :key="cardIndex"
+            class="swiper-slide"
+          >
+            <CardEvent :data="card"/>
+          </swiper-slide>
 
-          <footer class="swiper-footer">
-            <button type="button" class="swiper-arrow-prev arrow arrow--left">
+          <footer slot="container-end" class="swiper-footer">
+            <button class="arrow arrow--left" @click="toPrevSlide">
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
             </button>
 
-            <div class="swiper-pagination"></div>
-
-            <button type="button" class="swiper-arrow-next arrow">
+            <button class="arrow" @click="toNextSlide">
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
             </button>
           </footer>
-        </div>
+        </swiper-container>
 
         <a href="#" class="upcoming__link link">Смотреть все</a>
       </div>
@@ -34,7 +35,36 @@
 </template>
 
 <script setup>
+  import { register } from "swiper/element/bundle";
+
   import cards from "~/data/eventCards.json";
+
+  const swiperElement = ref();
+
+  const swiperParameters = {
+    updateOnWindowsResize: true,
+    slidesPerView: "auto",
+    freeMode: true,
+    spaceBetween: 0,
+    speed: 500,
+    pagination: {
+      type: "bullets",
+      clickable: true,
+      hideOnClick: false,
+    },
+  };
+
+  onMounted(() => {
+    register();
+
+    Object.assign(swiperElement.value, swiperParameters);
+
+    swiperElement.value.initialize();
+  });
+
+  const toPrevSlide = () => swiperElement.value.swiper.slidePrev();
+
+  const toNextSlide = () => swiperElement.value.swiper.slideNext();
 </script>
 
 <style lang="less">
@@ -57,6 +87,11 @@
       @media @bw768 {
         padding: 50px 0 40px 0;
       }
+    }
+
+    &__style {
+      display: flex;
+      width: 100%;
     }
 
     &__container {
