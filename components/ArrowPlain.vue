@@ -29,6 +29,7 @@
     font-size: 0;
     text-decoration: none;
     transition: color 0.2s;
+    cursor: pointer;
 
     @media @bw1020 {
       width: 67px;

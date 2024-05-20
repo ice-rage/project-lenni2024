@@ -5,9 +5,10 @@
         <h2 class="upcoming__title section-title" id="upcoming">Мероприятия</h2>
 
         <swiper-container 
-          class="upcoming__swiper swiper swiper--3s"
           ref="swiperElement"
+          class="upcoming__swiper swiper swiper--3s"
           init="false"
+          @swiperslidechange="onSlideChange"
         >
           <swiper-slide 
             v-for="(card, cardIndex) in cards" 
@@ -18,11 +19,21 @@
           </swiper-slide>
 
           <footer slot="container-end" class="swiper-footer">
-            <button class="arrow arrow--left" @click="toPrevSlide">
+            <button 
+              ref="prevArrow"
+              class="swiper-arrow-prev arrow arrow--left"
+              :class="isPrevArrowActive ? '' : 'arrow--disabled'"
+              @click="toPrevSlide"
+            >
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
             </button>
 
-            <button class="arrow" @click="toNextSlide">
+            <button 
+              ref="nextArrow"
+              class="swiper-arrow-next arrow"
+              :class="isNextArrowActive ? '' : 'arrow--disabled'"
+              @click="toNextSlide"
+            >
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
             </button>
           </footer>
@@ -41,6 +52,21 @@
 
   const swiperElement = ref();
 
+  const prevArrow = ref();
+  const nextArrow = ref();
+
+  const swiper = computed(() => swiperElement.value 
+    ? swiperElement.value.swiper
+    : null);
+
+  const isPrevArrowActive = ref(false);
+  const isNextArrowActive = ref(true);
+
+  const onSlideChange = () => {
+    isPrevArrowActive.value = !swiper.value.isBeginning;
+    isNextArrowActive.value = !swiper.value.isEnd;
+  };
+  
   const swiperParameters = {
     updateOnWindowsResize: true,
     slidesPerView: "auto",
@@ -62,9 +88,16 @@
     swiperElement.value.initialize();
   });
 
-  const toPrevSlide = () => swiperElement.value.swiper.slidePrev();
+  // const onSlideChange = () => {
+  //   if (swiper.value !== null) {
+  //     isPrevActive.value = !swiper.value.isBeginning;
+  //     isNextActive.value = !swiper.value.isEnd;
+  //   }
+  // }
 
-  const toNextSlide = () => swiperElement.value.swiper.slideNext();
+  const toPrevSlide = () => swiper.value.slidePrev();
+
+  const toNextSlide = () => swiper.value.slideNext();
 </script>
 
 <style lang="less">
