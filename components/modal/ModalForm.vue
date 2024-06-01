@@ -48,7 +48,7 @@
       <div class="form__btns">
         <button type="submit" class="form__submit-btn btn">Отправить</button>
 
-        <button type="button" class="form__close-btn btn" @click="toggleModalPp">
+        <button type="button" class="form__close-btn btn" @click="closeEventPp">
           Закрыть
         </button>
       </div>
@@ -57,7 +57,9 @@
 </template>
 
 <script setup>
-  const { toggleModalPp } = useMainStore();
+  const store = useStore();
+
+  const { closeEventPp } = store;
 
   const contactLabels = [
     {
@@ -82,7 +84,7 @@
       inputName: "email",
       inputPlaceholder: "Email",
     },
-  ]
+  ];
 </script>
 
 <style lang="less">

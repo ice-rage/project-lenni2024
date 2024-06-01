@@ -1,18 +1,18 @@
 <template>
   <div 
-    v-if="isActive" 
-    ref="modalPp" 
+    v-if="isActive"  
+    ref="modalPp"
     class="pp"
     :tabindex="isActive ? '0': '-1'"
-    @click.self="toggleModalPp" 
-    @keyup.esc="toggleModalPp"
+    @click.self="closeEventPp"
+    @keyup.esc="closeEventPp"
   >
     <div class="pp__wrapper">
       <div class="pp__sticky-close">
         <button
           type="button"
           class="pp__x-btn x-btn"
-          @click="toggleModalPp"
+          @click="closeEventPp"
         >
           <SvgIcon class="x-btn__icon" name="x" width="24" height="24"/>
         </button>
@@ -31,14 +31,14 @@
 </template>
 
 <script setup>
-  const store = useMainStore();
+  const store = useStore();
 
-  const { toggleModalPp } = store;
+  const { closeEventPp } = store;
 
   const modalPp = ref();
 
   const isActive = computed(() => {
-    const state = store.isModalPpActive;
+    const state = store.modal.isEventPpActive;
 
     if (state) {
       nextTick(() => modalPp.value.focus());

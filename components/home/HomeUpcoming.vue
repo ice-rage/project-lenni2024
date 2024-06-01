@@ -1,12 +1,12 @@
 <template>
-  <section class="upcoming">
-    <div class="upcoming__wrapper" id="js-upcoming-wrapper">
-      <div class="upcoming__container">
-        <h2 class="upcoming__title section-title" id="upcoming">Мероприятия</h2>
+  <section class="home-upcoming">
+    <div class="home-upcoming__wrapper">
+      <div class="home-upcoming__container">
+        <h2 class="home-upcoming__title section-title">Мероприятия</h2>
 
         <swiper-container 
           ref="swiperElement"
-          class="upcoming__swiper swiper swiper--3s"
+          class="home-upcoming__swiper swiper swiper--3s"
           init="false"
           @swiperslidechange="onSlideChange"
         >
@@ -39,7 +39,7 @@
           </footer>
         </swiper-container>
 
-        <a href="#" class="upcoming__link link">Смотреть все</a>
+        <a href="#" class="home-upcoming__link link">Смотреть все</a>
       </div>
     </div>
   </section>
@@ -47,6 +47,7 @@
 
 <script setup>
   import { register } from "swiper/element/bundle";
+  import "swiper/css";
 
   import cards from "~/data/eventCards.json";
 
@@ -88,20 +89,13 @@
     swiperElement.value.initialize();
   });
 
-  // const onSlideChange = () => {
-  //   if (swiper.value !== null) {
-  //     isPrevActive.value = !swiper.value.isBeginning;
-  //     isNextActive.value = !swiper.value.isEnd;
-  //   }
-  // }
-
   const toPrevSlide = () => swiper.value.slidePrev();
 
   const toNextSlide = () => swiper.value.slideNext();
 </script>
 
 <style lang="less">
-  .upcoming {
+  .home-upcoming {
     &__wrapper {
       padding: 120px 0 84px;
       background-image: url("/images/home-events.png");
@@ -143,16 +137,8 @@
     }
 
     &__title {
-      @media @bw1020 {
-        margin-left: calc(50% - 298px);
-      }
-
-      @media @bw768 {
-        margin-left: calc(50% - 293px);
-      }
-
       @media @bw650 {
-        margin-left: calc(50% - 150px);
+        margin-left: 0;
       }
     }
 

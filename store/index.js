@@ -1,14 +1,19 @@
 export const useStore = defineStore("index", {
   state: () => ({
-    isModalPpActive: false,
-    isNavMenuOpened: false,
+    isNavMenuActive: false,
+    modal: {
+      isEventPpActive: false,
+    },
   }),
   actions: {
-    toggleModalPp() {
-      this.isModalPpActive = !this.isModalPpActive;
-    },
     toggleNavMenu() {
-      this.isNavMenuOpened = !this.isNavMenuOpened;
+      this.isNavMenuActive = !this.isNavMenuActive;
     },
+    openEventPp() {
+      this.modal.isEventPpActive = true;
+    },
+    closeEventPp() {
+      this.modal.isEventPpActive = false;
+    }
   },
 });

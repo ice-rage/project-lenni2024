@@ -8,12 +8,12 @@
     
       <PageFooter class="app__page-footer"/>
       
-      <ModalPp/>
+      <ModalPp class="app__modal-pp"/>
   </div>
 </template>
 
 <script setup>
-  const store = useMainStore();
+  const store = useStore();
 
   useHead({
     meta: [
@@ -38,13 +38,11 @@
       },
     ],
     bodyAttrs: {
-      class: computed(() => [
-        "body",
-        store.isModalPpActive || store.isNavMenuOpened 
-          ? "body--no-scrolling" 
-          : "",
-        store.isNavMenuOpened ? "show-nav" : "",
-      ].join(" ")),
+      class: {
+        body: true,
+        "show-nav": () => store.isNavMenuActive,
+        "show-event-pp": () => store.modal.isEventPpActive,
+      },
     },
   });
 </script>

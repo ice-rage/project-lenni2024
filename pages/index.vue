@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MainHeader class="home__main-header"/>
+    <HomeHeader class="home__header"/>
 
     <UserOffers class="home__offers"/>
 
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-  import MainHeader from "~/components/main/MainHeader.vue";
+  import HomeHeader from "~/components/home/HomeHeader.vue";
   import HomeAbout from "~/components/home/HomeAbout.vue";
   import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
   import HomeContacts from "~/components/home/HomeContacts.vue";
@@ -54,6 +54,10 @@
 
       @media @bw1340 {
         max-width: 566px;
+      }
+
+      @media @bw650 {
+        max-width: calc(100vw - 40px);
       }
     }
 

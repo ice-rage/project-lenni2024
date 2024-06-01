@@ -6,7 +6,7 @@
       <button
         type="button"
         class="offers__event-btn btn"
-        @click="toggleModalPp"
+        @click="openEventPp"
       >
         Провести мероприятие
       </button>
@@ -18,7 +18,9 @@
 </template>
 
 <script setup>
-  const { toggleModalPp } = useMainStore();
+  const store = useStore();
+
+  const { openEventPp } = store;
 </script>
 
 <style lang="less">

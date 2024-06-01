@@ -1,28 +1,28 @@
 <template>
-  <section class="contacts">
-    <div class="contacts__container">
-      <h2 class="contacts__title section-title" id="contacts">
+  <section class="home-contacts">
+    <div class="home-contacts__container">
+      <h2 class="home-contacts__title section-title" id="home-contacts">
         Контакты
       </h2>
 
-      <div class="contacts__wrapper">
-        <div class="contacts__items">
+      <div class="home-contacts__wrapper">
+        <div class="home-contacts__items">
           <InfoItem 
             v-for="(contact, contactIndex) in contacts" 
             :key="contactIndex" 
-            class="contacts__item" 
+            class="home-contacts__item" 
             :data="contact"
           />
         </div>
         
-        <ContactMap class="contacts__map"/>
+        <ContactsMap class="home-contacts__map"/>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-  import ContactMap from "./map/MapContacts.vue";
+  import ContactsMap from "./contacts/ContactsMap.vue";
 
   const contacts = [
     {
@@ -67,7 +67,7 @@
 </script>
 
 <style lang="less">
-  .contacts {
+  .home-contacts {
     &__container {
       .container();
     }
@@ -155,7 +155,7 @@
           gap: 40px;
         }
 
-        .contacts-item {
+        .home-contacts__item {
           flex-direction: column;
           gap: 41px;
           width: 100%;

@@ -1,14 +1,14 @@
 <template>
-  <header class="main-header">
-    <h1 class="main-header__title">Арт — пространство</h1>
+  <header class="home-header">
+    <h1 class="home-header__title">Арт — пространство</h1>
 
-    <picture class="main-header__picture">
+    <picture class="home-header__picture">
       <source type="image/webp" srcset="/images/lenni.webp" />
 
-      <img src="/images/lenni.png" alt="lenni" class="main-header__img" />
+      <img src="/images/lenni.png" alt="lenni" class="home-header__img" />
     </picture>
 
-    <p class="main-header__text">
+    <p class="home-header__text">
       Для людей, горящих сердцем и делом <br />место для настоящего
     </p>
   </header>
@@ -17,7 +17,7 @@
 <script setup></script>
 
 <style lang="less">
-  .main-header {
+  .home-header {
     padding: 100px 0;
 
     @media @bw1340 {
