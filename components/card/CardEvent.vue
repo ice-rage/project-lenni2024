@@ -72,8 +72,7 @@
 <style lang="less">
   .event-card {
     display: flex;
-    width: 405px;
-    max-width: 100%;
+    max-width: 405px;
     min-width: 280px;
 
     @media @bw768 {

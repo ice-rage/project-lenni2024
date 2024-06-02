@@ -58,7 +58,7 @@
     : null;
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   .listing {
     .container();
 

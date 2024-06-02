@@ -28,7 +28,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   .events {
     padding-bottom: 85px;
 
