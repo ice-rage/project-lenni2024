@@ -1,8 +1,8 @@
 <template>
-  <div class="contacts-map">
-    <div class="contacts-map__wrapper">
+  <div class="map">
+    <div class="map__wrapper">
       <YandexMap
-        class="contacts-map__content"
+        class="map__content"
         :settings="{
           location: {
             center: [84.96274, 56.49387],
@@ -12,32 +12,32 @@
         }"
       >
         <YandexMapDefaultSchemeLayer 
-          class="contacts-map__scheme-layer"
+          class="map__scheme-layer"
           :settings="{ customization }"
         />
         <YandexMapDefaultFeaturesLayer 
-          class="contacts-map__features-layer"/>
+          class="map__features-layer"/>
 
         <YandexMapMarker
-          class="contacts-map__marker"
+          class="map__marker"
           :settings="{
             coordinates: [84.96274, 56.49385],
             onClick: () => isPpVisible = !isPpVisible,
           }"
         >
           <Transition name="fade">
-            <div v-if="isPpVisible" class="contacts-map__marker-pp">
+            <div v-if="isPpVisible" class="map__marker-pp">
               г. Томск, ул. Белая, д. 8
             </div>
           </Transition>
 
           <img
-            class="contacts-map__marker-point"
+            class="map__marker-point"
             alt="location"
             src="/images/location.png"
           />
           <SvgIcon
-            class="contacts-map__marker-icon"
+            class="map__marker-icon"
             name="logo"
             width="78"
             height="57"
@@ -68,7 +68,7 @@
 </script>
 
 <style lang="less">
-  .contacts-map {
+  .map {
     display: block;
     width: 100%;
     max-width: 752px;

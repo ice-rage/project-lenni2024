@@ -26,8 +26,7 @@
       <div class="form__section form-section">
         <h5 class="form-section__title">Контактные данные:</h5>
 
-        <div v-if="contactLabels.length" class="form-section__list"
-        >
+        <div v-if="contactLabels.length" class="form-section__list">
           <ModalLabel 
             v-for="(contactLabel, contactLabelIndex) in contactLabels"
             :key="contactLabelIndex"

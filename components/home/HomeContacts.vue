@@ -1,21 +1,21 @@
 <template>
-  <section class="home-contacts">
-    <div class="home-contacts__container">
-      <h2 class="home-contacts__title section-title" id="home-contacts">
+  <section class="contacts">
+    <div class="contacts__container">
+      <h2 class="contacts__title section-title" id="contacts">
         Контакты
       </h2>
 
-      <div class="home-contacts__wrapper">
-        <div class="home-contacts__items">
+      <div class="contacts__wrapper">
+        <div class="contacts__items">
           <InfoItem 
             v-for="(contact, contactIndex) in contacts" 
             :key="contactIndex" 
-            class="home-contacts__item" 
+            class="contacts__item" 
             :data="contact"
           />
         </div>
         
-        <ContactsMap class="home-contacts__map"/>
+        <ContactsMap class="contacts__map"/>
       </div>
     </div>
   </section>
@@ -67,7 +67,7 @@
 </script>
 
 <style lang="less">
-  .home-contacts {
+  .contacts {
     &__container {
       .container();
     }
@@ -155,7 +155,7 @@
           gap: 40px;
         }
 
-        .home-contacts__item {
+        .contacts__item {
           flex-direction: column;
           gap: 41px;
           width: 100%;

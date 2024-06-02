@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeHeader class="home__header"/>
+    <HomeMainHeader class="home__main-header"/>
 
     <UserOffers class="home__offers"/>
 
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-  import HomeHeader from "~/components/home/HomeHeader.vue";
+  import HomeMainHeader from "~/components/home/HomeMainHeader.vue";
   import HomeAbout from "~/components/home/HomeAbout.vue";
   import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
   import HomeContacts from "~/components/home/HomeContacts.vue";

@@ -19,19 +19,17 @@
           </swiper-slide>
 
           <footer slot="container-end" class="swiper-footer">
-            <button 
-              ref="prevArrow"
+            <button
               class="swiper-arrow-prev arrow arrow--left"
-              :class="isPrevArrowActive ? '' : 'arrow--disabled'"
+              :class="store.swiper.isBeginning ? 'arrow--disabled' : ''"
               @click="toPrevSlide"
             >
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
             </button>
 
-            <button 
-              ref="nextArrow"
+            <button
               class="swiper-arrow-next arrow"
-              :class="isNextArrowActive ? '' : 'arrow--disabled'"
+              :class="store.swiper.isEnd ? 'arrow--disabled' : ''"
               @click="toNextSlide"
             >
               <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
@@ -46,27 +44,18 @@
 </template>
 
 <script setup>
-  import { register } from "swiper/element/bundle";
+  import cards from "~/data/eventCards.json";
   import "swiper/css";
 
-  import cards from "~/data/eventCards.json";
+  const store = useStore();
+
+  const { 
+    registerSwiper, 
+    onSlideChange, 
+    toPrevSlide, 
+    toNextSlide } = store;
 
   const swiperElement = ref();
-
-  const prevArrow = ref();
-  const nextArrow = ref();
-
-  const swiper = computed(() => swiperElement.value 
-    ? swiperElement.value.swiper
-    : null);
-
-  const isPrevArrowActive = ref(false);
-  const isNextArrowActive = ref(true);
-
-  const onSlideChange = () => {
-    isPrevArrowActive.value = !swiper.value.isBeginning;
-    isNextArrowActive.value = !swiper.value.isEnd;
-  };
   
   const swiperParameters = {
     updateOnWindowsResize: true,
@@ -82,16 +71,8 @@
   };
 
   onMounted(() => {
-    register();
-
-    Object.assign(swiperElement.value, swiperParameters);
-
-    swiperElement.value.initialize();
+    registerSwiper(swiperElement, swiperParameters);
   });
-
-  const toPrevSlide = () => swiper.value.slidePrev();
-
-  const toNextSlide = () => swiper.value.slideNext();
 </script>
 
 <style lang="less">

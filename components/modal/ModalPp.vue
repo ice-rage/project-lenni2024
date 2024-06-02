@@ -3,7 +3,7 @@
     v-if="isActive"  
     ref="modalPp"
     class="pp"
-    :tabindex="isActive ? '0': '-1'"
+    :tabindex="0"
     @click.self="closeEventPp"
     @keyup.esc="closeEventPp"
   >
