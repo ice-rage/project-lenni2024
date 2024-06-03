@@ -20,5 +20,8 @@
     "vue-3-mask": "^0.0.1-alpha",
     "vue-router": "^4.3.2",
     "vue-yandex-maps": "^2.1.2"
+  },
+  "devDependencies": {
+    "vue3-select-component": "^0.2.4"
   }
 }

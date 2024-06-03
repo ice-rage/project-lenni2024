@@ -9,7 +9,6 @@
   &__textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: 17px 20px 16px;
     border: none;
     border-radius: 5px;
     background-color: @white;
@@ -22,7 +21,13 @@
   }
 
   &__select {
+    display: flex;
     appearance: none;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 17px 20px 16px;
   }
 
   &__date,
