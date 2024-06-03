@@ -4,18 +4,7 @@
   </a>
 </template>
 
-<script setup>
-  const { width, height } = defineProps({
-    width: {
-      type: [String, Number],
-      default: undefined,
-    },
-    height: {
-      type: [String, Number],
-      default: undefined,
-    },
-  });
-</script>
+<script setup></script>
 
 <style lang="less">
   .arrow {

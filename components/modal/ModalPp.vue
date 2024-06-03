@@ -3,7 +3,8 @@
     v-if="isActive"  
     ref="modalPp"
     class="pp"
-    :tabindex="0"
+    tabindex="0"
+    v-focus
     @click.self="closeEventPp"
     @keyup.esc="closeEventPp"
   >
@@ -37,15 +38,7 @@
 
   const modalPp = ref();
 
-  const isActive = computed(() => {
-    const state = store.modal.isEventPpActive;
-
-    if (state) {
-      nextTick(() => modalPp.value.focus());
-    }
-
-    return state;
-  });
+  const isActive = computed(() => store.modal.isEventPpActive);
 </script>
 
 <style lang="less">

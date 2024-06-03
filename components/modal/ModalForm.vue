@@ -63,25 +63,33 @@
   const contactLabels = [
     {
       label: "Имя*",
-      inputName: "name",
-      inputPlaceholder: "Имя",
+      input: {
+        name: "name",
+        placeholder: "Имя",
+      },
     },
     {
       label: "Фамилия*",
-      inputName: "surname",
-      inputPlaceholder: "Фамилия",
+      input: {
+        name: "surname",
+        placeholder: "Фамилия",
+      },
     },
     {
-      inputType: "tel",
       label: "Телефон*",
-      inputName: "phone",
-      jsClass: "js-mobileMask",
+      input: {
+        type: "tel",
+        name: "phone",
+        placeholder: "+7 (___) ___ __ __",
+      },
     },
     {
-      inputType: "email",
       label: "Email*",
-      inputName: "email",
-      inputPlaceholder: "Email",
+      input: {
+        type: "email",
+        name: "email",
+        placeholder: "E-mail",
+      },
     },
   ];
 </script>

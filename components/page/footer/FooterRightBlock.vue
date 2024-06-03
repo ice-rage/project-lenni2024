@@ -1,8 +1,8 @@
 <template>
-  <div class="footer-right-block">
+  <div class="right-block">
     <form
       action="https://jsonplaceholder.typicode.com/posts"
-      class="footer-right-block__subscription-form subscription-form"
+      class="right-block__subscription-form subscription-form"
       id="js-subscriptionForm"
     >
       <h4 class="subscription-form__title">
@@ -42,21 +42,22 @@
       </label>
     </form>
 
-    <div class="footer-right-block__creator">
-      <span class="footer-right-block__creator-label">
+    <div class="right-block__creator">
+      <span class="right-block__creator-label">
         Создание и продвижение
       </span>
 
       <NuxtLink
         to="https://tagree.ru/"
         target="_blank"
-        rel="nofollow norefferer noopener"
-        class="footer-right-block__creator-link"
+        rel="nofollow"
+        class="right-block__creator-link"
       >
-        <img
-          class="footer-right-block__creator-img"
-          src="/images/tagree.png"
-          alt="tagree"
+        <SvgIcon
+          class="right-block__creator-icon"
+          name="tagree"
+          width="56"
+          height="17"
         />
       </NuxtLink>
     </div>
@@ -66,7 +67,7 @@
 <script setup></script>
 
 <style lang="less">
-  .footer-right-block {
+  .right-block {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -80,6 +81,7 @@
     &__creator {
       display: flex;
       justify-content: flex-end;
+      align-items: flex-end;
       gap: 15px;
       height: 22px;
 
@@ -88,6 +90,7 @@
       }
 
       @media @bw650 {
+        align-items: flex-start;
         height: 22px;
         margin-top: 266px;
       }
@@ -101,20 +104,18 @@
       }
     }
 
-    &__creator-img {
-      width: 56px;
+    &__creator-link {
       height: 17px;
-      margin: 3px 0 2px 0;
-
-      @media @bw1020 {
-        margin: 2px 0 0 0;
-      }
 
       @media @bw650 {
         width: 58px;
-        height: 20px;
-        margin: 1px 0;
+        height: 22px;
       }
+    }
+
+    &__creator-icon {
+      width: 100%;
+      height: 100%;
     }
   }
 </style>

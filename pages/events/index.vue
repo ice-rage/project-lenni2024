@@ -23,7 +23,7 @@
 
   const link = {
     name: "LinkArrow",
-    class: "listing__arrow-link arrow-link--vertical",
+    class: "listing__link-arrow link-arrow--vertical",
     label: "Показать еще",
   }
 </script>

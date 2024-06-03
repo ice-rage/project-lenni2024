@@ -1,8 +1,8 @@
 <template>
-  <div class="arrow-link">
-    <a href="#" class="arrow-link__link link">{{ label }}</a>
-    
-    <ArrowPlain class="arrow-link__arrow"/>
+  <div class="link-arrow">
+    <LinkPlain class="link-arrow__link" :label="label"/>
+
+    <ArrowPlain class="link-arrow__arrow"/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
 </script>
 
 <style lang="less">
-  .arrow-link {
+  .link-arrow {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,21 +24,21 @@
 
     &--vertical {
       flex-direction: column;
+      justify-content: flex-end;
       gap: 18px;
 
       @media @bw1020 {
         gap: 16px;
       }
 
-      .arrow__icon {
+      .link-arrow__arrow {
+        height: 91px;
         transform: rotate(90deg);
-      }
-    }
 
-    &--vertical &__arrow {
-      @media @bw1020 {
-        height: 67px;
-        padding-bottom: 4px;
+        @media @bw1020 {
+          height: 67px;
+          padding-bottom: 4px;
+        }
       }
     }
 
@@ -48,6 +48,8 @@
     }
 
     &__link {
+      padding: 0;
+
       @media @bw1020 {
         font-size: 14px;
       }

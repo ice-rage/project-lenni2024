@@ -9,13 +9,13 @@
         :class="cardData.class"
         :data="card">
       </component>
-    </div>
 
-    <component v-if="cards.length"
-      :is="linkComponent" 
-      :class="linkData.class" 
-      :label="linkData.label">
-    </component>
+      <component
+        :is="linkComponent" 
+        :class="linkData.class" 
+        :label="linkData.label">
+      </component>
+    </div>
 
     <div v-else class="listing__empty-list">
       Пока что здесь пусто... Но это ненадолго :)
@@ -68,27 +68,29 @@
     &__events-list {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -30px -120px;
+      margin: 0 -30px;
 
       @media @bw1660 {
-        margin: 0 -20px -100px;
+        margin: 0 -20px;
       }
 
       @media @bw1340 {
-        margin: 0 -15px -100px;
+        margin: 0 -15px;
       }
 
       @media @bw1020 {
         justify-content: center;
-        margin: 0 -15px -80px;
+        margin: 0 -15px;
       }
 
       @media @bw768 {
-        margin: 0 -10px -80px;
+        margin: 0 -10px;
       }
 
       @media @bw650 {
-        margin: 0 0 -60px;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 60px;
       }
     }
 
@@ -132,24 +134,25 @@
       }
     }
 
-    &__arrow-link {
-      width: 128px;
-      margin: 70px auto 50px;
+    &__link-arrow {
+      margin: -50px auto 50px;
+      padding: 0 7px;
 
       @media @bw1660 {
-        margin-top: 60px;
+        margin-top: -40px;
       }
 
       @media @bw1020 {
         width: 99px;
+        padding: 0;
       }
 
       @media @bw650 {
-        margin-top: 50px;
+        margin-top: -10px;
       }
     }
 
-    &__plain-link {
+    &__link-plain {
       margin-top: 70px;
 
       @media @bw1660 {

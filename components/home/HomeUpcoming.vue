@@ -37,7 +37,7 @@
           </footer>
         </swiper-container>
 
-        <a href="#" class="home-upcoming__link link">Смотреть все</a>
+        <LinkPlain class="home-upcoming__link" label="Смотреть все"/>
       </div>
     </div>
   </section>
@@ -125,7 +125,6 @@
 
     &__link {
       align-self: flex-end;
-      padding: 15px 0 15px 40px;
 
       @media @bw1340 {
         margin-right: 30px;
@@ -133,7 +132,6 @@
 
       @media @bw768 {
         margin-right: 20px;
-        padding-left: 20px;
       }
     }
   }

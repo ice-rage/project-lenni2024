@@ -1,13 +1,13 @@
 <template>
-  <div class="footer-center-block">
+  <div class="center-block">
     <NuxtLink
       to="/"
       target="_blank"
-      rel="nofollow norefferer noopener"
-      class="footer-center-block__sn-link link"
+      rel="nofollow"
+      class="center-block__sn-link"
     >
       <SvgIcon
-        class="footer-center-block__sn-icon"
+        class="center-block__sn-icon"
         name="instagram"
         width="58"
         height="58"
@@ -17,11 +17,11 @@
     <NuxtLink
       to="/"
       target="_blank"
-      rel="nofollow norefferer noopener"
-      class="footer-center-block__sn-link link"
+      rel="nofollow"
+      class="center-block__sn-link"
     >
       <SvgIcon
-        class="footer-center-block__sn-icon"
+        class="center-block__sn-icon"
         name="vkontakte"
         width="58"
         height="58"
@@ -33,7 +33,7 @@
 <script setup></script>
 
 <style lang="less">
-  .footer-center-block {
+  .center-block {
     display: flex;
     justify-content: space-between;
     width: 160px;

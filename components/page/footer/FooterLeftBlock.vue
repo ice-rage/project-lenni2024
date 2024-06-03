@@ -1,37 +1,37 @@
 <template>
-  <div class="footer-left-block">
-    <nav class="footer-left-block__nav">
-      <NuxtLink to="/" class="footer-left-block__nav-link link">
+  <div class="left-block">
+    <nav class="left-block__nav">
+      <NuxtLink to="/" class="left-block__nav-link link">
         Календарь мероприятий
       </NuxtLink>
-      <NuxtLink to="/" class="footer-left-block__nav-link link">
+      <NuxtLink to="/" class="left-block__nav-link link">
         Провести мероприятие
       </NuxtLink>
-      <NuxtLink to="/" class="footer-left-block__nav-link link">
+      <NuxtLink to="/" class="left-block__nav-link link">
         Стать арендатором
       </NuxtLink>
-      <NuxtLink to="/" class="footer-left-block__nav-link link">
+      <NuxtLink to="/" class="left-block__nav-link link">
         Наши проекты
       </NuxtLink>
-      <NuxtLink to="/" class="footer-left-block__nav-link link">
+      <NuxtLink to="/" class="left-block__nav-link link">
         Контакты
       </NuxtLink>
     </nav>
 
-    <div class="footer-left-block__copyright">© Millennials 2022</div>
+    <div class="left-block__copyright">© Millennials 2022</div>
 
-    <div class="footer-left-block__politics">
+    <div class="left-block__politics">
       <NuxtLink 
         to="/" 
         target="_blank" 
-        class="footer-left-block__confidentiality"
+        class="left-block__confidentiality"
       >
         Политика конфиденциальности
       </NuxtLink>
       <NuxtLink 
         to="/" 
         target="_blank" 
-        class="footer-left-block__cookies"
+        class="left-block__cookies"
       >
         Cookies
       </NuxtLink>
@@ -42,7 +42,7 @@
 <script setup></script>
 
 <style lang="less">
-  .footer-left-block {
+  .left-block {
     width: 100%;
     max-width: 384px;
 

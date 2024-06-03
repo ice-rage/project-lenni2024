@@ -4,11 +4,11 @@
 
     <main class="app__main main">
       <NuxtPage/>
-      </main>
+    </main>
     
-      <PageFooter class="app__page-footer"/>
+    <PageFooter class="app__page-footer"/>
       
-      <ModalPp class="app__modal-pp"/>
+    <ModalPp class="app__modal-pp"/>
   </div>
 </template>
 
