@@ -3,24 +3,28 @@
     <span class="field__title">{{ title }}</span>
 
     <MaskInput
-      v-if="inputType === 'tel'"
+      v-if="input.type === 'tel'"
       class="field__input"
-      v-model="inputValue"
-      :type="inputType"
-      :name="inputName"
-      :placeholder="inputPlaceholder"
+      v-model="inputText"
+      :name="input.name"
+      :type="input.type"
+      :value="input.value"
+      :placeholder="input.placeholder"
       mask="+7 (###) ### ## ##"
       required
+      @keyup="detectChanges"
     />
 
     <input
       v-else
       class="field__input"
-      v-model="inputValue"
-      :type="inputType"
-      :name="inputName"
-      :placeholder="inputPlaceholder"
+      v-model="inputText"
+      :name="input.name"
+      :type="input.type"
+      :value="input.value"
+      :placeholder="input.placeholder"
       required
+      @keyup="detectChanges"
     />
   </label>
 </template>
@@ -28,23 +32,23 @@
 <script setup>
   import { MaskInput } from "vue-3-mask";
 
-  const { data } = defineProps({
-    data: {
+  const { title, input } = defineProps({
+    title: {
+      type: String,
+      default: "",
+      required: true,
+    },
+    input: {
       type: Object,
       default: () => {},
       required: true,
     },
   });
 
-  const title = computed(() => data.title|| "");
+  const inputText = ref("");
 
-  const inputValue = computed(() => data.value || "");
-
-  const inputType = computed(() => data.input.type || "text");
-
-  const inputName = computed(() => data.input.name || "unknown");
-
-  const inputPlaceholder = computed(() => data.input.placeholder || undefined);
+  const detectChanges = () => console.log("Value changed: ", 
+    inputText.value);
 </script>
 
 <style lang="less"></style>

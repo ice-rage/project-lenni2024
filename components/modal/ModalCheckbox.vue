@@ -6,17 +6,23 @@
     </span>
             
     <input
+      v-model="checked"
       type="checkbox"
       class="check__input"
       name="agreement"
       required
-      checked
+      @change="detectChanges"
     />
     
     <span class="check__mark"></span>
   </label>
 </template>
 
-<script setup></script>
+<script setup>
+  const checked = ref(true);
+
+  const detectChanges = () => console.log("Value changed: ", 
+    checked.value);
+</script>
 
 <style lang="less"></style>

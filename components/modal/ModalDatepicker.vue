@@ -1,24 +1,36 @@
 <template>
-  <div v-if="dateInputs" class="field__date">
+  <div class="field__date">
     <div class="field__date-inputs">
       <input 
-        v-for="(dateInputValue, dateInputKey) in dateInputs"
-        :key="dateInputKey"
-        :name="dateInputKey"
-        type="text"
+        v-model="selectedDate.day" 
+        class="field__date-input" 
+        type="text" 
+        placeholder="ДД" 
         readonly
-        v-model="dateInputValue.value"
-        class="field__date-input"
-        :class="{'field__date-input--year' : dateInputKey === 'year'}"
-        :placeholder="dateInputValue.placeholder"
+      />
+
+      <input 
+        v-model="selectedDate.month" 
+        class="field__date-input" 
+        type="text" 
+        placeholder="ММ" 
+        readonly
+      />
+
+      <input
+        v-model="selectedDate.year"
+        class="field__date-input field__date-input--year"
+        type="text"
+        placeholder="ГГГГ"
+        readonly
       />
     </div>
 
     <input
       ref="datepicker"
-      class="field__date-picker"
-      name="datepicker"
+      class="field__datepicker"
       type="text"
+      name="date"
       readonly
       required
     />
@@ -29,6 +41,12 @@
   import { useDatepicker } from "vue-air-datepicker";
 
   const datepicker = ref();
+  
+  const selectedDate = reactive({
+    day: "",
+    month: "",
+    year: "",
+  });
 
   const datepickerConfing = {
     autoClose: true,
@@ -37,36 +55,21 @@
       days: "MMMM <i>yyyy</i>",
     },
     onSelect: ({ date }) => {
-      dateInputs.day.value = date 
-        ? ("0" + date.getDate()).slice(-2) 
+      selectedDate.day = date ? ("0" + date.getDate()).slice(-2) : "";
+
+      selectedDate.month = date
+        ? ("0" + (date.getMonth() + 1)).slice(-2)
         : "";
 
-      dateInputs.month.value = date 
-        ? ("0" + (date.getMonth() + 1)).slice(-2) 
-        : "";
+      selectedDate.year = date ? date.getFullYear() : "";
 
-      dateInputs.year.value = date 
-        ? date.getFullYear() 
-        : "";
+      detectChanges();
     },
   };
 
   useDatepicker(datepicker, datepickerConfing);
 
-  const dateInputs = {
-    day: reactive({
-      placeholder: "ДД",
-      value: "",
-    }),
-    month: reactive({
-      placeholder: "ММ",
-      value: "",
-    }),
-    year: reactive({
-      placeholder: "ГГГГ",
-      value: "",
-    }),
-  };
+  const detectChanges = () => console.log("Value changed: ", selectedDate);
 </script>
 
 <style lang="less"></style>

@@ -31,7 +31,8 @@
             v-for="(contactLabel, contactLabelIndex) in contactLabels"
             :key="contactLabelIndex"
             class="form-section__field form-section__field--w50"
-            :data="contactLabel"
+            :title="contactLabel.title"
+            :input="contactLabel.input"
           />
         </div>
       </div>
