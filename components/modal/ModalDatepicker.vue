@@ -1,24 +1,24 @@
 <template>
-  <div v-if="dateInputs.length" class="field__date">
+  <div v-if="dateInputs" class="field__date">
     <div class="field__date-inputs">
       <input 
-        v-for="(dateInput, dateInputIndex) in dateInputs"
-        :key="dateInputIndex"
-        class="field__date-input"
-        :class="
-          dateInput.jsClass, 
-          { 'field__date-input--year' : dateInput.jsClass === 'js-dateYear' }
-        "
+        v-for="(dateInputValue, dateInputKey) in dateInputs"
+        :key="dateInputKey"
+        :name="dateInputKey"
         type="text"
-        :placeholder="dateInput.placeholder"
         readonly
+        v-model="dateInputValue.value"
+        class="field__date-input"
+        :class="{'field__date-input--year' : dateInputKey === 'year'}"
+        :placeholder="dateInputValue.placeholder"
       />
     </div>
 
     <input
-      class="field__date-picker js-dateInput"
+      ref="datepicker"
+      class="field__date-picker"
+      name="datepicker"
       type="text"
-      name="date"
       readonly
       required
     />
@@ -26,20 +26,47 @@
 </template>
 
 <script setup>
-  const dateInputs = [
-    {
-      jsClass: "js-dateDay",
+  import { useDatepicker } from "vue-air-datepicker";
+
+  const datepicker = ref();
+
+  const datepickerConfing = {
+    autoClose: true,
+    minDate: new Date(),
+    navTitles: {
+      days: "MMMM <i>yyyy</i>",
+    },
+    onSelect: ({ date }) => {
+      dateInputs.day.value = date 
+        ? ("0" + date.getDate()).slice(-2) 
+        : "";
+
+      dateInputs.month.value = date 
+        ? ("0" + (date.getMonth() + 1)).slice(-2) 
+        : "";
+
+      dateInputs.year.value = date 
+        ? date.getFullYear() 
+        : "";
+    },
+  };
+
+  useDatepicker(datepicker, datepickerConfing);
+
+  const dateInputs = {
+    day: reactive({
       placeholder: "ДД",
-    },
-    {
-      jsClass: "js-dateMonth",
+      value: "",
+    }),
+    month: reactive({
       placeholder: "ММ",
-    },
-    {
-      jsClass: "js-dateYear",
+      value: "",
+    }),
+    year: reactive({
       placeholder: "ГГГГ",
-    },
-  ];
+      value: "",
+    }),
+  };
 </script>
 
 <style lang="less"></style>

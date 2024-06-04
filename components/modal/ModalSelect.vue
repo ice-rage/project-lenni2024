@@ -6,12 +6,11 @@
     placeholder=""
     :options="selectOptions"
     :isClearable="false"
+    :isSearchable="false"
   />
 </template>
 
 <script setup>
-  import "vue3-select-component/dist/style.css";
-
   import VueSelect from "vue3-select-component";
 
   const selected = ref("");
@@ -34,24 +33,10 @@
       value: "1000",
     },
   ];
+
+  onMounted(() => document
+    .querySelector(".search-input")
+    .setAttribute("readonly", true));
 </script>
 
-<style lang="less">
-  .select {
-   
-    .control {
-      border: none;
-      width: 100%; 
-      padding: 0 15px;
-    }
-
-    .dropdown-icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .menu {
-      margin-top: 47px;
-    }
-  }
-</style>
+<style lang="less"></style>

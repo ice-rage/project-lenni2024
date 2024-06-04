@@ -1,0 +1,210 @@
+:root {
+  --vs-input-bg: #fff;
+  --vs-input-outline: #3b82f6;
+  --vs-input-placeholder-color: #52525b;
+  --vs-padding: 0.25rem 0.5rem;
+  --vs-border: 1px solid #e4e4e7;
+  --vs-border-radius: 4px;
+  --vs-font-size: 16px;
+  --vs-font-weight: 400;
+  --vs-font-family: inherit;
+  --vs-text-color: #18181b;
+  --vs-line-height: 1.5;
+  --vs-menu-offset-top: 8px;
+  --vs-menu-height: 200px;
+  --vs-menu-padding: 8px 0;
+  --vs-menu-border: 1px solid #e4e4e7;
+  --vs-menu-bg: #fff;
+  --vs-menu-box-shadow: none;
+  --vs-menu-z-index: 2;
+  --vs-option-padding: 8px 12px;
+  --vs-option-font-size: var(--vs-font-size);
+  --vs-option-font-weight: var(--vs-font-weight);
+  --vs-option-text-color: var(--vs-text-color);
+  --vs-option-bg: var(--vs-menu-bg);
+  --vs-option-hover-color: #dbeafe;
+  --vs-option-focused-color: var(--vs-option-hover-color);
+  --vs-option-selected-color: #93c5fd;
+  --vs-multi-value-gap: 4px;
+  --vs-multi-value-padding: 4px;
+  --vs-multi-value-font-size: 14px;
+  --vs-multi-value-font-weight: 400;
+  --vs-multi-value-line-height: 1;
+  --vs-multi-value-text-color: #3f3f46;
+  --vs-multi-value-bg: #f4f4f5;
+  --vs-multi-value-xmark-size: 16px;
+  --vs-multi-value-xmark-color: var(--vs-multi-value-text-color);
+  --vs-indicators-gap: 4px;
+  --vs-icon-size: 20px;
+  --vs-icon-color: var(--vs-text-color);
+  --vs-dropdown-transition: transform 0.25s ease-out;
+}
+.vue-select {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+.vue-select * {
+  box-sizing: border-box;
+}
+.vue-select.open .single-value {
+  position: absolute;
+  opacity: 0.4;
+}
+.vue-select.open .dropdown-icon {
+  transform: rotate(180deg);
+}
+.vue-select.typing .single-value {
+  opacity: 0;
+}
+.control {
+  display: flex;
+  min-height: 32px;
+  border: var(--vs-border);
+  border-radius: var(--vs-border-radius);
+  background-color: var(--vs-input-bg);
+}
+.control.focused {
+  box-shadow: 0 0 0 1px var(--vs-input-outline);
+  border-color: var(--vs-input-outline);
+}
+.value-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-basis: 100%;
+  flex-grow: 1;
+  padding: var(--vs-padding);
+}
+.value-container.multi {
+  gap: var(--vs-multi-value-gap);
+}
+.single-value {
+  display: flex;
+  align-items: center;
+  font-size: var(--vs-font-size);
+  font-weight: var(--vs-font-weight);
+  font-family: var(--vs-font-family);
+  line-height: var(--vs-line-height);
+  color: var(--vs-text-color);
+  z-index: 0;
+}
+.multi-value {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: var(--vs-multi-value-gap);
+  padding: var(--vs-multi-value-padding);
+  margin: 0;
+  border: 0;
+  font-size: var(--vs-multi-value-font-size);
+  font-weight: var(--vs-multi-value-font-weight);
+  color: var(--vs-multi-value-text-color);
+  line-height: var(--vs-multi-value-line-height);
+  background: var(--vs-multi-value-bg);
+  outline: none;
+  cursor: pointer;
+}
+.multi-value svg {
+  width: var(--vs-multi-value-xmark-size);
+  height: var(--vs-multi-value-xmark-size);
+  fill: var(--vs-multi-value-xmark-color);
+}
+.search-input {
+  appearance: none;
+  display: inline-block;
+  max-width: 100%;
+  flex-grow: 1;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: var(--vs-font-size);
+  font-family: var(--vs-font-family);
+  line-height: var(--vs-line-height);
+  color: var(--vs-text-color);
+  outline: none;
+  z-index: 1;
+}
+.search-input::placeholder {
+  color: var(--vs-input-placeholder-color);
+}
+.indicators-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--vs-indicators-gap);
+  padding: var(--vs-padding);
+}
+.clear-button {
+  appearance: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: var(--vs-icon-size);
+  height: var(--vs-icon-size);
+  fill: var(--vs-icon-color);
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+.dropdown-icon {
+  appearance: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: var(--vs-icon-size);
+  height: var(--vs-icon-size);
+  fill: var(--vs-icon-color);
+  background: none;
+  outline: none;
+  cursor: pointer;
+  transition: var(--vs-dropdown-transition);
+}
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: var(--vs-menu-padding);
+  margin-top: var(--vs-menu-offset-top);
+  max-height: var(--vs-menu-height);
+  overflow-y: auto;
+  border: var(--vs-menu-border);
+  border-radius: var(--vs-border-radius);
+  box-shadow: var(--vs-menu-box-shadow);
+  background-color: var(--vs-menu-bg);
+  z-index: var(--vs-menu-z-index);
+}
+.menu-option {
+  display: flex;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: var(--vs-option-padding);
+  font-size: var(--vs-option-font-size);
+  font-weight: var(--vs-option-font-weight);
+  font-family: var(--vs-font-family);
+  color: var(--vs-option-text-color);
+  background-color: var(--vs-option-bg);
+  text-align: -webkit-auto;
+  cursor: pointer;
+}
+.menu-option:hover {
+  background-color: var(--vs-option-hover-color);
+}
+.menu-option.focused {
+  background-color: var(--vs-option-focused-color);
+}
+.menu-option.selected {
+  background-color: var(--vs-option-selected-color);
+}
+.no-results {
+  padding: var(--vs-option-padding);
+  font-size: var(--vs-font-size);
+  font-family: var(--vs-font-family);
+  color: var(--vs-text-color);
+}

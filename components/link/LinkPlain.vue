@@ -24,7 +24,7 @@
     padding: 15px 0 15px 40px;
     background-color: transparent;
 
-    @media(@bw768) {
+    @media @bw1020 {
       padding-left: 20px;
       line-height: 1.2;
     }

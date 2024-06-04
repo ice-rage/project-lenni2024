@@ -45,7 +45,6 @@
 
 <script setup>
   import cards from "~/data/eventCards.json";
-  import "swiper/css";
 
   const store = useStore();
 
@@ -107,14 +106,6 @@
 
       display: flex;
       flex-direction: column;
-
-      @media @bw1020 {
-        padding-right: 0;
-      }
-
-      @media @bw768 {
-        padding-right: 0;
-      }
     }
 
     &__title {
@@ -123,16 +114,14 @@
       }
     }
 
+    &__swiper {
+      @media @bw768 {
+        margin-bottom: 18px;
+      }
+    }
+
     &__link {
       align-self: flex-end;
-
-      @media @bw1340 {
-        margin-right: 30px;
-      }
-
-      @media @bw768 {
-        margin-right: 20px;
-      }
     }
   }
 </style>
