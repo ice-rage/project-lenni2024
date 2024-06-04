@@ -2,18 +2,17 @@
   <VueSelect 
     v-if="selectOptions.length" 
     class="field__select select"
-    v-model="selected" 
-    placeholder=""
+    v-model="selectedOption"
+    :placeholder="selectedOption"
     :options="selectOptions"
     :isClearable="false"
     :isSearchable="false"
+    @optionSelected="detectChanges"
   />
 </template>
 
 <script setup>
   import VueSelect from "vue3-select-component";
-
-  const selected = ref("");
   
   const selectOptions = [
     {
@@ -34,9 +33,14 @@
     },
   ];
 
+  const selectedOption = ref(selectOptions[0].label);
+
   onMounted(() => document
     .querySelector(".search-input")
     .setAttribute("readonly", true));
+
+  const detectChanges = () => console.log("Value changed: ", 
+    selectedOption.value);
 </script>
 
 <style lang="less"></style>

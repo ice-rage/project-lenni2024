@@ -1,9 +1,11 @@
 <template>
   <label class="field">
-    <span class="field__title">{{ label }}</span>
+    <span class="field__title">{{ title }}</span>
+
     <MaskInput
       v-if="inputType === 'tel'"
       class="field__input"
+      v-model="inputValue"
       :type="inputType"
       :name="inputName"
       :placeholder="inputPlaceholder"
@@ -14,6 +16,7 @@
     <input
       v-else
       class="field__input"
+      v-model="inputValue"
       :type="inputType"
       :name="inputName"
       :placeholder="inputPlaceholder"
@@ -33,7 +36,9 @@
     },
   });
 
-  const label = computed(() => data.label || "");
+  const title = computed(() => data.title|| "");
+
+  const inputValue = computed(() => data.value || "");
 
   const inputType = computed(() => data.input.type || "text");
 

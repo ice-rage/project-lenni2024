@@ -21,6 +21,8 @@
   import FooterLeftBlock from "./footer/FooterLeftBlock.vue";
   import FooterCenterBlock from "./footer/FooterCenterBlock.vue";
   import FooterRightBlock from "./footer/FooterRightBlock.vue";
+
+  
 </script>
 
 <style lang="less">

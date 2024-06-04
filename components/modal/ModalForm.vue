@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <VeeForm class="form">
     <div class="form__layout">
       <div class="form__section form-section form-section--w50">
         <h5 class="form-section__title">Формат мероприятия:</h5>
@@ -52,7 +52,7 @@
         </button>
       </div>
     </div>
-  </form>
+  </VeeForm>
 </template>
 
 <script setup>
@@ -62,33 +62,37 @@
 
   const contactLabels = [
     {
-      label: "Имя*",
+      title: "Имя*",
       input: {
         name: "name",
         placeholder: "Имя",
+        value: "",
       },
     },
     {
-      label: "Фамилия*",
+      title: "Фамилия*",
       input: {
         name: "surname",
         placeholder: "Фамилия",
+        value: "",
       },
     },
     {
-      label: "Телефон*",
+      title: "Телефон*",
       input: {
         type: "tel",
         name: "phone",
         placeholder: "+7 (___) ___ __ __",
+        value: "",
       },
     },
     {
-      label: "Email*",
+      title: "Email*",
       input: {
         type: "email",
         name: "email",
         placeholder: "E-mail",
+        value: "",
       },
     },
   ];

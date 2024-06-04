@@ -2,17 +2,18 @@
   <div v-if="items.length" class="field">
     <div class="field__radio radio">
       <label 
-        class="radio__label" 
         v-for="(item, itemIndex) in items"
-        :key="itemIndex" 
+        class="radio__label"
+        :key="itemIndex"
       >
         <input
           type="radio"
-          :name="item.name"
-          :value="item.value"
+          v-model="checkedRadioBtn"
           class="radio__input"
+          :value="item.value"
+          :name="item.name"
+          @change="detectChanges"
         />
-
         <span class="radio__mark"></span>
         <span class="radio__name">{{ item.label }}</span>
       </label>
@@ -43,6 +44,11 @@
       label: "Другое",
     },
   ];
+
+  const checkedRadioBtn = ref(items[0].value);
+
+  const detectChanges = () => console.log("Value changed: ", 
+    checkedRadioBtn.value);
 </script>
 
 <style lang="less">
