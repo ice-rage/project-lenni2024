@@ -1,18 +1,26 @@
 <template>
-  <VueSelect 
-    v-if="selectOptions.length" 
-    class="field__select select"
-    v-model="selectedOption"
-    :placeholder="selectedOption"
-    :options="selectOptions"
-    :isClearable="false"
-    :isSearchable="false"
-    @optionSelected="detectChanges"
-  />
+  <div class="field__select-wrapper">
+    <VueSelect 
+      v-if="selectOptions.length" 
+      v-model="value"
+      class="field__select"
+      name="visitorAmount"
+      :placeholder="value"
+      :options="selectOptions"
+      :isClearable="false"
+      :isSearchable="false"
+      @optionSelected="detectChanges"
+    />
+
+    <div class="field__error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
 </template>
 
 <script setup>
   import VueSelect from "vue3-select-component";
+  import { useField } from "vee-validate";
   
   const selectOptions = [
     {
@@ -33,14 +41,18 @@
     },
   ];
 
-  const selectedOption = ref(selectOptions[0].label);
+  const { value, errorMessage } = useField(() => "visitorAmount");
 
-  onMounted(() => document
+  onMounted(() => {
+    document
     .querySelector(".search-input")
-    .setAttribute("readonly", true));
+    .setAttribute("readonly", true);
+
+    value.value = selectOptions[0].label;
+  });
 
   const detectChanges = () => console.log("Value changed: ", 
-    selectedOption.value);
+    value.value);
 </script>
 
 <style lang="less"></style>

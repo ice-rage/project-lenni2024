@@ -6,17 +6,21 @@
         class="radio__label"
         :key="itemIndex"
       >
-        <input
+        <VeeField
+          v-model="checkedValue"
           type="radio"
-          v-model="checkedRadioBtn"
-          class="radio__input"
+          name="format"
           :value="item.value"
-          :name="item.name"
+          :uncheckedValue="''"
+          class="radio__input"
           @change="detectChanges"
         />
+
         <span class="radio__mark"></span>
         <span class="radio__name">{{ item.label }}</span>
       </label>
+
+      <VeeErrorMessage name="format" class="field__error-message"/>
     </div>
   </div>
 </template>
@@ -24,31 +28,27 @@
 <script setup>
   const items = [
     {
-      name: "format",
       value: "seminar",
       label: "Мастер-класс/семинар",
     },
     {
-      name: "format",
       value: "concert",
       label: "Концерт/выступление",
     },
     {
-      name: "format",
       value: "exhibition",
       label: "Выставка/показ",
     },
     {
-      name: "format",
       value: "other",
       label: "Другое",
     },
   ];
 
-  const checkedRadioBtn = ref(items[0].value);
+  const checkedValue = ref(items[0].value);
 
   const detectChanges = () => console.log("Value changed: ", 
-    checkedRadioBtn.value);
+    checkedValue.value);
 </script>
 
 <style lang="less">

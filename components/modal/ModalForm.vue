@@ -1,5 +1,9 @@
 <template>
-  <VeeForm class="form">
+  <VeeForm 
+    class="form" 
+    :validationSchema="schema" 
+    @submit="handleSubmit"
+  >
     <div class="form__layout">
       <div class="form__section form-section form-section--w50">
         <h5 class="form-section__title">Формат мероприятия:</h5>
@@ -43,7 +47,11 @@
         <ModalTextarea class="form-section__field"/>
       </div>
 
-      <ModalCheckbox class="form__check"/>
+      <FormCheckbox 
+        label="Я соглашаюсь с пользовательским соглашением и с политикой 
+          использования персональных данных" 
+        class="form__check"
+      />
 
       <div class="form__btns">
         <button type="submit" class="form__submit-btn btn">Отправить</button>
@@ -57,7 +65,10 @@
 </template>
 
 <script setup>
+import FormCheckbox from '../FormCheckbox.vue';
+
   const store = useStore();
+  const schema = useValidationSchema();
 
   const { closeEventPp } = store;
 
@@ -97,6 +108,32 @@
       },
     },
   ];
+
+  const handleSubmit = (formData) => {
+    $fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: formData,
+    })
+    .then(response => {
+      closeEventPp();
+      notifySuccess();
+
+      console.log(response);
+
+    }, error => {
+      notifyError();
+
+      console.log("Произошла ошибка: ", error);
+    });
+  }
+
+  const notifySuccess = () => {
+    useNuxtApp().$toast.success("Ваша заявка успешно отправлена");
+  }
+
+  const notifyError = () => {
+    useNuxtApp().$toast.error("Что-то пошло не так. Пожалуйста, попробуйте еще раз");
+  }
 </script>
 
 <style lang="less">

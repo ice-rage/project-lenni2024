@@ -1,46 +1,6 @@
 <template>
   <div class="right-block">
-    <form
-      action="https://jsonplaceholder.typicode.com/posts"
-      class="right-block__subscription-form subscription-form"
-      id="js-subscriptionForm"
-    >
-      <h4 class="subscription-form__title">
-        Подпишись и будь в курсе происходящего
-      </h4>
-
-      <div class="subscription-form__wrapper">
-        <div class="subscription-form__input-wrapper">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            class="subscription-form__input"
-            id="#js-subscriptionEmail"
-            required
-          />
-        </div>
-
-        <button type="submit" class="subscription-form__submit">
-          Подписаться
-        </button>
-      </div>
-
-      <label class="subscription-form__check check">
-        <span class="check__label check__label--fsz14 check__label--fw300">
-          Согласен на обработку персональных данных
-        </span>
-
-        <input
-          type="checkbox"
-          class="check__input"
-          name="agreement"
-          required
-          checked
-        />
-        <span class="check__mark"></span>
-      </label>
-    </form>
+    <SubscriptionForm class="right-block__subscription-form"/>
 
     <div class="right-block__creator">
       <span class="right-block__creator-label">

@@ -2,20 +2,19 @@
   <label class="field">
     <span class="field__title">{{ title }}</span>
 
-    <MaskInput
+    <VeeField
       v-if="input.type === 'tel'"
       class="field__input"
       v-model="inputText"
+      v-phone
       :name="input.name"
       :type="input.type"
       :value="input.value"
       :placeholder="input.placeholder"
-      mask="+7 (###) ### ## ##"
-      required
       @keyup="detectChanges"
     />
 
-    <input
+    <VeeField
       v-else
       class="field__input"
       v-model="inputText"
@@ -23,15 +22,14 @@
       :type="input.type"
       :value="input.value"
       :placeholder="input.placeholder"
-      required
       @keyup="detectChanges"
     />
+
+    <VeeErrorMessage :name="input.name" class="field__error-message"/>
   </label>
 </template>
 
 <script setup>
-  import { MaskInput } from "vue-3-mask";
-
   const { title, input } = defineProps({
     title: {
       type: String,

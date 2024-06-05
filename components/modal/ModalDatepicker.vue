@@ -4,7 +4,8 @@
       <input 
         v-model="selectedDate.day" 
         class="field__date-input" 
-        type="text" 
+        type="text"
+        name="day" 
         placeholder="ДД" 
         readonly
       />
@@ -13,6 +14,7 @@
         v-model="selectedDate.month" 
         class="field__date-input" 
         type="text" 
+        name="month"
         placeholder="ММ" 
         readonly
       />
@@ -21,26 +23,27 @@
         v-model="selectedDate.year"
         class="field__date-input field__date-input--year"
         type="text"
+        name="year"
         placeholder="ГГГГ"
         readonly
       />
     </div>
 
-    <input
-      ref="datepicker"
+    <VeeField
+      id="datepicker"
+      v-model="selectedDate"
       class="field__datepicker"
       type="text"
       name="date"
       readonly
-      required
     />
+
+    <VeeErrorMessage name="date" class="field__error-message"/>
   </div>
 </template>
 
 <script setup>
   import { useDatepicker } from "vue-air-datepicker";
-
-  const datepicker = ref();
   
   const selectedDate = reactive({
     day: "",
@@ -67,7 +70,7 @@
     },
   };
 
-  useDatepicker(datepicker, datepickerConfing);
+  useDatepicker("#datepicker", datepickerConfing);
 
   const detectChanges = () => console.log("Value changed: ", selectedDate);
 </script>
