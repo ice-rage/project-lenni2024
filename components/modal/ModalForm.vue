@@ -65,10 +65,12 @@
 </template>
 
 <script setup>
-import FormCheckbox from '../FormCheckbox.vue';
+  import FormCheckbox from "~/components/FormCheckbox.vue";
+  import { useEventPpValidationSchema } from 
+    "~/composables/eventPpValidationSchema";
 
   const store = useStore();
-  const schema = useValidationSchema();
+  const schema = useEventPpValidationSchema();
 
   const { closeEventPp } = store;
 

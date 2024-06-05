@@ -1,5 +1,4 @@
 <template>
-  <!--TODO: разобраться, почему не срабатывает submit-->
   <VeeForm
     class="subscription-form"
     :validationSchema="schema"
@@ -41,8 +40,10 @@
 
 <script setup>
   import FormCheckbox from "~/components/FormCheckbox.vue";
-
-  const schema = useValidationSchema();
+  import { useSubscriptionValidationSchema } from 
+    "~/composables/subscriptionValidationSchema";
+  
+  const schema = useSubscriptionValidationSchema();
   const userEmail = ref("");
 
   const detectChanges = () => console.log("Value changed: ", 

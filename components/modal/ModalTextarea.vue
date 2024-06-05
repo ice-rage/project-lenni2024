@@ -1,7 +1,7 @@
 <template>
   <textarea 
-    class="field__textarea" 
     v-model="inputText"
+    class="field__textarea"
     name="wishes" 
     @keyup="detectChanges">
   </textarea>

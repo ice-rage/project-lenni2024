@@ -1,26 +1,12 @@
 import { toTypedSchema } from "@vee-validate/yup";
+import { useCustomErrorMessages } from "./customValidationMessages";
 import * as yup from "yup";
-import { setLocale } from "yup";
 
-export const useValidationSchema = () => {
-  const errorMessages = {
-    required: "Это поле обязательно",
-    email: "Пожалуйста, введите корректный e-mail",
-  };
-
-  setLocale({
-    mixed: {
-      required: errorMessages.required,
-    },
-    string: {
-      email: errorMessages.email,
-    },
-  });
+export const useEventPpValidationSchema = () => {
+  const errorMessages = useCustomErrorMessages();
 
   const schema = toTypedSchema(
     yup.object({
-      format: yup.string().required(),
-      visitorAmount: yup.string().required(),
       date: yup.object().shape({
         day: yup.string().required(),
         month: yup.string().required(),
