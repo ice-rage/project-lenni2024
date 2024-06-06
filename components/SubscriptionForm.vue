@@ -31,7 +31,7 @@
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
-      labelClass="check__label--fw300"
+      :fontWeight="300"
       class="subscription-form__check"
     />
   </VeeForm>
@@ -158,15 +158,15 @@
       }
     }
 
-    &__check {
-      .check__label--fsz14 {
+    &__checkbox {
+      .form-checkbox__label--fsz14 {
         @media @bw768 {
           padding-top: 0;
         }
       }
     }
 
-    &__check .check__mark {
+    &__checkbox .form-checkbox__mark {
       @media @bw768 {
         top: calc(50% - 12px);
       }

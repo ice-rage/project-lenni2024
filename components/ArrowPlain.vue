@@ -1,7 +1,5 @@
 <template>
-  <a href="#" class="arrow-plain">
-    <SvgIcon class="arrow-plain__icon" name="arrow"/>
-  </a>
+  <SvgIcon class="arrow-plain" name="arrow"/>
 </template>
 
 <script setup></script>
@@ -42,11 +40,6 @@
 
     &:active {
       color: @red_A5;
-    }
-
-    &__icon {
-      width: 100%;
-      height: 100%;
     }
   }
 </style>

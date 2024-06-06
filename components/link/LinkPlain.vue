@@ -20,7 +20,6 @@
 
 <style lang="less">
   .link-plain {
-    align-self: flex-end;
     padding: 15px 0 15px 40px;
     background-color: transparent;
 

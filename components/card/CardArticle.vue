@@ -28,14 +28,7 @@
       <a href="#" class="card-article__title-link">
         <h4 class="card-article__title">{{ title }}</h4>
 
-        <div class="card-article__arrow arrow">
-          <SvgIcon 
-            class="arrow__icon" 
-            name="arrow" 
-            width="91" 
-            height="60"
-          />
-        </div>
+        <ArrowPlain class="card-article__arrow-plain"/>
       </a>
 
       <p class="card-article__description">{{ description }}</p>
@@ -258,7 +251,7 @@
       }
     }
 
-    &__arrow {
+    &__arrow-plain {
       position: absolute;
       right: 0;
       bottom: 30px;

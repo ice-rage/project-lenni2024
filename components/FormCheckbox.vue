@@ -1,6 +1,11 @@
 <template>
   <label class="form-checkbox">
-    <span class="form-checkbox__label form-checkbox__label--fsz14" :class="labelClass">
+    <span 
+      class="form-checkbox__label form-checkbox__label--fsz14" 
+      :class="fontWeight == '300'
+        ? 'form-checkbox__label--fw300' 
+        : ''"
+    >
       {{ label }}
     </span>
             
@@ -22,15 +27,15 @@
 <script setup>
   const checked = ref(true);
   
-  const { label } = defineProps({
+  const { label, fontWeight } = defineProps({
     label: {
       type: String,
       default: "",
       required: true,
     },
-    labelClass: {
-      type: String,
-      default: "",
+    fontWeight: {
+      type: [String, Number],
+      default: undefined,
     },
   });
 </script>

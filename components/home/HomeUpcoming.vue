@@ -19,33 +19,21 @@
           </swiper-slide>
 
           <footer slot="container-end" class="swiper-footer">
-            <button
+            <ArrowPlain 
               class="swiper-arrow-prev arrow-plain arrow-plain--left"
               :class="store.swiper.isBeginning 
                 ? 'arrow-plain--disabled' 
                 : ''"
               @click="toPrevSlide"
-            >
-              <SvgIcon 
-                class="arrow-plain__icon" 
-                name="arrow" 
-                width="91" 
-                height="60"
-              />
-            </button>
+            />
 
-            <button
+            <ArrowPlain 
               class="swiper-arrow-next arrow-plain"
-              :class="store.swiper.isEnd ? 'arrow-plain--disabled' : ''"
+              :class="store.swiper.isEnd
+                ? 'arrow-plain--disabled' 
+                : ''"
               @click="toNextSlide"
-            >
-              <SvgIcon 
-                class="arrow-plain__icon" 
-                name="arrow" 
-                width="91" 
-                height="60"
-              />
-            </button>
+            />
           </footer>
         </swiper-container>
 
@@ -104,7 +92,7 @@
       }
 
       @media @bw768 {
-        padding: 50px 0 40px 0;
+        padding: 40px 0;
       }
     }
 
