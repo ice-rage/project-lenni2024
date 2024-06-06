@@ -122,6 +122,10 @@
   </article>
 </template>
 
-<script setup></script>
+<script setup>
+  definePageMeta({
+    title: "Вечер | The Best of Sade",
+  });
+</script>
 
 <style lang="less"></style>

@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
+    "sgx-nuxt-breadcrumbs",
     "@vee-validate/nuxt",
     "vue-yandex-maps/nuxt",
     [

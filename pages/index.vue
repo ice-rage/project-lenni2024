@@ -23,13 +23,19 @@
 </template>
 
 <script setup>
+  import jsonArticleCards from "~/data/cards/article.json";
   import HomeMainHeader from "~/components/home/HomeMainHeader.vue";
   import HomeAbout from "~/components/home/HomeAbout.vue";
   import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
   import HomeContacts from "~/components/home/HomeContacts.vue";
   import HomeQuote from "~/components/home/HomeQuote.vue";
 
-  import jsonArticleCards from "~/data/cards/article.json";
+  definePageMeta({
+    title: "Главная",
+    breadcrumbs: {
+      visible: false,
+    },
+  });
 
   const articleCards = {
     name: "CardArticle",

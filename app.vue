@@ -2,6 +2,8 @@
   <div id="app" class="app">
     <PageHeader class="app__page-header"/>
 
+    <PageBreadcrumbs class="app__page-breadcrumbs"/>
+
     <main class="app__main main">
       <NuxtPage/>
     </main>

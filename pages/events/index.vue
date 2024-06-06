@@ -15,6 +15,10 @@
 <script setup>
   import jsonEventCards from "~/data/cards/event.json";
 
+  definePageMeta({
+    title: "Мероприятия",
+  });
+
   const eventCards = {
     name: "CardEvent",
     class: "listing__event-card",
@@ -48,7 +52,7 @@
       margin-top: 138px;
 
       @media @bw1020 {
-        margin-top: 90px;
+        margin-top: 91px;
       }
 
       @media @bw450 {
