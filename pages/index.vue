@@ -29,12 +29,12 @@
   import HomeContacts from "~/components/home/HomeContacts.vue";
   import HomeQuote from "~/components/home/HomeQuote.vue";
 
-  import jsonCards from "~/data/articleCards.json";
+  import jsonArticleCards from "~/data/cards/article.json";
 
   const articleCards = {
     name: "CardArticle",
     class: "listing__article-card",
-    cards: jsonCards,
+    cards: jsonArticleCards,
   }
 
   const link = {

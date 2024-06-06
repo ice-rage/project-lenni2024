@@ -3,45 +3,50 @@
     <span class="field__title">{{ title }}</span>
 
     <VeeField
-      v-if="input.type === 'tel'"
+      v-if="inputType === 'tel'"
       class="field__input"
       v-model="inputText"
       v-phone
-      :name="input.name"
-      :type="input.type"
-      :value="input.value"
-      :placeholder="input.placeholder"
+      :type="inputType"
+      :name="inputName"
+      :value="inputValue"
+      :placeholder="inputPlaceholder"
     />
 
     <VeeField
       v-else
       class="field__input"
       v-model="inputText"
-      :name="input.name"
-      :type="input.type"
-      :value="input.value"
-      :placeholder="input.placeholder"
+      :type="inputType"
+      :name="inputName"
+      :value="inputValue"
+      :placeholder="inputPlaceholder"
     />
 
-    <VeeErrorMessage :name="input.name" class="field__error-message"/>
+    <VeeErrorMessage :name="inputName" class="field__error-message"/>
   </label>
 </template>
 
 <script setup>
   const inputText = ref("");
 
-  const { title, input } = defineProps({
-    title: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    input: {
+  const props = defineProps({
+    data: {
       type: Object,
       default: () => {},
       required: true,
     },
   });
+
+  const title = computed(() => props.data.title || "");
+
+  const inputType = computed(() => props.data.input.type || "text");
+
+  const inputName = computed(() => props.data.input.name || "unknown");
+
+  const inputValue = computed(() => props.data.input.value || "");
+
+  const inputPlaceholder = computed(() => props.data.input.placeholder || "");
 </script>
 
 <style lang="less"></style>

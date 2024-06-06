@@ -5,7 +5,7 @@
     :is="iconPath"
     :width="width"
     :height:="height"
-  ></component>
+  />
 </template>
 
 <script setup>

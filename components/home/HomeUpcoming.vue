@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-  import cards from "~/data/eventCards.json";
+  import cards from "~/data/cards/event.json";
 
   const store = useStore();
 

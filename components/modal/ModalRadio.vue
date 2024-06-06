@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-  import eventFormats from "~/data/eventFormats.json";
+  import eventFormats from "~/data/eventPp/formats.json";
 
   const checkedValue = ref(eventFormats[0].value);
 </script>

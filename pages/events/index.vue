@@ -13,12 +13,12 @@
 </template>
 
 <script setup>
-  import jsonCards from "~/data/eventCards.json";
+  import jsonEventCards from "~/data/cards/event.json";
 
   const eventCards = {
     name: "CardEvent",
     class: "listing__event-card",
-    cards: jsonCards,
+    cards: jsonEventCards,
   };
 
   const link = {

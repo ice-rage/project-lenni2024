@@ -5,47 +5,40 @@
     @submit="handleSubmit"
   >
     <div class="form__layout">
-      <div class="form__section form-section form-section--w50">
-        <h5 class="form-section__title">Формат мероприятия:</h5>
-
-        <ModalRadio class="form-section__field"/>
-      </div>
+      <FormSection 
+        class="form__section" 
+        title="Формат мероприятия"
+        name="formats"
+      />
 
       <div class="form__group">
-        <div class="form__section form-section">
-          <h5 class="form-section__title">
-            Планируемое количество посетителей:
-          </h5>
-          
-          <ModalSelect class="form-section__field"/>
-        </div>
+        <FormSection 
+          class="form__section" 
+          title="Планируемое количество посетителей"
+          name="visitors"
+        />
 
-        <div class="form__section form-section">
-          <h5 class="form-section__title">Дата проведения:</h5>
-          
-          <ModalDatepicker class="form-section__field"/>
-        </div>
+        <FormSection 
+          class="form__section" 
+          title="Дата проведения"
+          name="date"
+        />
       </div>
       
       <div class="form__section form-section">
-        <h5 class="form-section__title">Контактные данные:</h5>
-
-        <div v-if="contactFields.length" class="form-section__list">
-          <ModalField
-            v-for="(contactField, contactFieldlIndex) in contactFields"
-            :key="contactFieldlIndex"
-            class="form-section__field form-section__field--w50"
-            :title="contactField.title"
-            :input="contactField.input"
-          />
-        </div>
+        <FormSection 
+          class="form__section" 
+          title="Контактные данные"
+          name="contacts"
+          :items="eventContacts"
+        />
       </div>
 
-      <div class="form__section form-section">
-        <h5 class="form-section__title">Есть пожелания? Напишите нам:</h5>
-
-        <ModalTextarea class="form-section__field"/>
-      </div>
+      <FormSection 
+        class="form__section" 
+        title="Есть пожелания? Напишите нам"
+        name="wishes"
+      />
 
       <FormCheckbox 
         label="Я соглашаюсь с пользовательским соглашением и с политикой 
@@ -65,11 +58,11 @@
 </template>
 
 <script setup>
+  import eventContacts from "~/data/eventPp/contacts.json";
   import FormCheckbox from "~/components/FormCheckbox.vue";
   import { useEventPpValidationSchema } from 
     "~/composables/eventPpValidationSchema";
   import { handleSubmit } from "~/composables/handleSubmit";
-  import contactFields from "~/data/contactFields.json";
 
   const store = useStore();
   const schema = useEventPpValidationSchema();
