@@ -1,17 +1,14 @@
 <template>
-  <textarea 
-    v-model="inputText"
-    class="field__textarea"
+  <VeeField
+    as="textarea"
+    v-model="inputText" 
     name="wishes" 
-    @keyup="detectChanges">
-  </textarea>
+    class="field__textarea">
+  </VeeField>
 </template>
 
 <script setup>
   const inputText = ref("");
-
-  const detectChanges = () => console.log("Value changed: ", 
-    inputText.value);
 </script>
 
 <style lang="less"></style>

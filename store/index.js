@@ -11,6 +11,9 @@ export const useStore = defineStore("index", {
       isBeginning: true,
       isEnd: false,
     },
+    form: {
+      isSubmitSuccessful: false,
+    },
   }),
   getters: {
     getSwiper: (state) => state.swiper.element 
@@ -53,6 +56,17 @@ export const useStore = defineStore("index", {
       if (this.getSwiper) {
         this.getSwiper.slideNext();
       }
+    },
+    notifySuccess() {
+      this.form.isSubmitSuccessful = true;
+
+      useNuxtApp().$toast.success("Ваша заявка успешно отправлена");
+    },
+    notifyError() {
+      this.form.isSubmitSuccessful = false;
+
+      useNuxtApp().$toast.error(
+        "Что-то пошло не так. Пожалуйста, попробуйте еще раз");
     },
   },
 });

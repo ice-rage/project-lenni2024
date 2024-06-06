@@ -11,7 +11,6 @@
       :type="input.type"
       :value="input.value"
       :placeholder="input.placeholder"
-      @keyup="detectChanges"
     />
 
     <VeeField
@@ -22,7 +21,6 @@
       :type="input.type"
       :value="input.value"
       :placeholder="input.placeholder"
-      @keyup="detectChanges"
     />
 
     <VeeErrorMessage :name="input.name" class="field__error-message"/>
@@ -30,6 +28,8 @@
 </template>
 
 <script setup>
+  const inputText = ref("");
+
   const { title, input } = defineProps({
     title: {
       type: String,
@@ -42,11 +42,6 @@
       required: true,
     },
   });
-
-  const inputText = ref("");
-
-  const detectChanges = () => console.log("Value changed: ", 
-    inputText.value);
 </script>
 
 <style lang="less"></style>

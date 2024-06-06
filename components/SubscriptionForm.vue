@@ -16,7 +16,6 @@
           name="email"
           placeholder="E-mail"
           class="subscription-form__input"
-          @change="detectChanges"
         />
       </div>
 
@@ -46,16 +45,14 @@
   const schema = useSubscriptionValidationSchema();
   const userEmail = ref("");
 
-  const detectChanges = () => console.log("Value changed: ", 
-    userEmail.value);
-
-  const handleSubmit = (formData) => {
+  const handleSubmit = (values, { resetForm }) => {
     $fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
-      body: formData,
+      body: values,
     })
     .then(response => {
       notifySuccess();
+      resetForm();
 
       console.log(response);
 

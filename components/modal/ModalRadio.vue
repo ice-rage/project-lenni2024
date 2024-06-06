@@ -1,54 +1,31 @@
 <template>
-  <div v-if="items.length" class="field">
+  <div v-if="eventFormats.length" class="field">
     <div class="field__radio radio">
       <label 
-        v-for="(item, itemIndex) in items"
+        v-for="(eventFormat, eventFormatIndex) in eventFormats"
         class="radio__label"
-        :key="itemIndex"
+        :key="eventFormatIndex"
       >
         <VeeField
           v-model="checkedValue"
           type="radio"
           name="format"
-          :value="item.value"
+          :value="eventFormat.value"
           :uncheckedValue="''"
           class="radio__input"
-          @change="detectChanges"
         />
 
         <span class="radio__mark"></span>
-        <span class="radio__name">{{ item.label }}</span>
+        <span class="radio__name">{{ eventFormat.label }}</span>
       </label>
-
-      <VeeErrorMessage name="format" class="field__error-message"/>
     </div>
   </div>
 </template>
 
 <script setup>
-  const items = [
-    {
-      value: "seminar",
-      label: "Мастер-класс/семинар",
-    },
-    {
-      value: "concert",
-      label: "Концерт/выступление",
-    },
-    {
-      value: "exhibition",
-      label: "Выставка/показ",
-    },
-    {
-      value: "other",
-      label: "Другое",
-    },
-  ];
+  import eventFormats from "~/data/eventFormats.json";
 
-  const checkedValue = ref(items[0].value);
-
-  const detectChanges = () => console.log("Value changed: ", 
-    checkedValue.value);
+  const checkedValue = ref(eventFormats[0].value);
 </script>
 
 <style lang="less">

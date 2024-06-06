@@ -1,7 +1,7 @@
 <template>
   <VeeForm 
     class="form" 
-    :validationSchema="schema" 
+    :validationSchema="schema"
     @submit="handleSubmit"
   >
     <div class="form__layout">
@@ -30,13 +30,13 @@
       <div class="form__section form-section">
         <h5 class="form-section__title">Контактные данные:</h5>
 
-        <div v-if="contactLabels.length" class="form-section__list">
-          <ModalLabel 
-            v-for="(contactLabel, contactLabelIndex) in contactLabels"
-            :key="contactLabelIndex"
+        <div v-if="contactFields.length" class="form-section__list">
+          <ModalField
+            v-for="(contactField, contactFieldlIndex) in contactFields"
+            :key="contactFieldlIndex"
             class="form-section__field form-section__field--w50"
-            :title="contactLabel.title"
-            :input="contactLabel.input"
+            :title="contactField.title"
+            :input="contactField.input"
           />
         </div>
       </div>
@@ -68,74 +68,21 @@
   import FormCheckbox from "~/components/FormCheckbox.vue";
   import { useEventPpValidationSchema } from 
     "~/composables/eventPpValidationSchema";
+  import { handleSubmit } from "~/composables/handleSubmit";
+  import contactFields from "~/data/contactFields.json";
 
   const store = useStore();
   const schema = useEventPpValidationSchema();
 
   const { closeEventPp } = store;
 
-  const contactLabels = [
-    {
-      title: "Имя*",
-      input: {
-        name: "name",
-        placeholder: "Имя",
-        value: "",
-      },
-    },
-    {
-      title: "Фамилия*",
-      input: {
-        name: "surname",
-        placeholder: "Фамилия",
-        value: "",
-      },
-    },
-    {
-      title: "Телефон*",
-      input: {
-        type: "tel",
-        name: "phone",
-        placeholder: "+7 (___) ___ __ __",
-        value: "",
-      },
-    },
-    {
-      title: "Email*",
-      input: {
-        type: "email",
-        name: "email",
-        placeholder: "E-mail",
-        value: "",
-      },
-    },
-  ];
+  const isSubmitSuccessful = computed(() => store.form.isSubmitSuccessful);
 
-  const handleSubmit = (formData) => {
-    $fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: formData,
-    })
-    .then(response => {
+  watch(isSubmitSuccessful, () => {
+    if (isSubmitSuccessful.value) {
       closeEventPp();
-      notifySuccess();
-
-      console.log(response);
-
-    }, error => {
-      notifyError();
-
-      console.log("Произошла ошибка: ", error);
-    });
-  }
-
-  const notifySuccess = () => {
-    useNuxtApp().$toast.success("Ваша заявка успешно отправлена");
-  }
-
-  const notifyError = () => {
-    useNuxtApp().$toast.error("Что-то пошло не так. Пожалуйста, попробуйте еще раз");
-  }
+    }
+  });
 </script>
 
 <style lang="less">

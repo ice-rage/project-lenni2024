@@ -65,14 +65,10 @@
         : "";
 
       selectedDate.year = date ? date.getFullYear() : "";
-
-      detectChanges();
     },
   };
 
   useDatepicker("#datepicker", datepickerConfing);
-
-  const detectChanges = () => console.log("Value changed: ", selectedDate);
 </script>
 
 <style lang="less"></style>

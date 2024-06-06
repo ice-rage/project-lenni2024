@@ -11,7 +11,6 @@
       :value="checked"
       :uncheckedValue="false"
       class="check__input"
-      @change="detectChanges"
     />
 
     <VeeErrorMessage name="agreement" class="error-message"/>
@@ -21,6 +20,8 @@
 </template>
 
 <script setup>
+  const checked = ref(true);
+  
   const { label } = defineProps({
     label: {
       type: String,
@@ -32,11 +33,6 @@
       default: "",
     },
   });
-
-  const checked = ref(true);
-
-  const detectChanges = () => console.log("Value changed: ", 
-    checked.value);
 </script>
 
 <style lang="less"></style>

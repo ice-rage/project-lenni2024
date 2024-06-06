@@ -1,0 +1,18 @@
+[
+  {
+    "value": "seminar",
+    "label": "Мастер-класс/семинар"
+  },
+  {
+    "value": "concert",
+    "label": "Концерт/выступление"
+  },
+  {
+    "value": "exhibition",
+    "label": "Выставка/показ"
+  },
+  {
+    "value": "other",
+    "label": "Другое"
+  }
+]
