@@ -1,15 +1,15 @@
 <template>
-  <div class="quote">
-    <span class="quote__first-part">Просто делайте,</span>
-    <span class="quote__second-part">что нравится,</span>
-    <span class="quote__third-part">а мы вам поможем</span>
+  <div class="home-quote">
+    <span class="home-quote__first-part">Просто делайте,</span>
+    <span class="home-quote__second-part">что нравится,</span>
+    <span class="home-quote__third-part">а мы вам поможем</span>
   </div>
 </template>
 
 <script setup></script>
 
 <style lang="less">
-  .quote {
+  .home-quote {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;

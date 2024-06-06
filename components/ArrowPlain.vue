@@ -1,13 +1,13 @@
 <template>
-  <a href="#" class="arrow">
-    <SvgIcon class="arrow__icon" name="arrow"/>
+  <a href="#" class="arrow-plain">
+    <SvgIcon class="arrow-plain__icon" name="arrow"/>
   </a>
 </template>
 
 <script setup></script>
 
 <style lang="less">
-  .arrow {
+  .arrow-plain {
     display: flex;
     width: 91px;
     height: 60px;

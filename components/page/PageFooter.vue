@@ -7,20 +7,20 @@
       </div>
 
       <div class="page-footer__wrapper">
-        <FooterLeftBlock class="page-footer__left-block"/>
+        <FooterLeft class="page-footer__left"/>
 
-        <FooterCenterBlock class="page-footer__center-block"/>
+        <FooterCenter class="page-footer__center"/>
 
-        <FooterRightBlock class="page-footer__right-block"/>
+        <FooterRight class="page-footer__right"/>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
-  import FooterLeftBlock from "./footer/FooterLeftBlock.vue";
-  import FooterCenterBlock from "./footer/FooterCenterBlock.vue";
-  import FooterRightBlock from "./footer/FooterRightBlock.vue";
+  import FooterLeft from "./footer/FooterLeft.vue";
+  import FooterCenter from "./footer/FooterCenter.vue";
+  import FooterRight from "./footer/FooterRight.vue";
 </script>
 
 <style lang="less">
@@ -66,11 +66,11 @@
       }
     }
 
-    &__left-block {
+    &__left {
       margin-right: 3.107%;
     }
 
-    &__center-block {
+    &__center {
       position: absolute;
       left: calc(50% - 80px);
       bottom: 0;

@@ -1,7 +1,7 @@
 <template>
-  <article class="event-card">
-    <a href="#" class="event-card__link">
-      <picture class="event-card__picture">
+  <article class="card-event">
+    <a href="#" class="card-event__link">
+      <picture class="card-event__picture">
         <source 
           media="(max-width: 649px)" 
           type="image/webp" 
@@ -25,14 +25,14 @@
         
         <source type="image/webp" :srcset="img_webp">
 
-        <img :src="img" :alt="alt" class="event-card__img">
+        <img :src="img" :alt="alt" class="card-event__img">
       </picture>
 
-      <h4 class="event-card__title">{{ title }}</h4>
+      <h4 class="card-event__title">{{ title }}</h4>
 
-      <p class="event-card__description">{{ description }}</p>
+      <p class="card-event__description">{{ description }}</p>
 
-      <time :datetime="dateTime" class="event-card__time">{{ time }}</time>
+      <time :datetime="dateTime" class="card-event__time">{{ time }}</time>
     </a>
   </article>
 </template>
@@ -70,7 +70,7 @@
 </script>
 
 <style lang="less">
-  .event-card {
+  .card-event {
     display: flex;
     max-width: 405px;
     min-width: 280px;
@@ -87,7 +87,7 @@
 
       &:hover {
         @media(hover: hover) {
-          .event-card__title {
+          .card-event__title {
             color: @red_BC;
             text-decoration-color: @red_BC;
           }

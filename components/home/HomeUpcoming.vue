@@ -20,24 +20,36 @@
 
           <footer slot="container-end" class="swiper-footer">
             <button
-              class="swiper-arrow-prev arrow arrow--left"
-              :class="store.swiper.isBeginning ? 'arrow--disabled' : ''"
+              class="swiper-arrow-prev arrow-plain arrow-plain--left"
+              :class="store.swiper.isBeginning 
+                ? 'arrow-plain--disabled' 
+                : ''"
               @click="toPrevSlide"
             >
-              <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
+              <SvgIcon 
+                class="arrow-plain__icon" 
+                name="arrow" 
+                width="91" 
+                height="60"
+              />
             </button>
 
             <button
-              class="swiper-arrow-next arrow"
-              :class="store.swiper.isEnd ? 'arrow--disabled' : ''"
+              class="swiper-arrow-next arrow-plain"
+              :class="store.swiper.isEnd ? 'arrow-plain--disabled' : ''"
               @click="toNextSlide"
             >
-              <SvgIcon class="arrow__icon" name="arrow" width="91" height="60"/>
+              <SvgIcon 
+                class="arrow-plain__icon" 
+                name="arrow" 
+                width="91" 
+                height="60"
+              />
             </button>
           </footer>
         </swiper-container>
 
-        <LinkPlain class="home-upcoming__link" label="Смотреть все"/>
+        <LinkPlain class="home-upcoming__link link" label="Смотреть все"/>
       </div>
     </div>
   </section>

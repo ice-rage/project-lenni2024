@@ -1,7 +1,7 @@
 <template>
-  <article class="article-card">
-    <a href="#" class="article-card__link">
-      <picture class="article-card__picture">
+  <article class="card-article">
+    <a href="#" class="card-article__link">
+      <picture class="card-article__picture">
         <source 
           media="(max-width: 449px)" 
           type="image/webp" 
@@ -18,17 +18,17 @@
 
         <source type="image/webp" :srcset="img_webp">
 
-        <img :src="img" :alt="alt" class="article-card__img">
+        <img :src="img" :alt="alt" class="card-article__img">
       </picture>
     </a>
 
-    <div class="article-card__info">
-      <time :datetime="dateTime" class="article-card__time">{{ time }}</time>
+    <div class="card-article__info">
+      <time :datetime="dateTime" class="card-article__time">{{ time }}</time>
 
-      <a href="#" class="article-card__title-link">
-        <h4 class="article-card__title">{{ title }}</h4>
+      <a href="#" class="card-article__title-link">
+        <h4 class="card-article__title">{{ title }}</h4>
 
-        <div class="article-card__arrow arrow">
+        <div class="card-article__arrow arrow">
           <SvgIcon 
             class="arrow__icon" 
             name="arrow" 
@@ -38,7 +38,7 @@
         </div>
       </a>
 
-      <p class="article-card__description">{{ description }}</p>
+      <p class="card-article__description">{{ description }}</p>
     </div>
   </article>
 </template>
@@ -72,7 +72,7 @@
 </script>
 
 <style lang="less">
-  .article-card {
+  .card-article {
     position: relative;
     box-sizing: border-box;
     display: flex;
@@ -82,7 +82,7 @@
       flex-direction: column;
     }
 
-    & + .article-card {
+    & + .card-article {
       margin-top: 120px;
 
       @media @bw1660 {
@@ -123,7 +123,7 @@
 
     &:hover {
       @media(hover: hover) {
-        .article-card__picture {
+        .card-article__picture {
           box-shadow: 0 0 30px fade(@black, 55%);
         }
       }
@@ -145,8 +145,8 @@
 
       &:hover {
         @media(hover: hover) {
-          & ~ .article-card__info {
-            .article-card__title-link {
+          & ~ .card-article__info {
+            .card-article__title-link {
               color: @red_BC;
               text-decoration-color: @red_BC;
             }

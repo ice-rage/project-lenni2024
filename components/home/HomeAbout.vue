@@ -1,11 +1,11 @@
 <template>
-  <section class="about">
-    <div class="about__container">
-      <h2 class="about__section-title section-title" id="about">О нас</h2>
+  <section class="home-about">
+    <div class="home-about__container">
+      <h2 class="home-about__section-title section-title" id="home-about">О нас</h2>
 
-      <div class="about__first-block">
-        <h3 class="about__title">Проект «Millennials»</h3>
-        <p class="about__text about__text--mt50">
+      <div class="home-about__first-block">
+        <h3 class="home-about__title">Проект «Millennials»</h3>
+        <p class="home-about__text home-about__text--mt50">
           Вдохновлен молодыми идейными людьми, увлеченными творчеством, эмоциями
           и желанием сделать мир лучше, проявить себя. У них есть талант и
           стремление, у нас возможность помочь им воплотить их мечту в
@@ -13,9 +13,9 @@
         </p>
       </div>
 
-      <div class="about__second-block">
-        <div class="about__first-picture-area">
-          <picture class="about__first-picture">
+      <div class="home-about__second-block">
+        <div class="home-about__first-picture-area">
+          <picture class="home-about__first-picture">
             <source
               media="(max-width: 767px)"
               type="image/webp"
@@ -58,15 +58,15 @@
             <source type="image/webp" srcset="/images/about1_870w.webp" />
 
             <img
-              class="about__img"
+              class="home-about__img"
               src="/images/about1_870w.jpg"
               alt="about1"
             />
           </picture>
         </div>
 
-        <div class="about__second-picture-area">
-          <picture class="about__second-picture">
+        <div class="home-about__second-picture-area">
+          <picture class="home-about__second-picture">
             <source
               media="(max-width: 449px)"
               type="image/webp"
@@ -120,21 +120,21 @@
             <source type="image/webp" srcset="/images/about2_404w.webp" />
 
             <img
-              class="about__img"
+              class="home-about__img"
               src="/images/about2_404w.jpg"
               alt="about2"
             />
           </picture>
         </div>
 
-        <div class="about__title-area">
-          <h3 class="about__title about__title--w868">
+        <div class="home-about__title-area">
+          <h3 class="home-about__title home-about__title--w868">
             Мы предоставляем площади для вашего мероприятия
           </h3>
         </div>
 
-        <div class="about__text-area">
-          <p class="about__text">
+        <div class="home-about__text-area">
+          <p class="home-about__text">
             И оказываем помощь с организацией, если вам это нужно.
             <br />
             Наша цель: вовлечь в культурную жизнь города как можно больше людей,
@@ -144,8 +144,8 @@
         </div>
       </div>
 
-      <div class="about__third-block">
-        <picture class="about__third-picture">
+      <div class="home-about__third-block">
+        <picture class="home-about__third-picture">
           <source
             media="(max-width: 767px)"
             type="image/webp"
@@ -188,19 +188,19 @@
           <source type="image/webp" srcset="/images/about3_872w.webp" />
 
           <img
-            class="about__third-img"
+            class="home-about__third-img"
             src="/images/about3_872w.jpg"
             alt="about3"
           />
         </picture>
 
-        <div class="about__third-block-wrapper">
-          <p class="about__text about__text--mb90">
+        <div class="home-about__third-block-wrapper">
+          <p class="home-about__text home-about__text--mb90">
             Мы уже успешно организовали и провели более 100 проектов.
             Посмотрите, как это было классно.
           </p>
 
-          <LinkArrow class="about__arrow-link" label="Смотреть"/>
+          <LinkArrow class="home-about__arrow-link" label="Смотреть"/>
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@
 <script setup></script>
 
 <style lang="less">
-  .about {
+  .home-about {
     &__container {
       .container();
     }

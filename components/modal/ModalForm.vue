@@ -1,33 +1,33 @@
 <template>
   <VeeForm 
-    class="form" 
+    class="modal-form" 
     :validationSchema="schema"
     @submit="handleSubmit"
   >
-    <div class="form__layout">
+    <div class="modal-form__layout">
       <FormSection 
-        class="form__section" 
+        class="modal-form__section" 
         title="Формат мероприятия"
         name="formats"
       />
 
-      <div class="form__group">
+      <div class="modal-form__group">
         <FormSection 
-          class="form__section" 
+          class="modal-form__section" 
           title="Планируемое количество посетителей"
           name="visitors"
         />
 
         <FormSection 
-          class="form__section" 
+          class="modal-form__section" 
           title="Дата проведения"
           name="date"
         />
       </div>
       
-      <div class="form__section form-section">
+      <div class="modal-form__section form-section">
         <FormSection 
-          class="form__section" 
+          class="modal-form__section" 
           title="Контактные данные"
           name="contacts"
           :items="eventContacts"
@@ -35,7 +35,7 @@
       </div>
 
       <FormSection 
-        class="form__section" 
+        class="modal-form__section" 
         title="Есть пожелания? Напишите нам"
         name="wishes"
       />
@@ -43,13 +43,19 @@
       <FormCheckbox 
         label="Я соглашаюсь с пользовательским соглашением и с политикой 
           использования персональных данных" 
-        class="form__check"
+        class="modal-form__checkbox"
       />
 
-      <div class="form__btns">
-        <button type="submit" class="form__submit-btn btn">Отправить</button>
+      <div class="modal-form__btns">
+        <button type="submit" class="modal-form__submit-btn btn">
+          Отправить
+        </button>
 
-        <button type="button" class="form__close-btn btn" @click="closeEventPp">
+        <button 
+          type="button" 
+          class="modal-form__close-btn btn" 
+          @click="closeEventPp"
+        >
           Закрыть
         </button>
       </div>
@@ -79,7 +85,7 @@
 </script>
 
 <style lang="less">
-  .form {
+  .modal-form {
     &__layout {
       .form-layout();
 
@@ -110,7 +116,7 @@
       }
     }
 
-    &__check {
+    &__checkbox {
       margin-bottom: 10px;
 
       @media @bw1020 {

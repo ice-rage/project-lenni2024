@@ -2,30 +2,30 @@
   <div 
     v-if="isActive"  
     ref="modalPp"
-    class="pp"
+    class="modal-pp"
     tabindex="0"
     v-focus
     @click.self="closeEventPp"
     @keyup.esc="closeEventPp"
   >
-    <div class="pp__wrapper">
-      <div class="pp__sticky-close">
+    <div class="modal-pp__wrapper">
+      <div class="modal-pp__sticky-close">
         <button
           type="button"
-          class="pp__x-btn x-btn"
+          class="modal-pp__x-btn x-btn"
           @click="closeEventPp"
         >
           <SvgIcon class="x-btn__icon" name="x" width="24" height="24"/>
         </button>
       </div>
 
-      <div class="pp__container">
-        <h2 class="pp__title">
+      <div class="modal-pp__container">
+        <h2 class="modal-pp__title">
           Заполните форму, <br />
           и мы подберем площадку
         </h2>
 
-        <ModalForm class="pp__form"/>
+        <ModalForm class="modal-pp__form"/>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
 </script>
 
 <style lang="less">
-  .pp {
+  .modal-pp {
     position: fixed;
     box-sizing: border-box;
     display: flex;

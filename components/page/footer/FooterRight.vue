@@ -1,9 +1,9 @@
 <template>
-  <div class="right-block">
-    <SubscriptionForm class="right-block__subscription-form"/>
+  <div class="footer-right">
+    <SubscriptionForm class="footer-right__subscription-form"/>
 
-    <div class="right-block__creator">
-      <span class="right-block__creator-label">
+    <div class="footer-right__creator">
+      <span class="footer-right__creator-label">
         Создание и продвижение
       </span>
 
@@ -11,10 +11,10 @@
         to="https://tagree.ru/"
         target="_blank"
         rel="nofollow"
-        class="right-block__creator-link"
+        class="footer-right__creator-link"
       >
         <SvgIcon
-          class="right-block__creator-icon"
+          class="footer-right__creator-icon"
           name="tagree"
           width="56"
           height="17"
@@ -27,7 +27,7 @@
 <script setup></script>
 
 <style lang="less">
-  .right-block {
+  .footer-right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

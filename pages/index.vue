@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeMainHeader class="home__main-header"/>
+    <HomeHeader class="home__header"/>
 
     <UserOffers class="home__offers"/>
 
@@ -11,7 +11,7 @@
     <CardListing 
       class="home__blog-listing"
       :title="'Блог'"
-      :listClass="'listing__article-list'"
+      :listClass="'card-listing__article-list'"
       :cardData="articleCards"
       :linkData="link"
     />
@@ -24,7 +24,7 @@
 
 <script setup>
   import jsonArticleCards from "~/data/cards/article.json";
-  import HomeMainHeader from "~/components/home/HomeMainHeader.vue";
+  import HomeHeader from "~/components/home/HomeHeader.vue";
   import HomeAbout from "~/components/home/HomeAbout.vue";
   import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
   import HomeContacts from "~/components/home/HomeContacts.vue";
@@ -39,13 +39,13 @@
 
   const articleCards = {
     name: "CardArticle",
-    class: "listing__article-card",
+    class: "card-listing__card-article",
     cards: jsonArticleCards,
   }
 
   const link = {
     name: "LinkPlain",
-    class: "listing__plain-link",
+    class: "card-listing__link-plain",
     label: "Смотреть все",
   }
 </script>

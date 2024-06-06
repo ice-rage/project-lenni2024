@@ -2,7 +2,7 @@
   <VueSelect 
     v-if="eventVisitors.length" 
     v-model="value"
-    class="field__select"
+    class="field-select"
     name="visitors"
     :placeholder="value"
     :options="eventVisitors"
@@ -27,4 +27,15 @@
   });
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+  .field-select {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    background-color: @white;
+    color: @black;
+  }
+</style>

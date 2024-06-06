@@ -1,10 +1,10 @@
 <template>
-  <label class="field">
-    <span class="field__title">{{ title }}</span>
+  <label class="field-label">
+    <span class="field-label__title">{{ title }}</span>
 
     <VeeField
       v-if="inputType === 'tel'"
-      class="field__input"
+      class="field-label__input"
       v-model="inputText"
       v-phone
       :type="inputType"
@@ -15,7 +15,7 @@
 
     <VeeField
       v-else
-      class="field__input"
+      class="field-label__input"
       v-model="inputText"
       :type="inputType"
       :name="inputName"
@@ -23,7 +23,10 @@
       :placeholder="inputPlaceholder"
     />
 
-    <VeeErrorMessage :name="inputName" class="field__error-message"/>
+    <VeeErrorMessage 
+      :name="inputName" 
+      class="field-label__error-message"
+    />
   </label>
 </template>
 
@@ -49,4 +52,26 @@
   const inputPlaceholder = computed(() => props.data.input.placeholder || "");
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+  .field-label {
+    &__title {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    &__input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 55px;
+      border: none;
+      border-radius: 5px;
+      padding: 17px 20px 16px;
+      background-color: @white;
+      color: @black;
+    }
+
+    &__error-message {
+      .error-message();
+    }
+  }
+</style>

@@ -1,12 +1,14 @@
 <template>
   <div class="events">
-    <CardListing 
-      class="events__listing"
+    <CardListing
+      class="events__card-listing"
       :title="'Мероприятия'"
-      :listClass="'listing__events-list'"
+      :listClass="'card-listing__events-list'"
       :cardData="eventCards"
       :linkData="link"
     />
+
+    <AdditionalServices class="events__additional-services"/>
 
     <UserOffers class="events__offers"/>
   </div>
@@ -21,15 +23,15 @@
 
   const eventCards = {
     name: "CardEvent",
-    class: "listing__event-card",
+    class: "card-listing__card-event",
     cards: jsonEventCards,
   };
 
   const link = {
     name: "LinkArrow",
-    class: "listing__link-arrow link-arrow--vertical",
+    class: "card-listing__link-arrow link-arrow--vertical",
     label: "Показать еще",
-  }
+  };
 </script>
 
 <style lang="less">
@@ -48,7 +50,7 @@
       margin-top: 40px;
     }
 
-    &__listing {
+    &__card-listing {
       margin-top: 138px;
 
       @media @bw1020 {
@@ -62,23 +64,6 @@
 
     &__additional-services {
       padding-top: 100px;
-    }
-
-    &__price-table {
-      max-width: 1334px;
-      margin: 60px auto 50px;
-
-      @media @bw1660 {
-        margin-bottom: 40px;
-      }
-
-      @media @bw1020 {
-        margin-top: 50px;
-      }
-
-      @media @bw450 {
-        margin: 30px -20px 40px;
-      }
     }
 
     &__offers {

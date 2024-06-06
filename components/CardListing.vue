@@ -1,6 +1,6 @@
 <template>
-  <section class="listing">
-    <h2 class="listing__title section-title">{{ title }}</h2>
+  <section class="card-listing">
+    <h2 class="card-listing__title section-title">{{ title }}</h2>
 
     <div :class="listClass" v-if="cards.length">
       <component 
@@ -17,7 +17,7 @@
       </component>
     </div>
 
-    <div v-else class="listing__empty-list">
+    <div v-else class="card-listing__empty-list">
       Пока что здесь пусто... Но это ненадолго :)
     </div>
   </section>
@@ -59,7 +59,7 @@
 </script>
 
 <style lang="less">
-  .listing {
+  .card-listing {
     .container();
 
     display: flex;
@@ -94,7 +94,7 @@
       }
     }
 
-    &__event-card {
+    &__card-event {
       width: calc(33.333% - 60px);
       margin: 0 30px 120px;
 
@@ -135,7 +135,7 @@
     }
 
     &__link-arrow {
-      margin: -50px auto 50px;
+      margin: -50px auto 0;
       padding: 0 7px;
 
       @media @bw1660 {
