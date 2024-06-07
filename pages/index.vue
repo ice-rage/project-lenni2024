@@ -10,10 +10,8 @@
 
     <CardListing 
       class="home__blog-listing"
+      articles
       :title="'Блог'"
-      :listClass="'card-listing__article-list'"
-      :cardData="articleCards"
-      :linkData="link"
     />
 
     <HomeContacts class="home__contacts"/>
@@ -23,7 +21,6 @@
 </template>
 
 <script setup>
-  import jsonArticleCards from "~/data/cards/article.json";
   import HomeHeader from "~/components/home/HomeHeader.vue";
   import HomeAbout from "~/components/home/HomeAbout.vue";
   import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
@@ -36,18 +33,6 @@
       visible: false,
     },
   });
-
-  const articleCards = {
-    name: "CardArticle",
-    class: "card-listing__card-article",
-    cards: jsonArticleCards,
-  }
-
-  const link = {
-    name: "LinkPlain",
-    class: "card-listing__link-plain",
-    label: "Смотреть все",
-  }
 </script>
 
 <style lang="less">

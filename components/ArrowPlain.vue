@@ -1,8 +1,23 @@
 <template>
-  <SvgIcon class="arrow-plain" name="arrow"/>
+  <SvgIcon 
+    name="arrow" 
+    class="arrow-plain" 
+    :class="{ 'arrow-plain--left' : left, 'arrow-plain--disabled': disabled }"
+  />
 </template>
 
-<script setup></script>
+<script setup>
+  const { left, disabled } = defineProps({
+    left: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  });
+</script>
 
 <style lang="less">
   .arrow-plain {

@@ -2,18 +2,32 @@
   <section class="card-listing">
     <h2 class="card-listing__title section-title">{{ title }}</h2>
 
-    <div :class="listClass" v-if="cards.length">
+    <div 
+      v-if="cards.length" 
+      :class="articles 
+        ? 'card-listing__article-list' 
+        : 'card-listing__event-list'
+      "
+    >
       <component 
         v-for="(card, cardIndex) in cards" :key="cardIndex"
-        :is="cardComponent"
-        :class="cardData.class"
+        :is="articles ? CardArticle : CardEvent"
+        :class="articles 
+          ? 'card-listing__card-article' 
+          : 'card-listing__card-event'
+        "
         :data="card">
       </component>
 
       <component
-        :is="linkComponent" 
-        :class="linkData.class" 
-        :label="linkData.label">
+        :is="articles ? LinkPlain : LinkArrow"
+        :label="articles ? 'Смотреть все' : 'Показать еще'"
+        :class="articles 
+          ? 'card-listing__link-plain' 
+          : 'card-listing__link-arrow'
+        "
+        :vertical="!articles"
+      >
       </component>
     </div>
 
@@ -24,38 +38,26 @@
 </template>
 
 <script setup>
-  const { title, listClass, cardData, linkData } = defineProps({
+  import eventCards from "~/data/card/events.json";
+  import articleCards from "~/data/card/articles.json";
+  import CardEvent from "./card/CardEvent.vue";
+  import CardArticle from "./card/CardArticle.vue";
+  import LinkPlain from "./link/LinkPlain.vue";
+  import LinkArrow from "./link/LinkArrow.vue";
+
+  const { title, articles } = defineProps({
     title: {
       type: String,
       default: "",
-    },
-    listClass: {
-      type: String,
-      default: "",
-    },
-    cardData: {
-      type: Object,
-      default: () => {},
       required: true,
     },
-    linkData: {
-      type: Object,
-      default: () => {},
-      required: true,
+    articles: {
+      type: Boolean,
+      default: false,
     },
   });
 
-  const cards = computed(() => cardData.cards || []);
-
-  const cardComponent = cardData.name
-    ? defineAsyncComponent(() => 
-      import(`~/components/card/${cardData.name}.vue`)) 
-    : null;
-
-  const linkComponent = linkData.name
-    ? defineAsyncComponent(() => 
-      import(`~/components/link/${linkData.name}.vue`)) 
-    : null;
+  const cards = computed(() => articles ? articleCards : eventCards);
 </script>
 
 <style lang="less">
@@ -65,7 +67,7 @@
     display: flex;
     flex-direction: column;
 
-    &__events-list {
+    &__event-list {
       display: flex;
       flex-wrap: wrap;
       margin: 0 -30px;

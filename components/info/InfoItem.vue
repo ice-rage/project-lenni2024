@@ -3,21 +3,23 @@
     <div class="info-item__img">
       <SvgIcon 
         class="info-item__icon"
-        :name="data.iconName"
-        :width="data.iconWidth"
-        :height="data.iconHeight"
+        :name="iconName"
+        width="24"
+        height="24"
       />
     </div>
 
-    <div class="info-item__content" v-html="data.content"></div>
+    <div class="info-item__content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script setup>
-  const { data } = defineProps({
-    data: {
-      type: Object,
-      default: () => {},
+  const { iconName } = defineProps({
+    iconName: {
+      type: String,
+      default: "",
       required: true,
     },
   });

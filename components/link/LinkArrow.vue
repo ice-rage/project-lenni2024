@@ -1,16 +1,20 @@
 <template>
-  <div class="link-arrow">
-    <LinkPlain class="link-arrow__link" :label="label"/>
+  <div class="link-arrow" :class="{ 'link-arrow--vertical' : vertical }">
+    <LinkPlain :label="label" class="link-arrow__link"/>
 
     <ArrowPlain class="link-arrow__arrow"/>
   </div>
 </template>
 
 <script setup>
-  const { label } = defineProps({
+  const { label, vertical } = defineProps({
     label: {
       type: String,
       default: "",
+    },
+    vertical: {
+      type: Boolean,
+      default: false,
     },
   });
 </script>

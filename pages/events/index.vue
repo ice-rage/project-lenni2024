@@ -1,37 +1,37 @@
 <template>
   <div class="events">
-    <CardListing
-      class="events__card-listing"
-      :title="'Мероприятия'"
-      :listClass="'card-listing__events-list'"
-      :cardData="eventCards"
-      :linkData="link"
-    />
+    <CardListing class="events__card-listing" :title="'Мероприятия'"/>
 
-    <AdditionalServices class="events__additional-services"/>
+    <AdditionalServices class="events__additional-services" />
 
-    <UserOffers class="events__offers"/>
+    <UserOffers class="events__offers" />
+
+    <InfoItems vertical class="events__info">
+      <InfoItem iconName="location" class="home-contacts__contact">
+        <h4 class="info-item__title">Томск, Белая 8</h4>
+        <p class="info-item__data">2 этаж</p>
+        <p class="info-item__data">оф. 207-208</p>
+      </InfoItem>
+
+      <InfoItem iconName="rent" class="home-contacts__contact">
+        <h4 class="info-item__title">Отдел аренды</h4>
+        <a href="tel:74993500730" class="info-item__data"> +7 499 350 0730 </a>
+        <a href="mailto:hi@tagree.ru" class="info-item__data"> hi@tagree.ru </a>
+      </InfoItem>
+
+      <InfoItem iconName="events" class="home-contacts__contact">
+        <h4 class="info-item__title">Отдел мероприятий</h4>
+        <a href="tel:74993500730" class="info-item__data"> +7 499 350 0730 </a>
+        <a href="mailto:hi@tagree.ru" class="info-item__data"> hi@tagree.ru </a>
+      </InfoItem>
+    </InfoItems>
   </div>
 </template>
 
 <script setup>
-  import jsonEventCards from "~/data/cards/event.json";
-
   definePageMeta({
     title: "Мероприятия",
   });
-
-  const eventCards = {
-    name: "CardEvent",
-    class: "card-listing__card-event",
-    cards: jsonEventCards,
-  };
-
-  const link = {
-    name: "LinkArrow",
-    class: "card-listing__link-arrow link-arrow--vertical",
-    label: "Показать еще",
-  };
 </script>
 
 <style lang="less">
@@ -44,10 +44,6 @@
 
     @media @bw1020 {
       padding-bottom: 0;
-    }
-
-    &__breadcrumbs {
-      margin-top: 40px;
     }
 
     &__card-listing {
@@ -99,6 +95,8 @@
     }
 
     &__info {
+      .container();
+
       margin-top: 100px;
 
       @media @bw450 {

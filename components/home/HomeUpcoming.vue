@@ -20,18 +20,15 @@
 
           <footer slot="container-end" class="swiper-footer">
             <ArrowPlain 
-              class="swiper-arrow-prev arrow-plain arrow-plain--left"
-              :class="store.swiper.isBeginning 
-                ? 'arrow-plain--disabled' 
-                : ''"
+              class="swiper-arrow-prev"
+              left
+              :disabled="store.swiper.isBeginning"
               @click="toPrevSlide"
             />
 
             <ArrowPlain 
-              class="swiper-arrow-next arrow-plain"
-              :class="store.swiper.isEnd
-                ? 'arrow-plain--disabled' 
-                : ''"
+              class="swiper-arrow-next"
+              :disabled="store.swiper.isEnd"
               @click="toNextSlide"
             />
           </footer>
@@ -44,7 +41,7 @@
 </template>
 
 <script setup>
-  import cards from "~/data/cards/event.json";
+  import cards from "~/data/card/events.json";
 
   const store = useStore();
 
