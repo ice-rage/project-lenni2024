@@ -56,7 +56,6 @@
       margin-bottom: 200px;
       
       @media @bw768 {
-        max-width: 50vw;
         margin-bottom: 100px;
       }
     }

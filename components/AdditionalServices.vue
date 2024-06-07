@@ -29,10 +29,11 @@
       letter-spacing: 0.02em;
 
       @media @bw1020 {
-        margin-bottom: 98px;
+        margin-bottom: 100px;
       }
 
       @media @bw768 {
+        margin-bottom: 80px;
         font-size: 18px;
       }
 

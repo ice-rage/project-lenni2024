@@ -1,107 +1,88 @@
 <template>
-  <table class="service-table" data-currency="₽">
-    <thead class="service-table__head">
-      <tr class="service-table__head-tr">
-        <th class="service-table__th"></th>
-        <th class="service-table__th">Тариф «Light»</th>
-        <th class="service-table__th">Тариф «Promo»</th>
-        <th class="service-table__th">Тариф «All stars»</th>
-      </tr>
-    </thead>
-    <tbody class="service-table__body">
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Стоимость за час</th>
-        <td class="service-table__td">1 000 ₽</td>
-        <td class="service-table__td">3 000 ₽</td>
-        <td class="service-table__td">от 6 000 ₽</td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Ведущий мероприятия</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Фотосъемка</th>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Видеосъемка</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Организация питания</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Декор</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Звуковое сопровождение</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Дополнительное освещение</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-      <tr class="service-table__tr">
-        <th class="service-table__body-th">Клининг</th>
-        <td class="service-table__td"></td>
-        <td class="service-table__td"></td>
-        <td class="service-table__td">
-          <span class="ok"></span>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot class="service-table__footer">
-      <tr class="service-table__footer-tr">
-        <th class="service-table__footer-th"></th>
-        <th class="service-table__footer-th">Тариф «Light»</th>
-        <th class="service-table__footer-th">Тариф «Promo»</th>
-        <th class="service-table__footer-th">Тариф «All Stars»</th>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="service-table-wrapper">
+    <table
+      class="service-table" 
+      data-currency="₽"
+    >
+      <thead class="service-table__head">
+        <tr class="service-table__head-tr">
+          <th 
+            v-for="cell in headerCells" 
+            class="service-table__th"
+          >
+            {{ cell.content }}
+          </th>
+        </tr>
+      </thead>
+      <tbody  
+        v-for="column in rows" 
+        class="service-table__body"
+      >
+        <template v-if="isBreakpointReached">
+          <tr class="service-table__tr">
+            <th class="service-table__body-th" colspan="3">
+              {{ column.header }}
+            </th>
+          </tr>
+          <tr class="service-table__tr">
+            <td v-for="cell in column.cells" class="service-table__td">
+              {{ cell.content }}
+            <span v-if="cell.checked" class="ok"></span>
+            </td>
+          </tr>
+        </template>
+
+        <template v-else>
+          <tr class="service-table__tr">
+            <th class="service-table__body-th">{{ column.header }}</th>
+            <td v-for="cell in column.cells" class="service-table__td">
+              {{ cell.content }}
+              <span v-if="cell.checked" class="ok"></span>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+      <tfoot class="service-table__footer">
+        <tr class="service-table__footer-tr">
+          <th 
+            v-for="cell in footerCells" 
+            class="service-table__footer-th"
+          >
+            {{ cell.content }}
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+  import tableData from "~/data/serviceTable.json";
+
+  const headerCells = computed(() => isBreakpointReached.value 
+    ? tableData.header.cells.slice(1, 4)
+    : tableData.header.cells);
+  
+  const rows = tableData.body.rows;
+
+  const footerCells = computed(() => isBreakpointReached.value
+    ? tableData.footer.cells.slice(1, 4)
+    : tableData.footer.cells);
+
+  const viewportWidth = ref();
+
+  const isBreakpointReached = computed(() => 
+    viewportWidth.value < 450);
+
+  onMounted(() => {
+    window.addEventListener("resize", onWindowResize);
+    onWindowResize();
+  });
+
+  onUnmounted(() => window.removeEventListener("resize", onWindowResize));
+
+  const onWindowResize = () => viewportWidth.value = window.innerWidth;
+</script>
 
 <style lang="less">
   .service-table {
@@ -110,13 +91,11 @@
     color: @black;
     text-align: center;
 
-    @media @bw450 {
-      width: 114.286%;
-    }
-
     &__tr {
-      &:nth-child(odd) {
-        background-color: fade(@black, 3%);
+      @media @bw450 {
+        &:nth-child(odd) {
+          background-color: fade(@black, 3%);
+        }
       }
 
       &:nth-child(even) {
@@ -135,7 +114,7 @@
     }
 
     &__tr:first-child > &__td {
-      padding: 16px 10px 12px;
+      padding: 12px 10px 12px;
 
       @media @bw1020 {
         padding: 5px;
@@ -241,7 +220,7 @@
     }
 
     &__th {
-      height: 84px;
+      height: 83px;
       font-weight: 600;
 
       @media @bw768 {
@@ -312,9 +291,17 @@
       }
     }
 
+    &__body {
+      @media @w450 {
+        &:nth-child(even) {
+          background-color: fade(@black, 3%);
+        }
+      }
+    }
+    
     &__body-th {
       box-sizing: border-box;
-      height: 51px;
+      height: 50px;
       padding: 13px 0 12px 0;
       border-top: 1px solid #bfbfbf;
       border-bottom: 1px solid #bfbfbf;
@@ -358,7 +345,7 @@
     }
 
     &__footer-th {
-      height: 60px;
+      height: 61px;
       font-size: 0;
 
       @media @bw450 {

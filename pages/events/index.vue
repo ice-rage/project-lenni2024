@@ -7,22 +7,27 @@
     <UserOffers class="events__offers" />
 
     <InfoItems vertical class="events__info">
-      <InfoItem iconName="location" class="home-contacts__contact">
-        <h4 class="info-item__title">Томск, Белая 8</h4>
-        <p class="info-item__data">2 этаж</p>
-        <p class="info-item__data">оф. 207-208</p>
+      <InfoItem iconName="prices" class="home-contacts__contact">
+        <h4 class="info-item__title">Цены</h4>
+        <p class="info-item__data">
+          Цены, указанные на сайте носят информационный характер. Мы 
+          придерживаемся индивидуального подхода в работе с клиентом.
+        </p>
       </InfoItem>
 
-      <InfoItem iconName="rent" class="home-contacts__contact">
-        <h4 class="info-item__title">Отдел аренды</h4>
-        <a href="tel:74993500730" class="info-item__data"> +7 499 350 0730 </a>
-        <a href="mailto:hi@tagree.ru" class="info-item__data"> hi@tagree.ru </a>
+      <InfoItem iconName="contacts" class="home-contacts__contact">
+        <h4 class="info-item__title">Контакты</h4>
+        <p class="info-item__data">Отдел организации мероприятий</p>
+        <a href="tel:74993500730" class="info-item__data">+7 499 350 0730</a>
+        <a href="mailto:hi@tagree.ru" class="info-item__data">hi@tagree.ru</a>
       </InfoItem>
 
-      <InfoItem iconName="events" class="home-contacts__contact">
-        <h4 class="info-item__title">Отдел мероприятий</h4>
-        <a href="tel:74993500730" class="info-item__data"> +7 499 350 0730 </a>
-        <a href="mailto:hi@tagree.ru" class="info-item__data"> hi@tagree.ru </a>
+      <InfoItem iconName="advantage" class="home-contacts__contact">
+        <h4 class="info-item__title">Преимущество</h4>
+        <p class="info-item__data">
+          Мы имеем все возможности для того, чтобы помочь как малому бизнесу 
+          и молодым талантам, так и большим корпорациям и холдингам.
+        </p>
       </InfoItem>
     </InfoItems>
   </div>
@@ -39,7 +44,7 @@
     padding-bottom: 85px;
 
     @media @bw1660 {
-      padding-bottom: 48px;
+      padding-bottom: 50px;
     }
 
     @media @bw1020 {
@@ -63,14 +68,29 @@
     }
 
     &__offers {
-      gap: 50px;
+      gap: 49px;
 
       @media @bw1340 {
         gap: 50px;
       }
 
       @media @bw768 {
+        gap: 25px;
         max-width: 50vw;
+      }
+    }
+
+    &__offers .offers__rent-btn {
+      @media @bw1660 {
+        min-width: 246px;
+      }
+
+      @media @bw1340 {
+        min-width: 238px;
+      }
+
+      @media @bw768 {
+        min-width: 280px;
       }
     }
 
@@ -101,6 +121,12 @@
 
       @media @bw450 {
         margin: 90px 0 5px;
+      }
+
+      .info-item__content {
+        @media @bw600 {
+          text-align: center;
+        }
       }
     }
   }

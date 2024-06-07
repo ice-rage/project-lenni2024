@@ -1,0 +1,188 @@
+{
+  "header": {
+    "cells": [
+      { 
+        "content": "" 
+      }, 
+      { 
+        "content": "Тариф «Light»" 
+      }, 
+      { 
+        "content": "Тариф «Promo»" 
+      }, 
+      { 
+        "content": "Тариф «All stars»"
+      }
+    ]
+  },
+  "body": {
+    "rows": [
+      {
+        "header": "Стоимость за час",
+        "cells": [
+          {
+            "content": "1000 ₽"
+          },
+          {
+            "content": "3000 ₽"
+          },
+          {
+            "content": "6000 ₽"
+          }
+        ]
+      },
+      {
+        "header": "Ведущий мероприятия",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Фотосъемка",
+        "cells": [
+          {
+            "content": "",
+            "checked": true
+          },
+          {
+            "content": "",
+            "checked": true
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Видеосъемка",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Организация питания",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Декор",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Звуковое сопровождение",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Дополнительное освещение",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      },
+      {
+        "header": "Клининг",
+        "cells": [
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": false
+          },
+          {
+            "content": "",
+            "checked": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "cells": [
+      { 
+        "content": ""
+      }, 
+      { 
+        "content": "Тариф «Light»"
+      }, 
+      { 
+        "content": "Тариф «Promo»"
+      }, 
+      { 
+        "content": "Тариф «All stars»" 
+      }
+    ]
+  }
+}

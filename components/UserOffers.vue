@@ -75,6 +75,7 @@
       @media @bw768 {
         gap: 25px;
         flex-direction: column-reverse;
+        align-items: center;
       }
     }
 
@@ -85,25 +86,22 @@
       color: @white;
     }
 
-    &__event-btn,
     &__rent-btn {
-      @media @bw768 {
-        max-width: 100%;
-        padding: 15px 30px;
-      }
-    }
-
-    &__rent-btn {
-      width: 39.404%;
       min-width: 238px;
       padding: 15px 43px;
 
       @media @bw1660 {
         padding: 15px 39px;
       }
+    }
 
+    &__event-btn,
+    &__rent-btn {
       @media @bw768 {
-        width: 100%;
+        min-width: 280px;
+        max-width: 50vw;
+        max-height: 49px;
+        padding: 15px 30px;
       }
     }
   }
