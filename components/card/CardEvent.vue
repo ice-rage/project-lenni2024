@@ -1,6 +1,6 @@
 <template>
   <article class="card-event">
-    <a href="#" class="card-event__link">
+    <NuxtLink to="/events/1" class="card-event__link">
       <picture class="card-event__picture">
         <source 
           media="(max-width: 649px)" 
@@ -33,7 +33,7 @@
       <p class="card-event__description">{{ description }}</p>
 
       <time :datetime="dateTime" class="card-event__time">{{ time }}</time>
-    </a>
+    </NuxtLink>
   </article>
 </template>
 

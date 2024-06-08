@@ -2,7 +2,7 @@
   <VeeForm
     class="subscription-form"
     :validationSchema="schema"
-    @submit="handleSubmit"
+    @submit="useOnSubmit"
   >
     <h4 class="subscription-form__title">
       Подпишись и будь в курсе происходящего
@@ -31,6 +31,7 @@
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
+      :initialValue="true"
       :fontWeight="300"
       class="subscription-form__check"
     />
@@ -39,37 +40,12 @@
 
 <script setup>
   import FormCheckbox from "~/components/FormCheckbox.vue";
-  import { useSubscriptionValidationSchema } from 
-    "~/composables/subscriptionValidationSchema";
+  import { useSubscriptionFormSchema } from 
+    "~/composables/subscriptionFormSchema";
+  import { useOnSubmit } from "~/composables/onSubmit";
   
-  const schema = useSubscriptionValidationSchema();
+  const schema = useSubscriptionFormSchema();
   const userEmail = ref("");
-
-  const handleSubmit = (values, { resetForm }) => {
-    $fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: values,
-    })
-    .then(response => {
-      notifySuccess();
-      resetForm();
-
-      console.log(response);
-
-    }, error => {
-      notifyError();
-
-      console.log("Произошла ошибка: ", error);
-    });
-  }
-
-  const notifySuccess = () => {
-    useNuxtApp().$toast.success("Вы успешно подписались на рассылку новостей");
-  }
-
-  const notifyError = () => {
-    useNuxtApp().$toast.error("Что-то пошло не так. Пожалуйста, попробуйте еще раз");
-  }
 </script>
 
 <style lang="less">

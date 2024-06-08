@@ -1,5 +1,11 @@
 <template>
-  <label class="form-checkbox">
+  <label 
+    class="form-checkbox" 
+    :class="{ 
+      'form-checkbox--red': red, 
+      'form-checkbox--disabled' : disabled 
+    }"
+  >
     <span 
       class="form-checkbox__label form-checkbox__label--fsz14" 
       :class="fontWeight == '300'
@@ -13,7 +19,7 @@
       v-model="checked"
       type="checkbox"
       name="agreement"
-      :value="checked"
+      :value="true"
       :uncheckedValue="false"
       class="form-checkbox__input"
     />
@@ -25,9 +31,12 @@
 </template>
 
 <script setup>
-  const checked = ref(true);
-  
-  const { label, fontWeight } = defineProps({
+  const { 
+    label,
+    fontWeight,
+    red,
+    disabled,
+    initialValue } = defineProps({
     label: {
       type: String,
       default: "",
@@ -37,7 +46,21 @@
       type: [String, Number],
       default: undefined,
     },
+    red: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    initialValue: {
+      type: Boolean,
+      default: false,
+    },
   });
+  
+  const checked = ref(initialValue);
 </script>
 
 <style lang="less">

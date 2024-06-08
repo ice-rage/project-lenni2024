@@ -2,7 +2,7 @@
   <VeeForm 
     class="modal-form" 
     :validationSchema="schema"
-    @submit="handleSubmit"
+    @submit="useOnSubmit"
   >
     <div class="modal-form__layout">
       <FormSection 
@@ -40,9 +40,10 @@
         name="wishes"
       />
 
-      <FormCheckbox 
+      <FormCheckbox
         label="Я соглашаюсь с пользовательским соглашением и с политикой 
           использования персональных данных" 
+        :initialValue="true"
         class="modal-form__checkbox"
       />
 
@@ -66,12 +67,12 @@
 <script setup>
   import eventContacts from "~/data/eventPp/contacts.json";
   import FormCheckbox from "~/components/FormCheckbox.vue";
-  import { useEventPpValidationSchema } from 
-    "~/composables/eventPpValidationSchema";
-  import { handleSubmit } from "~/composables/handleSubmit";
+  import { useModalFormSchema } from 
+    "~/composables/modalFormSchema";
+  import { useOnSubmit } from "~/composables/onSubmit";
 
   const store = useStore();
-  const schema = useEventPpValidationSchema();
+  const schema = useModalFormSchema();
 
   const { closeEventPp } = store;
 

@@ -12,7 +12,7 @@ export const useStore = defineStore("index", {
       isEnd: false,
     },
     form: {
-      isSubmitSuccessful: false,
+      isSubmitSuccessful: undefined,
     },
     upDownBtn: {
       toDown: true,
@@ -64,19 +64,23 @@ export const useStore = defineStore("index", {
       this.form.isSubmitSuccessful = true;
 
       useNuxtApp().$toast.success("Ваша заявка успешно отправлена");
+      this.resetSubmitState();
     },
     notifyError() {
       this.form.isSubmitSuccessful = false;
 
       useNuxtApp().$toast.error(
         "Что-то пошло не так. Пожалуйста, попробуйте еще раз");
+      this.resetSubmitState();
+    },
+    resetSubmitState() {
+      this.form.isSubmitSuccessful = undefined;
     },
     scrollWindow() {
       let targetPosition = 0;
 
       if (this.upDownBtn.toDown) {
         targetPosition = document.body.offsetHeight;
-        console.log(targetPosition);
       }
 
       window.scrollTo({

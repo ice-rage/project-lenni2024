@@ -8,7 +8,7 @@
 
     <HomeUpcoming class="home__upcoming"/>
 
-    <CardListing class="home__blog-listing" articles :title="'Блог'"/>
+    <CardListing class="home__blog-listing" articles title="Блог"/>
 
     <HomeContacts class="home__contacts"/>
 
@@ -19,12 +19,9 @@
 </template>
 
 <script setup>
-  definePageMeta({
-    title: "Главная",
-    breadcrumbs: {
-      visible: false,
-    },
-  });
+  definePageMeta({ title: "Главная", breadcrumbs: { visible: false }});
+
+  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">

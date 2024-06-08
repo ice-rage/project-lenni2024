@@ -117,7 +117,7 @@
         </div>
       </div>
 
-      
+      <EventReserve class="event__reserve"/>
     </div>
 
     <UpDownBtn class="event__up-down-btn"/>
@@ -125,9 +125,9 @@
 </template>
 
 <script setup>
-  definePageMeta({
-    title: "Вечер | The Best of Sade",
-  });
+  definePageMeta({ title: "Вечер | The Best of Sade" });
+
+  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">

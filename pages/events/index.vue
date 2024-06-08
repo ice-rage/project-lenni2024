@@ -1,6 +1,6 @@
 <template>
   <div class="events">
-    <CardListing class="events__card-listing" :title="'Мероприятия'"/>
+    <CardListing class="events__card-listing" title="Мероприятия"/>
 
     <AdditionalServices class="events__additional-services"/>
 
@@ -36,9 +36,9 @@
 </template>
 
 <script setup>
-  definePageMeta({
-    title: "Мероприятия",
-  });
+  definePageMeta({ title: "Мероприятия" });
+
+  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">

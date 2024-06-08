@@ -1,4 +1,4 @@
-export const handleSubmit = (values, { resetForm }) => {
+export const useOnSubmit = (values, { resetForm }) => {
   const store = useStore();
 
   const { notifySuccess, notifyError } = store;
