@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-  import FormCheckbox from "~/components/FormCheckbox.vue";
+  import FormCheckbox from "~/components/form/FormCheckbox.vue";
   import { useSubscriptionFormSchema } from 
     "~/composables/subscriptionFormSchema";
   import { useOnSubmit } from "~/composables/onSubmit";

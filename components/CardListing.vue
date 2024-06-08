@@ -20,7 +20,7 @@
       </component>
 
       <component
-        :is="articles ? LinkPlain : LinkArrow"
+        :is="articles ? LinkLabel : LinkArrowLabel"
         :label="articles ? 'Смотреть все' : 'Показать еще'"
         :class="articles 
           ? 'card-listing__link-plain' 
@@ -42,8 +42,8 @@
   import articleCards from "~/data/card/articles.json";
   import CardEvent from "./card/CardEvent.vue";
   import CardArticle from "./card/CardArticle.vue";
-  import LinkPlain from "./link/LinkPlain.vue";
-  import LinkArrow from "./link/LinkArrow.vue";
+  import LinkLabel from "./link/LinkLabel.vue";
+  import LinkArrowLabel from "./link/arrow/LinkArrowLabel.vue";
 
   const { title, articles } = defineProps({
     title: {

@@ -1,9 +1,13 @@
 <template>
   <SvgIcon 
-    name="arrow" 
-    class="arrow-plain" 
-    :class="{ 'arrow-plain--left' : left, 'arrow-plain--disabled': disabled }"
+    name="arrow"
+    class="link-arrow" 
+    :class="{ 
+      'link-arrow--left' : left, 
+      'link-arrow--disabled': disabled 
+    }"
   />
+  
 </template>
 
 <script setup>
@@ -20,7 +24,7 @@
 </script>
 
 <style lang="less">
-  .arrow-plain {
+  .link-arrow {
     display: flex;
     width: 91px;
     height: 60px;

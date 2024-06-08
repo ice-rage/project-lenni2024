@@ -29,11 +29,11 @@
 
 <script setup> 
   import {
-    FieldRadio,
-    FieldSelect,
-    FieldDatepicker,
-    FieldLabel,
-    FieldTextarea
+    ModalFieldRadio,
+    ModalFieldSelect,
+    ModalFieldDatepicker,
+    ModalFieldLabel,
+    ModalFieldTextarea
   } from "~/components/modal/field/"
 
   const { title, name, items } = defineProps({
@@ -54,11 +54,11 @@
   });
 
   const componentMap = {
-    "formats": FieldRadio,
-    "visitors": FieldSelect,
-    "date": FieldDatepicker,
-    "contacts": FieldLabel,
-    "wishes": FieldTextarea,
+    "formats": ModalFieldRadio,
+    "visitors": ModalFieldSelect,
+    "date": ModalFieldDatepicker,
+    "contacts": ModalFieldLabel,
+    "wishes": ModalFieldTextarea,
   };
 
   const componentName = computed(() => componentMap[name]);

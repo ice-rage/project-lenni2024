@@ -1,6 +1,6 @@
 <template>
-  <div class="link-plain">
-    <a :href="link" class="link-plain__link link">{{ label }}</a>
+  <div class="link-label">
+    <a :href="link" class="link-label__link link">{{ label }}</a>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 </script>
 
 <style lang="less">
-  .link-plain {
+  .link-label {
     padding: 15px 0 15px 40px;
     background-color: transparent;
 

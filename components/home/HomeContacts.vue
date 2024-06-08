@@ -34,15 +34,13 @@
           </InfoItem>
         </InfoItems>
         
-        <ContactMap class="home-contacts__map"/>
+        <HomeContactMap class="home-contacts__map"/>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-  import ContactMap from "./contact/ContactMap.vue";
-</script>
+<script setup></script>
 
 <style lang="less">
   .home-contacts {

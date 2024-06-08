@@ -66,7 +66,7 @@
 
 <script setup>
   import eventContacts from "~/data/eventPp/contacts.json";
-  import FormCheckbox from "~/components/FormCheckbox.vue";
+  import FormCheckbox from "~/components/form/FormCheckbox.vue";
   import { useModalFormSchema } from 
     "~/composables/modalFormSchema";
   import { useOnSubmit } from "~/composables/onSubmit";

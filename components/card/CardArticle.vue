@@ -28,7 +28,7 @@
       <a href="#" class="card-article__title-link">
         <h4 class="card-article__title">{{ title }}</h4>
 
-        <ArrowPlain class="card-article__arrow-plain"/>
+        <LinkArrow class="card-article__arrow"/>
       </a>
 
       <p class="card-article__description">{{ description }}</p>
@@ -251,7 +251,7 @@
       }
     }
 
-    &__arrow-plain {
+    &__arrow {
       position: absolute;
       right: 0;
       bottom: 30px;

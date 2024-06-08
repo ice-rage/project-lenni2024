@@ -1,13 +1,13 @@
-import FieldRadio from "./FieldRadio.vue";
-import FieldSelect from "./FieldSelect.vue";
-import FieldDatepicker from "./FieldDatepicker.vue";
-import FieldLabel from "./FieldLabel.vue";
-import FieldTextarea from "./FieldTextarea.vue";
+import ModalFieldRadio from "./ModalFieldRadio.vue";
+import ModalFieldSelect from "./ModalFieldSelect.vue";
+import ModalFieldDatepicker from "./ModalFieldDatepicker.vue";
+import ModalFieldLabel from "./ModalFieldLabel.vue";
+import ModalFieldTextarea from "./ModalFieldTextarea.vue";
 
 export {
-  FieldRadio,
-  FieldSelect,
-  FieldDatepicker,
-  FieldLabel,
-  FieldTextarea
+  ModalFieldRadio,
+  ModalFieldSelect,
+  ModalFieldDatepicker,
+  ModalFieldLabel,
+  ModalFieldTextarea
 };

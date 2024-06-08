@@ -19,14 +19,14 @@
           </swiper-slide>
 
           <footer slot="container-end" class="swiper-footer">
-            <ArrowPlain 
+            <LinkArrow
               class="swiper-arrow-prev"
               left
               :disabled="store.swiper.isBeginning"
               @click="toPrevSlide"
             />
 
-            <ArrowPlain 
+            <LinkArrow
               class="swiper-arrow-next"
               :disabled="store.swiper.isEnd"
               @click="toNextSlide"
@@ -34,7 +34,7 @@
           </footer>
         </swiper-container>
 
-        <LinkPlain class="home-upcoming__link link" label="Смотреть все"/>
+        <LinkLabel class="home-upcoming__link link" label="Смотреть все"/>
       </div>
     </div>
   </section>

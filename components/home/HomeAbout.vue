@@ -200,7 +200,7 @@
             Посмотрите, как это было классно.
           </p>
 
-          <LinkArrow class="home-about__link-arrow" label="Смотреть"/>
+          <LinkArrowLabel class="home-about__link" label="Смотреть"/>
         </div>
       </div>
     </div>
@@ -498,7 +498,7 @@
       }
     }
 
-    &__link-arrow {
+    &__link {
       @media @bw960 {
         width: 262px;
         height: 40px;
@@ -508,7 +508,7 @@
         width: 280px;
       }
 
-      .link-arrow__link {
+      .link__label {
         @media @bw1340 {
           font-size: 16px;
         }

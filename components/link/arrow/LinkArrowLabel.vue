@@ -1,8 +1,11 @@
 <template>
-  <div class="link-arrow" :class="{ 'link-arrow--vertical' : vertical }">
-    <LinkPlain :label="label" class="link-arrow__link"/>
+  <div 
+    class="arrow-label" 
+    :class="{ 'arrow-label--vertical' : vertical }"
+  >
+    <LinkLabel :label="label" class="arrow-label__label"/>
 
-    <ArrowPlain class="link-arrow__arrow"/>
+    <LinkArrow class="arrow-label__arrow"/>
   </div>
 </template>
 
@@ -20,7 +23,7 @@
 </script>
 
 <style lang="less">
-  .link-arrow {
+  .arrow-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,7 +38,7 @@
         gap: 16px;
       }
 
-      .link-arrow__arrow {
+      .link-arrow {
         height: 91px;
         transform: rotate(90deg);
 
@@ -46,12 +49,12 @@
       }
     }
 
-    &__link,
+    &__label,
     &__arrow {
       pointer-events: auto;
     }
 
-    &__link {
+    &__label {
       padding: 0;
 
       @media @bw1020 {
