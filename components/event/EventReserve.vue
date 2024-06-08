@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <form
-      class="reserve @@class"
+      class="reserve"
       id="js-reserveForm"
       data-price='{ "red": 1400, "black": 1250 }'
     >

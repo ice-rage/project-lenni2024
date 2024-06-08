@@ -8,25 +8,17 @@
 
     <HomeUpcoming class="home__upcoming"/>
 
-    <CardListing 
-      class="home__blog-listing"
-      articles
-      :title="'Блог'"
-    />
+    <CardListing class="home__blog-listing" articles :title="'Блог'"/>
 
     <HomeContacts class="home__contacts"/>
 
     <HomeQuote class="home__quote"/>
+
+    <UpDownBtn class="home__up-down-btn"/>
   </div>
 </template>
 
 <script setup>
-  import HomeHeader from "~/components/home/HomeHeader.vue";
-  import HomeAbout from "~/components/home/HomeAbout.vue";
-  import HomeUpcoming from "~/components/home/HomeUpcoming.vue";
-  import HomeContacts from "~/components/home/HomeContacts.vue";
-  import HomeQuote from "~/components/home/HomeQuote.vue";
-
   definePageMeta({
     title: "Главная",
     breadcrumbs: {

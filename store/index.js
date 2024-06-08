@@ -14,6 +14,9 @@ export const useStore = defineStore("index", {
     form: {
       isSubmitSuccessful: false,
     },
+    upDownBtn: {
+      toDown: true,
+    },
   }),
   getters: {
     getSwiper: (state) => state.swiper.element 
@@ -67,6 +70,22 @@ export const useStore = defineStore("index", {
 
       useNuxtApp().$toast.error(
         "Что-то пошло не так. Пожалуйста, попробуйте еще раз");
+    },
+    scrollWindow() {
+      let targetPosition = 0;
+
+      if (this.upDownBtn.toDown) {
+        targetPosition = document.body.offsetHeight;
+        console.log(targetPosition);
+      }
+
+      window.scrollTo({
+        top: targetPosition,
+        left: 0,
+        behavior: "smooth",
+      });
+
+      this.upDownBtn.toDown = targetPosition === 0;
     },
   },
 });
