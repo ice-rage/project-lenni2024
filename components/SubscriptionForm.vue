@@ -31,7 +31,6 @@
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
-      :initialValue="true"
       :fontWeight="300"
       class="subscription-form__check"
     />

@@ -1,17 +1,17 @@
 <template>
-  <form
-    class="event-reserve"
-    id="js-reserveForm"
-    data-price='{ "red": 1400, "black": 1250 }'
-  >
-    <EventReserveCheckboxes class="event-reserve__checkboxes"/>
-    <EventReserveScheme class="event-reserve__scheme"/>
+  <form class="event-reserve" data-price='{ "red": 1400, "black": 1250 }'>
+    <EventReserveCheckboxes :checkCheckbox="check" class="event-reserve__checkboxes"/>
+    <EventReserveScheme :checkedCheckbox="checkbox" class="event-reserve__scheme"/>
     <EventReserveOrder class="event-reserve__order"/>
     <EventReserveLegend class="event-reserve__legend"/>
   </form>
 </template>
 
-<script setup></script>
+<script setup>
+  const checkbox = ref(false);
+
+  const check = (value) => checkbox.value = value;
+</script>
 
 <style lang="less">
   .event-reserve {

@@ -7,7 +7,7 @@
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g class="scene__dance-floor">
+    <g class="scene__dancefloor">
       <path
         d="M462 82.5C462 121.436 430.436 153 391.5 153C352.564 153 321 121.436 321 82.5C321 43.5639 352.564 12 391.5 12C430.436 12 462 43.5639 462 82.5Z"
         fill="#1F1E1E"
@@ -18,10 +18,7 @@
       />
     </g>
 
-    <g
-      class="scene__table scene__table--red js-sceneTable"
-      data-check="table_1"
-    >
+    <g class="scene__table scene__table--red" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="507.5" y="35.5" width="83" height="28" />
         <circle cx="527" cy="20" r="11.5" />
@@ -38,7 +35,7 @@
       <rect x="507" y="8" width="111" height="83" fill="transparent" />
     </g>
 
-    <g class="scene__table js-sceneTable" data-check="table_2">
+    <g class="scene__table" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="712.5" y="4.5" width="40" height="93" />
         <circle cx="697" cy="16" r="11.5" />
@@ -56,7 +53,7 @@
       <rect x="685" y="4" width="95" height="121" fill="transparent" />
     </g>
 
-    <g class="scene__table js-sceneTable" data-check="table_3">
+    <g class="scene__table" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="712.5" y="185.5" width="40" height="93" />
         <circle cx="697" cy="197" r="11.5" />
@@ -75,10 +72,7 @@
       <rect x="685" y="185" width="95" height="121" fill="transparent" />
     </g>
 
-    <g
-      class="scene__table scene__table--red js-sceneTable"
-      data-check="table_4"
-    >
+    <g class="scene__table scene__table--red" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="507.5" y="182.5" width="83" height="28" />
 
@@ -96,10 +90,7 @@
       <rect x="507" y="155" width="111" height="83" fill="transparent" />
     </g>
 
-    <g
-      class="scene__table scene__table--disabled js-sceneTable"
-      data-check="table_5"
-    >
+    <g class="scene__table scene__table--disabled" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="494.5" y="278.5" width="40" height="93" />
 
@@ -119,7 +110,7 @@
       <rect x="467" y="278" width="95" height="121" fill="transparent" />
     </g>
 
-    <g class="scene__table js-sceneTable" data-check="table_6">
+    <g class="scene__table" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="273.5" y="278.5" width="40" height="93" />
         <circle cx="258" cy="290" r="11.5" />
@@ -145,10 +136,7 @@
       />
     </g>
 
-    <g
-      class="scene__table scene__table--red js-sceneTable"
-      data-check="table_7"
-    >
+    <g class="scene__table scene__table--red" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="320.5" y="183.5" width="83" height="28" />
 
@@ -165,10 +153,7 @@
       <rect x="293" y="183" width="138" height="56" fill="transparent" />
     </g>
 
-    <g
-      class="scene__table scene__table--red js-sceneTable"
-      data-check="table_8"
-    >
+    <g class="scene__table scene__table--red" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="187.5" y="169.5" width="61" height="36" />
         <circle cx="216" cy="221" r="11.5" transform="rotate(-180 216 221)" />
@@ -183,10 +168,7 @@
       <rect x="159" y="142" width="90" height="91" fill="transparent" />
     </g>
 
-    <g
-      class="scene__table scene__table--red js-sceneTable"
-      data-check="table_9"
-    >
+    <g class="scene__table scene__table--red" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="222.5" y="27.5" width="61" height="36" />
         <circle cx="251" cy="79" r="11.5" transform="rotate(-180 251 79)" />
@@ -201,7 +183,7 @@
       <rect x="194" width="90" height="91" fill="transparent" />
     </g>
 
-    <g class="scene__table js-sceneTable" data-check="table_10">
+    <g class="scene__table" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <path d="M110.5 65V0.5H141.5V64.8261V92.5H15.5V65.5H110H110.5V65Z" />
         <circle cx="27" cy="50" r="11.5" />
@@ -216,7 +198,7 @@
       <rect x="15" width="127" height="93" fill="transparent" />
     </g>
 
-    <g class="scene__table js-sceneTable" data-check="table_11">
+    <g class="scene__table" :class="{'scene__table--active' : selectedTable }">
       <g class="scene__table-group">
         <rect x="27.5" y="185.5" width="40" height="93" />
         <circle cx="12" cy="197" r="11.5" />
@@ -238,6 +220,64 @@
   </svg>
 </template>
 
-<script setup></script>
+<script setup>
+  const { selectedTable } = defineProps({
+    selectedTable: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+  });
+</script>
 
-<style lang="less"></style>
+<style lang="less">
+  .scene {
+    &__table {
+      cursor: pointer;
+
+      &--red {
+        .scene__table-group {
+          stroke: @red_BC;
+        }
+
+        .scene__table-num {
+          fill: @red_BC;
+        }
+      }
+
+      &--active {
+        .scene__table-group {
+          fill: @black;
+        }
+
+        .scene__table-num {
+          fill: @white;
+        }
+
+        &.scene__table--red {
+          .scene__table-group {
+            fill: @red_A5;
+            stroke: @red_A5;
+          }
+        }
+      }
+      
+      &--disabled {
+        pointer-events: none;
+
+        .scene__table-group {
+          stroke: @gray_BF;
+          fill: @gray_BF;
+        }
+      }
+    }
+
+    &__table-group {
+      stroke: @black;
+    }
+
+    &__table-num {
+      fill: @black;
+    }
+  }
+</style>

@@ -3,88 +3,88 @@
     <h4 class="reserve-checkboxes__section-title">Забронировать столик</h4>
 
     <div class="reserve-checkboxes__wrapper">
-      <FormCheckbox
+      <!-- <EventReserveCheckbox
         v-for="checkbox in checkboxes"
         :key="checkbox.id"
         :label="`${checkbox.id} стол`"
         :red="checkbox.red"
         :disabled="checkbox.disabled"
-        :initialValue="checkbox.checked"
         class="reserve-checkboxes__checkbox"
-      />
+        @change="onChange"
+      /> -->
     </div>
   </section>
 </template>
 
 <script setup>
-    const checkboxes = [
-    {
-      id: 1,
-      red: true,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 2,
-      red: false,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 3,
-      red: false,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 4,
-      red: true,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 5,
-      red: false,
-      disabled: true,
-      checked: false,
-    },
-    {
-      id: 6,
-      red: false,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 7,
-      red: true,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 8,
-      red: true,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 9,
-      red: true,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 10,
-      red: false,
-      disabled: false,
-      checked: false,
-    },
-    {
-      id: 11,
-      red: false,
-      disabled: false,
-      checked: false,
-    },
-  ];
+  // const checkboxes = [
+  //   {
+  //     id: 1,
+  //     red: true,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     red: false,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     red: false,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 4,
+  //     red: true,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 5,
+  //     red: false,
+  //     disabled: true,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 6,
+  //     red: false,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 7,
+  //     red: true,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 8,
+  //     red: true,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 9,
+  //     red: true,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 10,
+  //     red: false,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 11,
+  //     red: false,
+  //     disabled: false,
+  //     checked: false,
+  //   },
+  // ];
 </script>
 
 <style lang="less">
