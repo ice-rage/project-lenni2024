@@ -1,4 +1,6 @@
 import { register } from "swiper/element/bundle";
+import reserveCheckboxes from "~/data/reserveCheckboxes.json";
+import sceneTables from "~/data/sceneTables.json";
 
 export const useStore = defineStore("index", {
   state: () => ({
@@ -14,6 +16,10 @@ export const useStore = defineStore("index", {
     form: {
       isSubmitSuccessful: undefined,
     },
+    reserve: {
+      checkboxes: reserveCheckboxes,
+      tables: sceneTables,
+    },
     upDownBtn: {
       toDown: true,
     },
@@ -22,6 +28,20 @@ export const useStore = defineStore("index", {
     getSwiper: (state) => state.swiper.element 
       ? state.swiper.element.swiper 
       : null,
+    getReserveItems: (state) => {
+      return {
+        "checkboxes": state.reserve.checkboxes,
+        "tables": state.reserve.tables,
+      };
+    },
+    getReserveItemState: (state) => (type, id) => computed({
+      get() {
+        return state.getReserveItems[type][id - 1].active;
+      },
+      set(newValue) {
+        state.getReserveItems[type][id - 1].active = newValue;
+      },
+    }),
   },
   actions: {
     toggleNavMenu() {
@@ -75,6 +95,12 @@ export const useStore = defineStore("index", {
     },
     resetSubmitState() {
       this.form.isSubmitSuccessful = undefined;
+    },
+    toggleReserveItemState(type, id) {
+      if (type in this.getReserveItems) {
+        this.getReserveItemState(type, id).value = 
+          !this.getReserveItemState(type, id).value;
+      }
     },
     scrollWindow() {
       let targetPosition = 0;

@@ -4,24 +4,16 @@
       <h4 class="reserve-scheme__title">Сцена</h4>
 
       <div class="reserve-scheme__wrapper">
-        <EventReserveScene class="reserve-scheme__scene" :selectedTable="checkedCheckbox"/>
+        <EventReserveScene class="reserve-scheme__scene"/>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-  const { checkedCheckbox } = defineProps({
-    checkedCheckbox: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
-  });
-</script>
+<script setup></script>
 
 <style lang="less">
-  .reserve-scene {
+  .reserve-scheme {
     &__title {
       display: inline-block;
       padding: 6px 56px;
