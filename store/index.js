@@ -2,6 +2,12 @@ import { register } from "swiper/element/bundle";
 import reserveCheckboxes from "~/data/reserveCheckboxes.json";
 import sceneTables from "~/data/sceneTables.json";
 
+const initialSelectedTickets = {
+  red: { price: 1400, count: 0, sum: 0 },
+  black: { price: 1250, count: 0, sum: 0 },
+  totalSum: 0,
+};
+
 export const useStore = defineStore("index", {
   state: () => ({
     isNavMenuActive: false,
@@ -17,6 +23,7 @@ export const useStore = defineStore("index", {
       isSubmitSuccessful: undefined,
     },
     reserve: {
+      selectedTickets: initialSelectedTickets,
       checkboxes: reserveCheckboxes,
       tables: sceneTables,
     },
@@ -42,6 +49,14 @@ export const useStore = defineStore("index", {
         state.getReserveItems[type][id - 1].active = newValue;
       },
     }),
+    getSelectedTicketType: (state) => {
+      return {
+        "red": state.reserve.selectedTickets.red,
+        "black": state.reserve.selectedTickets.black,
+      };
+    },
+    getSelectedTickets: (state) => 
+      state.reserve.selectedTickets,
   },
   actions: {
     toggleNavMenu() {
@@ -100,7 +115,42 @@ export const useStore = defineStore("index", {
       if (type in this.getReserveItems) {
         this.getReserveItemState(type, id).value = 
           !this.getReserveItemState(type, id).value;
+        
+        this.calculateTicketSum();
       }
+    },
+    calculateTicketSum() {
+      this.resetSelectedTickets();
+      
+      this.reserve.checkboxes
+        .filter(checkbox => checkbox.active)
+        .forEach((checkbox) => {
+          if (checkbox.red) {
+            this.getSelectedTicketType["red"].count++;
+          } else {
+            this.getSelectedTicketType["black"].count++;
+          }
+
+          this.getSelectedTicketType["red"].sum = 
+            this.getSelectedTicketType["red"].price * 
+            this.getSelectedTicketType["red"].count;
+          this.getSelectedTicketType["black"].sum = 
+            this.getSelectedTicketType["black"].price * 
+            this.getSelectedTicketType["black"].count;
+
+          this.getSelectedTickets.totalSum = 
+            this.getSelectedTicketType["red"].sum + 
+            this.getSelectedTicketType["black"].sum;
+        })
+    },
+    resetSelectedTickets() {
+      this.reserve.selectedTickets = {
+        red: { price: 1400, count: 0, sum: 0 },
+        black: { price: 1250, count: 0, sum: 0 },
+        totalSum: 0,
+      };
+
+      console.log(this.reserve.selectedTickets);
     },
     scrollWindow() {
       let targetPosition = 0;

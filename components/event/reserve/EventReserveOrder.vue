@@ -9,8 +9,12 @@
           data-caption="шт."
           data-price="1400"
           data-currency="₽"
-        ></div>
-        <div class="reserve-order__sum" data-currency="₽"></div>
+        >
+          {{ store.getSelectedTicketType['red'].count }}
+        </div>
+        <div class="reserve-order__sum" data-currency="₽">
+          {{ store.getSelectedTicketType['red'].sum }}
+        </div>
       </div>
 
       <div class="reserve-order__tickets">
@@ -19,8 +23,12 @@
           data-caption="шт."
           data-price="1250"
           data-currency="₽"
-        ></div>
-        <div class="reserve-order__sum" data-currency="₽"></div>
+        >
+          {{ store.getSelectedTicketType['black'].count }}
+        </div>
+        <div class="reserve-order__sum" data-currency="₽">
+          {{ store.getSelectedTicketType['black'].sum }}
+        </div>
       </div>
     </div>
 
@@ -28,7 +36,9 @@
       class="reserve-order__total"
       data-caption="Сумма"
       data-currency="₽"
-    ></div>
+    >
+      {{ store.getSelectedTickets.totalSum }}
+    </div>
 
     <button
       type="submit"
@@ -40,7 +50,11 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+  const store = useStore();
+
+
+</script>
 
 <style lang="less">
   .reserve-order {
