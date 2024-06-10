@@ -7,7 +7,7 @@
         <div
           class="reserve-order__qty"
           data-caption="шт."
-          data-price="1400"
+          :data-price="store.getSelectedTicketType['red'].price"
           data-currency="₽"
         >
           {{ store.getSelectedTicketType['red'].count }}
@@ -21,7 +21,7 @@
         <div
           class="reserve-order__qty"
           data-caption="шт."
-          data-price="1250"
+          :data-price="store.getSelectedTicketType['black'].price"
           data-currency="₽"
         >
           {{ store.getSelectedTicketType['black'].count }}
@@ -37,13 +37,13 @@
       data-caption="Сумма"
       data-currency="₽"
     >
-      {{ store.getSelectedTickets.totalSum }}
+      {{ store.getSelectedTicketsTotalSum.value }}
     </div>
 
     <button
       type="submit"
       class="reserve-order__submit btn btn--red"
-      disabled
+      :disabled="store.getReserveSubmitBtnState.value"
     >
       Купить билеты
     </button>
@@ -52,8 +52,6 @@
 
 <script setup>
   const store = useStore();
-
-
 </script>
 
 <style lang="less">

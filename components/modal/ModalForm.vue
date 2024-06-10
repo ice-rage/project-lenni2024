@@ -1,5 +1,5 @@
 <template>
-  <VeeForm 
+  <VeeForm
     class="modal-form" 
     :validationSchema="schema"
     @submit="useOnSubmit"
@@ -72,7 +72,7 @@
 
   const store = useStore();
   const schema = useModalFormSchema();
-
+  
   const { closeEventPp } = store;
 
   const isSubmitSuccessful = computed(() => store.form.isSubmitSuccessful);

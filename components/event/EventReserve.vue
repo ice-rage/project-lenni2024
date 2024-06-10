@@ -1,10 +1,13 @@
 <template>
-  <form class="event-reserve" data-price='{ "red": 1400, "black": 1250 }'>
+  <VeeForm
+    class="event-reserve" 
+    @submit="useOnSubmit"
+  >
     <EventReserveCheckboxes class="event-reserve__checkboxes"/>
     <EventReserveScheme class="event-reserve__scheme"/>
     <EventReserveOrder class="event-reserve__order"/>
     <EventReserveLegend class="event-reserve__legend"/>
-  </form>
+  </VeeForm>
 </template>
 
 <script setup></script>

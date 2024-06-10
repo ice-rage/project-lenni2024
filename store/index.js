@@ -23,9 +23,10 @@ export const useStore = defineStore("index", {
       isSubmitSuccessful: undefined,
     },
     reserve: {
-      selectedTickets: initialSelectedTickets,
       checkboxes: reserveCheckboxes,
       tables: sceneTables,
+      selectedTickets: initialSelectedTickets,
+      submitBtnDisabled: true,
     },
     upDownBtn: {
       toDown: true,
@@ -55,8 +56,22 @@ export const useStore = defineStore("index", {
         "black": state.reserve.selectedTickets.black,
       };
     },
-    getSelectedTickets: (state) => 
-      state.reserve.selectedTickets,
+    getSelectedTicketsTotalSum: (state) => computed({
+      get() {
+        return state.reserve.selectedTickets.totalSum;
+      },
+      set(newValue) {
+        state.reserve.selectedTickets.totalSum = newValue;
+      },
+    }),
+    getReserveSubmitBtnState: (state) => computed({
+      get() {
+        return state.reserve.submitBtnDisabled;
+      },
+      set(newValue) {
+        state.reserve.submitBtnDisabled = newValue;
+      },
+    }),
   },
   actions: {
     toggleNavMenu() {
@@ -98,7 +113,7 @@ export const useStore = defineStore("index", {
     notifySuccess() {
       this.form.isSubmitSuccessful = true;
 
-      useNuxtApp().$toast.success("Ваша заявка успешно отправлена");
+      useNuxtApp().$toast.success("Форма успешно отправлена");
       this.resetSubmitState();
     },
     notifyError() {
@@ -122,9 +137,10 @@ export const useStore = defineStore("index", {
     calculateTicketSum() {
       this.resetSelectedTickets();
       
-      this.reserve.checkboxes
-        .filter(checkbox => checkbox.active)
-        .forEach((checkbox) => {
+      const activeCheckboxes = this.reserve.checkboxes
+        .filter(checkbox => checkbox.active);
+
+        activeCheckboxes.forEach((checkbox) => {
           if (checkbox.red) {
             this.getSelectedTicketType["red"].count++;
           } else {
@@ -138,19 +154,15 @@ export const useStore = defineStore("index", {
             this.getSelectedTicketType["black"].price * 
             this.getSelectedTicketType["black"].count;
 
-          this.getSelectedTickets.totalSum = 
+          this.getSelectedTicketsTotalSum.value = 
             this.getSelectedTicketType["red"].sum + 
             this.getSelectedTicketType["black"].sum;
-        })
+        });
+
+        this.getReserveSubmitBtnState.value = activeCheckboxes.length === 0;
     },
     resetSelectedTickets() {
-      this.reserve.selectedTickets = {
-        red: { price: 1400, count: 0, sum: 0 },
-        black: { price: 1250, count: 0, sum: 0 },
-        totalSum: 0,
-      };
-
-      console.log(this.reserve.selectedTickets);
+      this.reserve.selectedTickets = useCloneDeep(initialSelectedTickets);
     },
     scrollWindow() {
       let targetPosition = 0;

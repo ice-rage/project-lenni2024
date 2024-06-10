@@ -6,14 +6,14 @@
       <div class="reserve-legend__prices">
         <div class="reserve-legend__price-mark reserve-legend__price-mark--red"></div>
         <div class="reserve-legend__price" data-caption="1 персона" data-currency="₽">
-          1400
+          {{ store.getSelectedTicketType['red'].price }}
         </div>
       </div>
 
       <div class="reserve-legend__prices">
         <div class="reserve-legend__price-mark"></div>
         <div class="reserve-legend__price" data-caption="1 персона" data-currency="₽">
-          1250
+          {{ store.getSelectedTicketType['black'].price }}
         </div>
       </div>
     </div>
@@ -41,7 +41,9 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+  const store = useStore();
+</script>
 
 <style lang="less">
   .reserve-legend {
