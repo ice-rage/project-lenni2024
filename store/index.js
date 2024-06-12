@@ -127,7 +127,7 @@ export const useStore = defineStore("index", {
       this.form.isSubmitSuccessful = undefined;
     },
     toggleReserveItemState(type, id) {
-      if (type in this.getReserveItems) {
+      if (this.getReserveItems.hasOwnProperty(type)) {
         this.getReserveItemState(type, id).value = 
           !this.getReserveItemState(type, id).value;
         
