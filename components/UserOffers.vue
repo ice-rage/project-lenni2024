@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   const { openEventPp } = store;
 </script>

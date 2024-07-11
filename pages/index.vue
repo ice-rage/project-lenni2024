@@ -20,8 +20,6 @@
 
 <script setup>
   definePageMeta({ title: "Главная", breadcrumbs: { visible: false }});
-
-  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">

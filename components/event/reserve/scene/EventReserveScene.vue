@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   // const getTable = (tableId) => store.reserve.tables[tableId - 1];
 

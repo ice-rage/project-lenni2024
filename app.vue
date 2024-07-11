@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app">
+  <div id="app" class="app" v-scroll="useOnWindowScroll">
     <PageHeader class="app__page-header"/>
 
     <PageBreadcrumbs class="app__page-breadcrumbs"/>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   useHead({
     meta: [
@@ -153,5 +153,12 @@
         "show-event-pp": () => store.modal.isEventPpActive,
       },
     },
+  });
+
+  const router = useRouter();
+
+  router.beforeEach((to, from, next) => {
+    store.closeAll();
+    next();
   });
 </script>

@@ -1,15 +1,15 @@
 export const useOnWindowScroll = () => {
-  const store = useStore();
+  const store = useWindowScrollingStore();
 
   const scrollPosition = window.scrollY;
   const viewportHeight = window.innerHeight;
   const htmlHeight = document.body.offsetHeight;
 
   if (scrollPosition === 0) {
-    store.upDownBtn.toDown = true;
+    store.toDown = true;
   }
 
   if (Math.ceil(scrollPosition) + viewportHeight >= htmlHeight) {
-    store.upDownBtn.toDown = false;
+    store.toDown = false;
   }
 };

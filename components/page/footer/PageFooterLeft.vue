@@ -18,7 +18,9 @@
       </NuxtLink>
     </nav>
 
-    <div class="footer-left__copyright">© Millennials 2022</div>
+    <div class="footer-left__copyright">
+      © Millennials {{ new Date().getFullYear() }}
+    </div>
 
     <div class="footer-left__politics">
       <NuxtLink 

@@ -10,7 +10,7 @@
         />
       </NuxtLink>
 
-      <nav class="page-header__nav" @click="toggleNavMenu">
+      <nav class="page-header__nav">
         <NuxtLink to="/events" class="page-header__nav-link">Мероприятия</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">Блог</NuxtLink>
         <NuxtLink to="/" class="page-header__nav-link">О нас</NuxtLink>
@@ -28,7 +28,6 @@
             />
           </button>
         </div>
-
       </nav>
       
       <div class="page-header__right-block">
@@ -53,7 +52,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   const { toggleNavMenu } = store;
 </script>

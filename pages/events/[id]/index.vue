@@ -126,8 +126,6 @@
 
 <script setup>
   definePageMeta({ title: "Вечер | The Best of Sade" });
-
-  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">

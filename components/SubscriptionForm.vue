@@ -31,8 +31,8 @@
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
-      :fontWeight="300"
       class="subscription-form__check"
+      labelClass="checkbox__label--fw300"
     />
   </VeeForm>
 </template>

@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   const { 
     id, 

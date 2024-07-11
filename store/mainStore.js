@@ -8,7 +8,7 @@ const initialSelectedTickets = {
   totalSum: 0,
 };
 
-export const useStore = defineStore("index", {
+export const useMainStore = defineStore("mainStore", {
   state: () => ({
     isNavMenuActive: false,
     modal: {
@@ -27,9 +27,6 @@ export const useStore = defineStore("index", {
       tables: sceneTables,
       selectedTickets: initialSelectedTickets,
       submitBtnDisabled: true,
-    },
-    upDownBtn: {
-      toDown: true,
     },
   }),
   getters: {
@@ -74,6 +71,10 @@ export const useStore = defineStore("index", {
     }),
   },
   actions: {
+    closeAll() {
+      this.isNavMenuActive = false;
+      this.isEventPpActive = false;
+    },
     toggleNavMenu() {
       this.isNavMenuActive = !this.isNavMenuActive;
     },
@@ -162,22 +163,8 @@ export const useStore = defineStore("index", {
         this.getReserveSubmitBtnState.value = activeCheckboxes.length === 0;
     },
     resetSelectedTickets() {
-      this.reserve.selectedTickets = useCloneDeep(initialSelectedTickets);
-    },
-    scrollWindow() {
-      let targetPosition = 0;
-
-      if (this.upDownBtn.toDown) {
-        targetPosition = document.body.offsetHeight;
-      }
-
-      window.scrollTo({
-        top: targetPosition,
-        left: 0,
-        behavior: "smooth",
-      });
-
-      this.upDownBtn.toDown = targetPosition === 0;
+      this.reserve.selectedTickets = JSON.parse(
+        JSON.stringify(initialSelectedTickets));
     },
   },
 });

@@ -1,8 +1,5 @@
 <template>
-  <div 
-    class="form-section" 
-    :class="name === 'formats' ? 'form-section--w50' : ''"
-  >
+  <div class="form-section">
     <h5 class="form-section__title">{{ title }}:</h5>
 
     <div 
@@ -15,7 +12,7 @@
         :is="componentName" 
         :data="item"
         class="form-section__field"
-        :class="name === 'contacts' ? 'form-section__field--w50' : ''"
+        :class="componentClass"
       />
     </div>
 
@@ -29,12 +26,12 @@
 
 <script setup> 
   import {
-    ModalFieldRadio,
-    ModalFieldSelect,
-    ModalFieldDatepicker,
-    ModalFieldLabel,
-    ModalFieldTextarea
-  } from "~/components/modal/field/"
+    FieldRadio,
+    FieldSelect,
+    FieldDatepicker,
+    FieldLabel,
+    FieldTextarea
+  } from "~/components/field"
 
   const { title, name, items } = defineProps({
     title: {
@@ -51,14 +48,18 @@
       type: Array,
       default: () => [],
     },
+    componentClass: {
+      type: String,
+      default: "",
+    },
   });
 
   const componentMap = {
-    "formats": ModalFieldRadio,
-    "visitors": ModalFieldSelect,
-    "date": ModalFieldDatepicker,
-    "contacts": ModalFieldLabel,
-    "wishes": ModalFieldTextarea,
+    "formats": FieldRadio,
+    "visitors": FieldSelect,
+    "date": FieldDatepicker,
+    "contacts": FieldLabel,
+    "wishes": FieldTextarea,
   };
 
   const componentName = computed(() => componentMap[name]);

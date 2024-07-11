@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 </script>
 
 <style lang="less">

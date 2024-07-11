@@ -2,13 +2,13 @@
   <button 
     type="button" 
     class="up-down-btn"
-    :class="{ 'up-down-btn--down': store.upDownBtn.toDown }"
+    :class="{ 'up-down-btn--down': store.toDown }"
     @click="scrollWindow"
   ></button>
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useWindowScrollingStore();
 
   const { scrollWindow } = store;
 </script>

@@ -1,5 +1,5 @@
 export const useOnSubmit = (values, { resetForm }) => {
-    const store = useStore();
+    const store = useMainStore();
 
     const { notifySuccess, notifyError } = store;
 

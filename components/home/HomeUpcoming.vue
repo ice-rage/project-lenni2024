@@ -43,7 +43,7 @@
 <script setup>
   import cards from "~/data/card/events.json";
 
-  const store = useStore();
+  const store = useMainStore();
 
   const { 
     registerSwiper, 

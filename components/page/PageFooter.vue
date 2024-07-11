@@ -7,20 +7,17 @@
       </div>
 
       <div class="page-footer__wrapper">
-        <FooterLeft class="page-footer__left"/>
+        <PageFooterLeft class="page-footer__left"/>
 
-        <FooterCenter class="page-footer__center"/>
+        <PageFooterCenter class="page-footer__center"/>
 
-        <FooterRight class="page-footer__right"/>
+        <PageFooterRight class="page-footer__right"/>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
-  import FooterLeft from "./footer/FooterLeft.vue";
-  import FooterCenter from "./footer/FooterCenter.vue";
-  import FooterRight from "./footer/FooterRight.vue";
 </script>
 
 <style lang="less">

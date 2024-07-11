@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   const { closeEventPp } = store;
 

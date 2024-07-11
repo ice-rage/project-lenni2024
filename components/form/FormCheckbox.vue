@@ -2,9 +2,7 @@
   <label class="checkbox">
     <span 
       class="checkbox__label checkbox__label--fsz14" 
-      :class="fontWeight == '300'
-        ? 'checkbox__label--fw300' 
-        : ''"
+      :class="labelClass"
     >
       {{ label }}
     </span>
@@ -26,15 +24,15 @@
 </template>
 
 <script setup>
-  const { label, fontWeight } = defineProps({
+  const { label, labelClass } = defineProps({
     label: {
       type: String,
       default: "",
       required: true,
     },
-    fontWeight: {
-      type: [String, Number],
-      default: undefined,
+    labelClass: {
+      type: String,
+      default: "",
     },
   });
 

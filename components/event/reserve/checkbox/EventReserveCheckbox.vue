@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-  const store = useStore();
+  const store = useMainStore();
 
   const { red, disabled, label, id } = defineProps({
     red: {

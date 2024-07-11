@@ -6,7 +6,7 @@
   >
     <div class="modal-form__layout">
       <FormSection 
-        class="modal-form__section" 
+        class="modal-form__section form-section--w50" 
         title="Формат мероприятия"
         name="formats"
       />
@@ -31,6 +31,7 @@
           title="Контактные данные"
           name="contacts"
           :items="eventContacts"
+          componentClass="form-section__field--w50"
         />
       </div>
 
@@ -70,7 +71,7 @@
     "~/composables/modalFormSchema";
   import { useOnSubmit } from "~/composables/onSubmit";
 
-  const store = useStore();
+  const store = useMainStore();
   const schema = useModalFormSchema();
   
   const { closeEventPp } = store;

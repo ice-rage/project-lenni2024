@@ -37,8 +37,6 @@
 
 <script setup>
   definePageMeta({ title: "Мероприятия" });
-
-  onMounted(() => window.addEventListener("scroll", useOnWindowScroll));
 </script>
 
 <style lang="less">
