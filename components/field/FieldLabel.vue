@@ -2,42 +2,43 @@
   <label class="field-label">
     <span class="field-label__title">{{ title }}</span>
 
-    <VeeField
+    <input
       v-if="inputType === 'tel'"
       class="field-label__input"
       v-model="inputText"
       v-phone
       :type="inputType"
       :name="inputName"
-      :value="inputValue"
       :placeholder="inputPlaceholder"
     />
 
-    <VeeField
+    <input
       v-else
       class="field-label__input"
       v-model="inputText"
       :type="inputType"
       :name="inputName"
-      :value="inputValue"
       :placeholder="inputPlaceholder"
     />
 
-    <VeeErrorMessage 
-      :name="inputName" 
-      class="field-label__error-message"
-    />
+    <span class="field-label__error-message">
+      {{ props.errorMessage }}
+    </span>
   </label>
 </template>
 
 <script setup>
-  const inputText = ref("");
+  import { useField } from "vee-validate";
 
   const props = defineProps({
     data: {
       type: Object,
       default: () => {},
       required: true,
+    },
+    errorMessage: {
+      type: String,
+      default: "",
     },
   });
 
@@ -47,9 +48,10 @@
 
   const inputName = computed(() => props.data.input.name || "unknown");
 
-  const inputValue = computed(() => props.data.input.value || "");
+  const inputPlaceholder = computed(() => 
+    props.data.input.placeholder || "");
 
-  const inputPlaceholder = computed(() => props.data.input.placeholder || "");
+  const { value: inputText } = useField(() => inputName.value);
 </script>
 
 <style lang="less">

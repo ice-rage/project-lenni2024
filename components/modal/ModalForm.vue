@@ -1,9 +1,5 @@
 <template>
-  <VeeForm
-    class="modal-form" 
-    :validationSchema="schema"
-    @submit="useOnSubmit"
-  >
+  <form class="modal-form" @submit="onSubmit">
     <div class="modal-form__layout">
       <FormSection 
         class="modal-form__section form-section--w50" 
@@ -31,6 +27,7 @@
           title="Контактные данные"
           name="contacts"
           :items="eventContacts"
+          :errorMessages="errors"
           componentClass="form-section__field--w50"
         />
       </div>
@@ -61,28 +58,36 @@
         </button>
       </div>
     </div>
-  </VeeForm>
+  </form>
 </template>
 
 <script setup>
   import eventContacts from "~/data/eventPp/contacts.json";
   import FormCheckbox from "~/components/form/FormCheckbox.vue";
+  import { useForm } from "vee-validate";
   import { useModalFormSchema } from 
     "~/composables/modalFormSchema";
   import { useOnSubmit } from "~/composables/onSubmit";
 
+  const { errors, handleSubmit } = useForm({
+    validationSchema: useModalFormSchema(),
+  });
+
   const store = useMainStore();
-  const schema = useModalFormSchema();
-  
+
   const { closeEventPp } = store;
 
-  const isSubmitSuccessful = computed(() => store.form.isSubmitSuccessful);
+  const isSubmitSuccessful = computed(() => 
+    store.form.isSubmitSuccessful);
 
   watch(isSubmitSuccessful, () => {
     if (isSubmitSuccessful.value) {
       closeEventPp();
     }
   });
+
+  const onSubmit = handleSubmit((values, { resetForm }) => 
+    useOnSubmit(values, resetForm));
 </script>
 
 <style lang="less">

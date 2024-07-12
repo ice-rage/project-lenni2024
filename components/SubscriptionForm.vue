@@ -1,17 +1,13 @@
 <template>
-  <VeeForm
-    class="subscription-form"
-    :validationSchema="schema"
-    @submit="useOnSubmit"
-  >
+  <form class="subscription-form" @submit="onSubmit">
     <h4 class="subscription-form__title">
       Подпишись и будь в курсе происходящего
     </h4>
 
     <div class="subscription-form__wrapper">
       <div class="subscription-form__input-wrapper">
-        <VeeField
-          v-model="userEmail"
+        <input
+          v-model="email"
           type="email"
           name="email"
           placeholder="E-mail"
@@ -24,27 +20,32 @@
       </button>
     </div>
 
-    <VeeErrorMessage
-      name="email" 
-      class="subscription-form__error-message"
-    />
+    <span class="subscription-form__error-message">{{ errors.email }}</span>
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
       class="subscription-form__check"
       labelClass="checkbox__label--fw300"
+      :errorMessage="errors.agreement"
     />
-  </VeeForm>
+  </form>
 </template>
 
 <script setup>
   import FormCheckbox from "~/components/form/FormCheckbox.vue";
   import { useSubscriptionFormSchema } from 
     "~/composables/subscriptionFormSchema";
+  import { useForm } from "vee-validate";
   import { useOnSubmit } from "~/composables/onSubmit";
   
-  const schema = useSubscriptionFormSchema();
-  const userEmail = ref("");
+  const { defineField, errors, handleSubmit } = useForm({
+    validationSchema: useSubscriptionFormSchema(),
+  });
+
+  const [email] = defineField("email");
+
+  const onSubmit = handleSubmit((values, { resetForm }) => 
+    useOnSubmit(values, resetForm));
 </script>
 
 <style lang="less">

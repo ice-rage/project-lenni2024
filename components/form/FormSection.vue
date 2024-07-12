@@ -11,6 +11,7 @@
         :key="itemIndex"
         :is="componentName" 
         :data="item"
+        :errorMessage="errorMessages[item.input.name]"
         class="form-section__field"
         :class="componentClass"
       />
@@ -33,7 +34,12 @@
     FieldTextarea
   } from "~/components/field"
 
-  const { title, name, items } = defineProps({
+  const { 
+    title, 
+    name, 
+    items, 
+    componentClass, 
+    errorMessages } = defineProps({
     title: {
       type: String,
       default: "",
@@ -51,6 +57,10 @@
     componentClass: {
       type: String,
       default: "",
+    },
+    errorMessages: {
+      type: Object,
+      default: () => {},
     },
   });
 

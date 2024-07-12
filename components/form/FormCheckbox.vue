@@ -7,24 +7,25 @@
       {{ label }}
     </span>
             
-    <VeeField
+    <input
       v-model="checked"
       type="checkbox"
       name="agreement"
       :value="true"
       :uncheckedValue="false"
       class="checkbox__input"
-      @change="onChange"
     />
 
-    <VeeErrorMessage name="agreement" class="error-message"/>
+    <span class="error-message">{{ errorMessage }}</span>
 
     <span class="checkbox__mark"></span>
   </label>
 </template>
 
 <script setup>
-  const { label, labelClass } = defineProps({
+  import { useField } from "vee-validate";
+
+  const { label, labelClass, errorMessage } = defineProps({
     label: {
       type: String,
       default: "",
@@ -34,13 +35,15 @@
       type: String,
       default: "",
     },
+    errorMessage: {
+      type: String,
+      default: "",
+    },
   });
 
-  const checked = ref(true);
+  const { value: checked } = useField("agreement");
 
-  const onChange = () => {
-    console.log(checked.value);
-  }
+  onMounted(() => checked.value = true);
 </script>
 
 <style lang="less"></style>

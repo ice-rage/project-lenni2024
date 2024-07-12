@@ -21,7 +21,7 @@
 
       <input
         v-model="selectedDate.year"
-        class="field-datepicker__input field__input--year"
+        class="field-datepicker__input field-datepicker__input--year"
         type="text"
         name="year"
         placeholder="ГГГГ"

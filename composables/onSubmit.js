@@ -1,24 +1,26 @@
-export const useOnSubmit = (values, { resetForm }) => {
-    const store = useMainStore();
+export const useOnSubmit = (formValues, resetFunction) => {
+  const store = useMainStore();
 
-    const { notifySuccess, notifyError } = store;
+  const { notifySuccess, notifyError } = store;
 
-    return $fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: values,
-    })
-    .then(response => {
-      resetForm();
+  return $fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: formValues,
+  }).then(
+    (response) => {
+      resetFunction();
       notifySuccess();
 
       console.log(response);
 
       return true;
-    }, error => {
+    },
+    (error) => {
       notifyError();
 
       console.log("Произошла ошибка: ", error);
 
       return false;
-    });
-}
+    }
+  );
+};
