@@ -1,16 +1,16 @@
 <template>
   <div 
     class="arrow-label" 
-    :class="{ 'arrow-label--vertical' : vertical }"
+    :class="{ 'arrow-label--vertical' : props.vertical }"
   >
-    <LinkLabel :label="label" class="arrow-label__label"/>
+    <LinkLabel :label="props.label" class="arrow-label__label"/>
 
     <LinkArrow class="arrow-label__arrow"/>
   </div>
 </template>
 
 <script setup>
-  const { label, vertical } = defineProps({
+  const props = defineProps({
     label: {
       type: String,
       default: "",

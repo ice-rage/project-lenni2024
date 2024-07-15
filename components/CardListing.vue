@@ -1,6 +1,8 @@
 <template>
   <section class="card-listing">
-    <h2 class="card-listing__title section-title">{{ title }}</h2>
+    <h2 class="card-listing__title section-title">
+      {{ props.title }}
+    </h2>
 
     <div 
       v-if="cards.length" 
@@ -45,7 +47,7 @@
   import LinkLabel from "./link/LinkLabel.vue";
   import LinkArrowLabel from "./link/arrow/LinkArrowLabel.vue";
 
-  const { title, articles } = defineProps({
+  const props = defineProps({
     title: {
       type: String,
       default: "",
@@ -57,7 +59,9 @@
     },
   });
 
-  const cards = computed(() => articles ? articleCards : eventCards);
+  const cards = computed(() => props.articles 
+    ? articleCards 
+    : eventCards);
 </script>
 
 <style lang="less">

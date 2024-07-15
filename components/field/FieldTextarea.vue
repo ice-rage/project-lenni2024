@@ -1,14 +1,15 @@
 <template>
-  <VeeField
-    as="textarea"
+  <textarea
     v-model="inputText" 
     name="wishes" 
-    class="field-textarea">
-  </VeeField>
+    class="field-textarea"
+  ></textarea>
 </template>
 
 <script setup>
-  const inputText = ref("");
+  import { useField } from "vee-validate";
+
+  const { value: inputText } = useField("wishes");
 </script>
 
 <style lang="less">

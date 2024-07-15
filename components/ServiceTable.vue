@@ -79,9 +79,11 @@
     onWindowResize();
   });
 
-  onUnmounted(() => window.removeEventListener("resize", onWindowResize));
+  onUnmounted(() => window.removeEventListener("resize", 
+    onWindowResize));
 
-  const onWindowResize = () => viewportWidth.value = window.innerWidth;
+  const onWindowResize = () => viewportWidth.value = 
+    window.innerWidth;
 </script>
 
 <style lang="less">

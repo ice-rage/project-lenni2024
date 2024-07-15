@@ -1,29 +1,31 @@
 <template>
   <VueSelect 
-    v-if="eventVisitors.length" 
-    v-model="value"
+    v-if="eventVisitorCount.length" 
+    v-model="selectedVisitorCount"
     class="field-select"
-    name="visitors"
-    :placeholder="value"
-    :options="eventVisitors"
+    name="visitorCount"
+    :placeholder="selectedVisitorCount"
+    :options="eventVisitorCount"
     :isClearable="false"
     :isSearchable="false"
   />
 </template>
 
 <script setup>
-  import eventVisitors from "~/data/eventPp/visitors.json";
+  import eventVisitorCount from "~/data/eventPp/visitorCount.json";
   import VueSelect from "vue3-select-component";
   import { useField } from "vee-validate";
 
-  const { value } = useField(() => "visitors");
+  const { value: selectedVisitorCount } = useField("visitorCount",
+    undefined, {
+      initialValue: eventVisitorCount[0].value,
+    },
+  );
 
   onMounted(() => {
     document
-    .querySelector(".search-input")
-    .setAttribute("readonly", true);
-
-    value.value = eventVisitors[0].label;
+      .querySelector(".search-input")
+      .setAttribute("readonly", true);
   });
 </script>
 

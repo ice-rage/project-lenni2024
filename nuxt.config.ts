@@ -47,12 +47,6 @@ export default defineNuxtConfig({
   ],
   veeValidate: {
     autoImports: true,
-    componentNames: {
-      Form: "VeeForm",
-      Field: "VeeField",
-      FieldArray: "VeeFieldArray",
-      ErrorMessage: "VeeErrorMessage",
-    },
   },
   yandexMaps: {
     apikey: "664ae998-4da0-4bbe-9d13-109fe362cc4e",

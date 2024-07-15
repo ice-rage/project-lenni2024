@@ -1,11 +1,14 @@
 <template>
-  <div class="info-items" :class="{'info-items--vertical' : vertical }">
+  <div 
+    class="info-items" 
+    :class="{'info-items--vertical' : props.vertical }"
+  >
     <slot></slot>
   </div>
 </template>
 
 <script setup>
-  const { vertical } = defineProps({
+  const props = defineProps({
     vertical: {
       type: Boolean,
       default: false,

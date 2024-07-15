@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-  const { data } = defineProps({
+  const props = defineProps({
     data: {
       type: Object,
       default: () => {},
@@ -45,23 +45,24 @@
     },
   });
 
-  const img_webp = computed(() => data.img_webp || "");
+  const img_webp = computed(() => props.data.img_webp || "");
 
-  const img = computed(() => data.img);
+  const img = computed(() => props.data.img);
 
-  const img_1170vw_webp = computed(() => data.img_1170vw_webp || "");
+  const img_1170vw_webp = computed(() => props.data.img_1170vw_webp || 
+    "");
 
-  const img_1170vw = computed(() => data.img_1170vw || "");
+  const img_1170vw = computed(() => props.data.img_1170vw || "");
 
-  const alt = computed(() => data.alt || "");
+  const alt = computed(() => props.data.alt || "");
 
-  const dateTime = computed(() => data.dateTime || "");
+  const dateTime = computed(() => props.data.dateTime || "");
 
-  const time = computed(() => data.time || "");
+  const time = computed(() => props.data.time || "");
 
-  const title = computed(() => data.title || "");
+  const title = computed(() => props.data.title || "");
 
-  const description = computed(() => data.description || "");
+  const description = computed(() => props.data.description || "");
 </script>
 
 <style lang="less">

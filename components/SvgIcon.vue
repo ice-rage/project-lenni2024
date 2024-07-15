@@ -3,8 +3,8 @@
     v-if="iconPath"
     class="svg-icon"
     :is="iconPath"
-    :width="width"
-    :height:="height"
+    :width="props.width"
+    :height:="props.height"
   />
 </template>
 
@@ -24,6 +24,7 @@
   });
 
   const iconPath = props.name 
-    ? defineAsyncComponent(() => import(`~/assets/svg-icons/${props.name}.svg`)) 
+    ? defineAsyncComponent(() => 
+      import(`~/assets/svg-icons/${props.name}.svg`)) 
     : null;
 </script>

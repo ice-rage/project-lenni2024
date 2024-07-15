@@ -22,7 +22,7 @@
     />
 
     <span class="field-label__error-message">
-      {{ props.errorMessage }}
+      {{ errorMessage }}
     </span>
   </label>
 </template>
@@ -36,10 +36,6 @@
       default: () => {},
       required: true,
     },
-    errorMessage: {
-      type: String,
-      default: "",
-    },
   });
 
   const title = computed(() => props.data.title || "");
@@ -51,7 +47,8 @@
   const inputPlaceholder = computed(() => 
     props.data.input.placeholder || "");
 
-  const { value: inputText } = useField(() => inputName.value);
+  const { value: inputText, errorMessage } = useField(() => 
+    inputName.value);
 </script>
 
 <style lang="less">

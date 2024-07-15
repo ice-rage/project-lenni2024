@@ -1,19 +1,18 @@
 <template>
   <div class="form-section">
-    <h5 class="form-section__title">{{ title }}:</h5>
+    <h5 class="form-section__title">{{ props.title }}:</h5>
 
     <div 
       v-if="items.length" 
-      :class="{'form-section__list': items.length > 1}"
+      :class="{'form-section__list': props.items.length > 1}"
     >
       <component 
-        v-for="(item, itemIndex) in items" 
+        v-for="(item, itemIndex) in props.items" 
         :key="itemIndex"
         :is="componentName" 
         :data="item"
-        :errorMessage="errorMessages[item.input.name]"
         class="form-section__field"
-        :class="componentClass"
+        :class="props.componentClass"
       />
     </div>
 
@@ -34,12 +33,7 @@
     FieldTextarea
   } from "~/components/field"
 
-  const { 
-    title, 
-    name, 
-    items, 
-    componentClass, 
-    errorMessages } = defineProps({
+  const props = defineProps({
     title: {
       type: String,
       default: "",
@@ -58,10 +52,6 @@
       type: String,
       default: "",
     },
-    errorMessages: {
-      type: Object,
-      default: () => {},
-    },
   });
 
   const componentMap = {
@@ -72,7 +62,8 @@
     "wishes": FieldTextarea,
   };
 
-  const componentName = computed(() => componentMap[name]);
+  const componentName = computed(() => 
+    componentMap[props.name]);
 </script>
 
 <style lang="less">

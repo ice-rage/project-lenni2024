@@ -3,7 +3,7 @@
     <div class="info-item__img">
       <SvgIcon 
         class="info-item__icon"
-        :name="iconName"
+        :name="props.iconName"
         width="24"
         height="24"
       />
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-  const { iconName } = defineProps({
+  const props = defineProps({
     iconName: {
       type: String,
       default: "",

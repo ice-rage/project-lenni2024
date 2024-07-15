@@ -3,15 +3,15 @@
     name="arrow"
     class="link-arrow" 
     :class="{ 
-      'link-arrow--left' : left, 
-      'link-arrow--disabled': disabled 
+      'link-arrow--left' : props.left, 
+      'link-arrow--disabled': props.disabled 
     }"
   />
   
 </template>
 
 <script setup>
-  const { left, disabled } = defineProps({
+  const props = defineProps({
     left: {
       type: Boolean,
       default: false,

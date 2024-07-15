@@ -6,8 +6,8 @@
         class="radio__label"
         :key="eventFormatIndex"
       >
-        <VeeField
-          v-model="checkedValue"
+        <input
+          v-model="checkedFormat"
           type="radio"
           name="format"
           :value="eventFormat.value"
@@ -24,8 +24,11 @@
 
 <script setup>
   import eventFormats from "~/data/eventPp/formats.json";
+  import { useField } from "vee-validate";
 
-  const checkedValue = ref(eventFormats[0].value);
+  const { value: checkedFormat } = useField("format", undefined, {
+    initialValue: eventFormats[0].value,
+  });
 </script>
 
 <style lang="less">

@@ -1,5 +1,5 @@
 <template>
-  <form class="subscription-form" @submit="onSubmit">
+  <form novalidate class="subscription-form" @submit="onSubmit">
     <h4 class="subscription-form__title">
       Подпишись и будь в курсе происходящего
     </h4>
@@ -20,13 +20,14 @@
       </button>
     </div>
 
-    <span class="subscription-form__error-message">{{ errors.email }}</span>
+    <span class="subscription-form__error-message">
+      {{ emailErrorMessage }}
+    </span>
 
     <FormCheckbox
       label="Согласен на обработку персональных данных"
       class="subscription-form__check"
       labelClass="checkbox__label--fw300"
-      :errorMessage="errors.agreement"
     />
   </form>
 </template>
@@ -35,14 +36,19 @@
   import FormCheckbox from "~/components/form/FormCheckbox.vue";
   import { useSubscriptionFormSchema } from 
     "~/composables/subscriptionFormSchema";
-  import { useForm } from "vee-validate";
+  import { useForm, useField } from "vee-validate";
   import { useOnSubmit } from "~/composables/onSubmit";
   
-  const { defineField, errors, handleSubmit } = useForm({
+  const { handleSubmit } = useForm({
     validationSchema: useSubscriptionFormSchema(),
+    initialValues: {
+      email: "",
+      agreement: true,
+    },
   });
 
-  const [email] = defineField("email");
+  const { value: email, errorMessage: emailErrorMessage } = 
+    useField("email");
 
   const onSubmit = handleSubmit((values, { resetForm }) => 
     useOnSubmit(values, resetForm));

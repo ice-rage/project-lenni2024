@@ -1,10 +1,13 @@
 <template>
   <label 
     class="checkbox" 
-    :class="{ 'checkbox--red' : red, 'checkbox--disabled' : disabled }"
+    :class="{ 
+      'checkbox--red' : props.red, 
+      'checkbox--disabled' : props.disabled 
+    }"
   >
     <span class="checkbox__label">
-      {{ label }}
+      {{ props.label }}
     </span>
             
     <input
@@ -12,7 +15,7 @@
       type="checkbox"
       :name="id"
       class="checkbox__input"
-      @change="toggleReserveItemState('tables', id)"
+      @change="toggleReserveItemState('tables', props.id)"
     />
 
     <span class="checkbox__mark"></span>
@@ -22,7 +25,7 @@
 <script setup>
   const store = useMainStore();
 
-  const { red, disabled, label, id } = defineProps({
+  const props = defineProps({
     red: {
       type: Boolean,
       default: false,
@@ -45,7 +48,8 @@
 
   const { toggleReserveItemState } = store;
 
-  const checked = store.getReserveItemState("checkboxes", id);
+  const checked = store.getReserveItemState("checkboxes", 
+    props.id);
 </script>
 
 <style lang="less"></style>

@@ -7,7 +7,7 @@ export const useModalFormSchema = () => {
 
   const schema = toTypedSchema(
     yup.object({
-      date: yup.object().shape({
+      date: yup.object({
         day: yup.string().required(),
         month: yup.string().required(),
         year: yup.string().required(),

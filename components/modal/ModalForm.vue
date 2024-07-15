@@ -1,5 +1,5 @@
 <template>
-  <form class="modal-form" @submit="onSubmit">
+  <form novalidate class="modal-form" @submit="onSubmit">
     <div class="modal-form__layout">
       <FormSection 
         class="modal-form__section form-section--w50" 
@@ -27,7 +27,6 @@
           title="Контактные данные"
           name="contacts"
           :items="eventContacts"
-          :errorMessages="errors"
           componentClass="form-section__field--w50"
         />
       </div>
@@ -71,6 +70,18 @@
 
   const { errors, handleSubmit } = useForm({
     validationSchema: useModalFormSchema(),
+    initialValues: {
+      date: {
+        day: "",
+        month: "",
+        year: "",
+      },
+      name: "",
+      surname: "",
+      phone: "",
+      email: "",
+      agreement: true,
+    },
   });
 
   const store = useMainStore();

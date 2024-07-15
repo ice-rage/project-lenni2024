@@ -2,13 +2,13 @@
   <label class="checkbox">
     <span 
       class="checkbox__label checkbox__label--fsz14" 
-      :class="labelClass"
+      :class="props.labelClass"
     >
-      {{ label }}
+      {{ props.label }}
     </span>
             
     <input
-      v-model="checked"
+      v-model="checkedValue"
       type="checkbox"
       name="agreement"
       :value="true"
@@ -25,7 +25,10 @@
 <script setup>
   import { useField } from "vee-validate";
 
-  const { label, labelClass, errorMessage } = defineProps({
+  const { value: checkedValue, errorMessage } =
+    useField("agreement");
+
+  const props = defineProps({
     label: {
       type: String,
       default: "",
@@ -35,15 +38,7 @@
       type: String,
       default: "",
     },
-    errorMessage: {
-      type: String,
-      default: "",
-    },
   });
-
-  const { value: checked } = useField("agreement");
-
-  onMounted(() => checked.value = true);
 </script>
 
 <style lang="less"></style>

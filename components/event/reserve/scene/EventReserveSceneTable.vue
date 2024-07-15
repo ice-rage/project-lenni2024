@@ -2,23 +2,23 @@
   <g
     class="scene-table"
     :class="{ 
-      'scene-table--red' : red,
-      'scene-table--disabled' : disabled,
+      'scene-table--red' : props.red,
+      'scene-table--disabled' : props.disabled,
       'scene-table--active' : active }"
-    @click="toggleReserveItemState('checkboxes', id)"
+    @click="toggleReserveItemState('checkboxes', props.id)"
   >
     <g class="scene-table__group">
-      <path v-if="group.path" :d="group.path"/>
+      <path v-if="props.group.path" :d="props.group.path"/>
       <rect 
         v-else 
-        :x="group.rect.x" 
-        :y="group.rect.y" 
-        :width="group.rect.width" 
-        :height="group.rect.height"
+        :x="props.group.rect.x" 
+        :y="props.group.rect.y" 
+        :width="props.group.rect.width" 
+        :height="props.group.rect.height"
       />
 
       <circle 
-        v-for="(circle, circleIndex) in group.circles" 
+        v-for="(circle, circleIndex) in props.group.circles" 
         :key="circleIndex"
         :cx="circle.cx"
         :cy="circle.cy"
@@ -26,13 +26,13 @@
       />
     </g>
 
-    <path :d="number" class="scene-table__number"/>
+    <path :d="props.number" class="scene-table__number"/>
     <rect 
-      :opacity="box.opacity"
-      :x="box.x" 
-      :y="box.y" 
-      :width="box.width" 
-      :height="box.height" 
+      :opacity="props.box.opacity"
+      :x="props.box.x" 
+      :y="props.box.y" 
+      :width="props.box.width" 
+      :height="props.box.height" 
       fill="transparent"
     />
   </g>
@@ -41,13 +41,7 @@
 <script setup>
   const store = useMainStore();
 
-  const { 
-    id, 
-    red, 
-    disabled,
-    group, 
-    number, 
-    box } = defineProps({
+  const props = defineProps({
     id: {
       type: Number,
       required: true,
@@ -79,7 +73,8 @@
     },
   });
 
-  const active = store.getReserveItemState('checkboxes', id);
+  const active = store.getReserveItemState('checkboxes', 
+    props.id);
 
   const { toggleReserveItemState } = store;
 </script>

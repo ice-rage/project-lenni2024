@@ -2,7 +2,7 @@
   <div class="field-datepicker">
     <div class="field-datepicker__inputs">
       <input 
-        v-model="selectedDate.day" 
+        v-model="selectedDay" 
         class="field-datepicker__input" 
         type="text"
         name="day" 
@@ -11,7 +11,7 @@
       />
 
       <input 
-        v-model="selectedDate.month" 
+        v-model="selectedMonth" 
         class="field-datepicker__input" 
         type="text" 
         name="month"
@@ -20,7 +20,7 @@
       />
 
       <input
-        v-model="selectedDate.year"
+        v-model="selectedYear"
         class="field-datepicker__input field-datepicker__input--year"
         type="text"
         name="year"
@@ -29,30 +29,32 @@
       />
     </div>
 
-    <VeeField
+    <input
       id="datepicker"
-      v-model="selectedDate"
       class="field-datepicker__datepicker"
       type="text"
       name="date"
       readonly
     />
 
-    <VeeErrorMessage 
-      name="date" 
-      class="field-datepicker__error-message"
-    />
+    <span class="field-datepicker__error-message">
+      {{ selectedDayErrorMessage || 
+         selectedMonthErrorMessage || 
+         selectedYearErrorMessage }}
+    </span>
   </div>
 </template>
 
 <script setup>
   import { useDatepicker } from "vue-air-datepicker";
-  
-  const selectedDate = reactive({
-    day: "",
-    month: "",
-    year: "",
-  });
+  import { useField } from "vee-validate";
+
+  const { value: selectedDay, errorMessage: 
+    selectedDayErrorMessage } = useField("date.day");
+  const { value: selectedMonth, errorMessage: 
+    selectedMonthErrorMessage } = useField("date.month");
+  const { value: selectedYear, errorMessage: 
+    selectedYearErrorMessage } = useField("date.year");
 
   const datepickerConfing = {
     autoClose: true,
@@ -61,13 +63,15 @@
       days: "MMMM <i>yyyy</i>",
     },
     onSelect: ({ date }) => {
-      selectedDate.day = date ? ("0" + date.getDate()).slice(-2) : "";
+      selectedDay.value = date 
+        ? ("0" + date.getDate()).slice(-2) 
+        : "";
 
-      selectedDate.month = date
+      selectedMonth.value = date
         ? ("0" + (date.getMonth() + 1)).slice(-2)
         : "";
 
-      selectedDate.year = date ? date.getFullYear() : "";
+      selectedYear.value = date ? date.getFullYear() : "";
     },
   };
 

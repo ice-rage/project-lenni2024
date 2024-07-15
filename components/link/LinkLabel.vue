@@ -1,11 +1,13 @@
 <template>
   <div class="link-label">
-    <a :href="link" class="link-label__link link">{{ label }}</a>
+    <a :href="props.link" class="link-label__link link">
+      {{ props.label }}
+    </a>
   </div>
 </template>
 
 <script setup>
-  const { link, label } = defineProps({
+  const props = defineProps({
     link: {
       type: String,
       default: "#",
