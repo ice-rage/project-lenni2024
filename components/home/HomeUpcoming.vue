@@ -4,35 +4,11 @@
       <div class="home-upcoming__container">
         <h2 class="home-upcoming__title section-title">Мероприятия</h2>
 
-        <swiper-container 
-          ref="swiperElement"
-          class="home-upcoming__swiper swiper swiper--3s"
-          init="false"
-          @swiperslidechange="onSlideChange"
-        >
-          <swiper-slide 
-            v-for="(card, cardIndex) in cards" 
-            :key="cardIndex"
-            class="swiper-slide"
-          >
-            <CardEvent :data="card"/>
-          </swiper-slide>
-
-          <footer slot="container-end" class="swiper-footer">
-            <LinkArrow
-              class="swiper-arrow-prev"
-              left
-              :disabled="store.swiper.isBeginning"
-              @click="toPrevSlide"
-            />
-
-            <LinkArrow
-              class="swiper-arrow-next"
-              :disabled="store.swiper.isEnd"
-              @click="toNextSlide"
-            />
-          </footer>
-        </swiper-container>
+        <CardSwiper 
+          class="home-upcoming__swiper swiper--3s" 
+          componentName="CardEvent"
+          :cards="eventCards"
+        />
 
         <LinkLabel class="home-upcoming__link link" label="Смотреть все"/>
       </div>
@@ -41,34 +17,7 @@
 </template>
 
 <script setup>
-  import cards from "~/data/card/events.json";
-
-  const store = useMainStore();
-
-  const { 
-    registerSwiper, 
-    onSlideChange, 
-    toPrevSlide, 
-    toNextSlide } = store;
-
-  const swiperElement = ref();
-  
-  const swiperParameters = {
-    updateOnWindowsResize: true,
-    slidesPerView: "auto",
-    freeMode: true,
-    spaceBetween: 0,
-    speed: 500,
-    pagination: {
-      type: "bullets",
-      clickable: true,
-      hideOnClick: false,
-    },
-  };
-
-  onMounted(() => {
-    registerSwiper(swiperElement, swiperParameters);
-  });
+  import eventCards from "~/data/card/events.json";
 </script>
 
 <style lang="less">

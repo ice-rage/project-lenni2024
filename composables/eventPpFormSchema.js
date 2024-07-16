@@ -2,7 +2,7 @@ import { toTypedSchema } from "@vee-validate/yup";
 import { useCustomErrorMessages } from "./customErrorMessages";
 import * as yup from "yup";
 
-export const useModalFormSchema = () => {
+export const useEventPpFormSchema = () => {
   const errorMessages = useCustomErrorMessages();
 
   const schema = toTypedSchema(

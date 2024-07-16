@@ -10,7 +10,7 @@
     
     <PageFooter class="app__page-footer"/>
       
-    <ModalPp class="app__modal-pp"/>
+    <EventPp class="app__event-pp"/>
   </div>
 </template>
 
@@ -150,14 +150,14 @@
       class: {
         body: true,
         "show-nav": () => store.isNavMenuActive,
-        "show-event-pp": () => store.modal.isEventPpActive,
+        "show-event-pp": () => store.isEventPpActive,
       },
     },
   });
 
   const router = useRouter();
 
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((_to, _from, next) => {
     store.closeAll();
     next();
   });

@@ -1,29 +1,29 @@
 <template>
-  <form novalidate class="modal-form" @submit="onSubmit">
-    <div class="modal-form__layout">
+  <form novalidate class="event-pp-form" @submit="onSubmit">
+    <div class="event-pp-form__layout">
       <FormSection 
-        class="modal-form__section form-section--w50" 
+        class="event-pp-form__section form-section--w50" 
         title="Формат мероприятия"
         name="formats"
       />
 
-      <div class="modal-form__group">
+      <div class="event-pp-form__group">
         <FormSection 
-          class="modal-form__section" 
+          class="event-pp-form__section" 
           title="Планируемое количество посетителей"
           name="visitors"
         />
 
         <FormSection 
-          class="modal-form__section" 
+          class="event-pp-form__section" 
           title="Дата проведения"
           name="date"
         />
       </div>
       
-      <div class="modal-form__section form-section">
+      <div class="event-pp-form__section form-section">
         <FormSection 
-          class="modal-form__section" 
+          class="event-pp-form__section" 
           title="Контактные данные"
           name="contacts"
           :items="eventContacts"
@@ -32,7 +32,7 @@
       </div>
 
       <FormSection 
-        class="modal-form__section" 
+        class="event-pp-form__section" 
         title="Есть пожелания? Напишите нам"
         name="wishes"
       />
@@ -40,17 +40,17 @@
       <FormCheckbox
         label="Я соглашаюсь с пользовательским соглашением и с политикой 
           использования персональных данных"
-        class="modal-form__checkbox"
+        class="event-pp-form__checkbox"
       />
 
-      <div class="modal-form__btns">
-        <button type="submit" class="modal-form__submit-btn btn">
+      <div class="event-pp-form__btns">
+        <button type="submit" class="event-pp-form__submit-btn btn">
           Отправить
         </button>
 
         <button 
           type="button" 
-          class="modal-form__close-btn btn" 
+          class="event-pp-form__close-btn btn" 
           @click="closeEventPp"
         >
           Закрыть
@@ -64,12 +64,12 @@
   import eventContacts from "~/data/eventPp/contacts.json";
   import FormCheckbox from "~/components/form/FormCheckbox.vue";
   import { useForm } from "vee-validate";
-  import { useModalFormSchema } from 
-    "~/composables/modalFormSchema";
+  import { useEventPpFormSchema } from 
+    "~/composables/eventPpFormSchema";
   import { useOnSubmit } from "~/composables/onSubmit";
 
-  const { errors, handleSubmit } = useForm({
-    validationSchema: useModalFormSchema(),
+  const { handleSubmit } = useForm({
+    validationSchema: useEventPpFormSchema(),
     initialValues: {
       date: {
         day: "",
@@ -89,7 +89,7 @@
   const { closeEventPp } = store;
 
   const isSubmitSuccessful = computed(() => 
-    store.form.isSubmitSuccessful);
+    store.eventPp.isSubmitSuccessful);
 
   watch(isSubmitSuccessful, () => {
     if (isSubmitSuccessful.value) {
@@ -102,7 +102,7 @@
 </script>
 
 <style lang="less">
-  .modal-form {
+  .event-pp-form {
     &__layout {
       .form-layout();
 

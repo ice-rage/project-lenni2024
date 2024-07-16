@@ -2,7 +2,10 @@
   <div class="home">
     <HomeHeader class="home__header"/>
 
-    <UserOffers class="home__offers"/>
+    <UserOffers 
+      class="home__offers" 
+      @openEventPp="$emit('openEventPp')"
+    />
 
     <HomeAbout class="home__about"/>
 

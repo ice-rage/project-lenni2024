@@ -1,31 +1,35 @@
 <template>
   <div 
-    v-if="isActive"  
-    ref="modalPp"
-    class="modal-pp"
+    v-if="store.isEventPpActive"
+    class="event-pp"
     tabindex="0"
     v-focus
     @click.self="closeEventPp"
     @keyup.esc="closeEventPp"
   >
-    <div class="modal-pp__wrapper">
-      <div class="modal-pp__sticky-close">
+    <div class="event-pp__wrapper">
+      <div class="event-pp__sticky-close">
         <button
           type="button"
-          class="modal-pp__x-btn x-btn"
+          class="event-pp__x-btn x-btn"
           @click="closeEventPp"
         >
-          <SvgIcon class="x-btn__icon" name="x" width="24" height="24"/>
+          <SvgIcon 
+            class="x-btn__icon" 
+            name="x" 
+            width="24" 
+            height="24"
+          />
         </button>
       </div>
 
-      <div class="modal-pp__container">
-        <h2 class="modal-pp__title">
+      <div class="event-pp__container">
+        <h2 class="event-pp__title">
           Заполните форму, <br />
           и мы подберем площадку
         </h2>
 
-        <ModalForm class="modal-pp__form"/>
+        <EventPpForm class="event-pp__form"/>
       </div>
     </div>
   </div>
@@ -35,14 +39,10 @@
   const store = useMainStore();
 
   const { closeEventPp } = store;
-
-  const modalPp = ref();
-
-  const isActive = computed(() => store.modal.isEventPpActive);
 </script>
 
 <style lang="less">
-  .modal-pp {
+  .event-pp {
     position: fixed;
     box-sizing: border-box;
     display: flex;

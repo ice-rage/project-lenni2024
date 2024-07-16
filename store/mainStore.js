@@ -1,4 +1,4 @@
-import { register } from "swiper/element/bundle";
+
 import reserveCheckboxes from "~/data/reserveCheckboxes.json";
 import sceneTables from "~/data/sceneTables.json";
 
@@ -10,16 +10,11 @@ const initialSelectedTickets = {
 
 export const useMainStore = defineStore("mainStore", {
   state: () => ({
-    isNavMenuActive: false,
-    modal: {
-      isEventPpActive: false,
+    navMenu: {
+      isActive: false,
     },
-    swiper: {
-      element: null,
-      isBeginning: true,
-      isEnd: false,
-    },
-    form: {
+    eventPp: {
+      isActive: false,
       isSubmitSuccessful: undefined,
     },
     reserve: {
@@ -30,9 +25,8 @@ export const useMainStore = defineStore("mainStore", {
     },
   }),
   getters: {
-    getSwiper: (state) => state.swiper.element 
-      ? state.swiper.element.swiper 
-      : null,
+    isNavMenuActive: (state) => state.navMenu.isActive,
+    isEventPpActive: (state) => state.eventPp.isActive,
     getReserveItems: (state) => {
       return {
         "checkboxes": state.reserve.checkboxes,
@@ -72,60 +66,33 @@ export const useMainStore = defineStore("mainStore", {
   },
   actions: {
     closeAll() {
-      this.isNavMenuActive = false;
-      this.isEventPpActive = false;
+      this.navMenu.isActive = false;
+      this.eventPp.isActive = false;
     },
     toggleNavMenu() {
-      this.isNavMenuActive = !this.isNavMenuActive;
+      this.navMenu.isActive = !this.navMenu.isActive;
     },
     openEventPp() {
-      this.modal.isEventPpActive = true;
+      this.eventPp.isActive = true;
     },
     closeEventPp() {
-      this.modal.isEventPpActive = false;
-    },
-    registerSwiper(element, parameters) {
-      if (element && parameters) {
-        this.swiper.element = element;
-
-        register();
-
-        Object.assign(this.swiper.element, parameters);
-
-        this.swiper.element.initialize();
-      } 
-    },
-    onSlideChange() {
-      if (this.getSwiper) {
-        this.swiper.isBeginning = this.getSwiper.isBeginning;
-        this.swiper.isEnd = this.getSwiper.isEnd;
-      }
-    },
-    toPrevSlide() {
-      if (this.getSwiper) {
-        this.getSwiper.slidePrev();
-      }
-    },
-    toNextSlide() {
-      if (this.getSwiper) {
-        this.getSwiper.slideNext();
-      }
+      this.eventPp.isActive = false;
     },
     notifySuccess() {
-      this.form.isSubmitSuccessful = true;
+      this.eventPp.isSubmitSuccessful = true;
 
       useNuxtApp().$toast.success("Форма успешно отправлена");
       this.resetSubmitState();
     },
     notifyError() {
-      this.form.isSubmitSuccessful = false;
+      this.eventPp.isSubmitSuccessful = false;
 
       useNuxtApp().$toast.error(
         "Что-то пошло не так. Пожалуйста, попробуйте еще раз");
       this.resetSubmitState();
     },
     resetSubmitState() {
-      this.form.isSubmitSuccessful = undefined;
+      this.eventPp.isSubmitSuccessful = undefined;
     },
     toggleReserveItemState(type, id) {
       if (this.getReserveItems.hasOwnProperty(type)) {
