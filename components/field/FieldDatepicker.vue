@@ -2,7 +2,7 @@
   <div class="field-datepicker">
     <div class="field-datepicker__inputs">
       <input 
-        v-model="selectedDay" 
+        v-model="selectedDateField.value.day" 
         class="field-datepicker__input" 
         type="text"
         name="day" 
@@ -11,7 +11,7 @@
       />
 
       <input 
-        v-model="selectedMonth" 
+        v-model="selectedDateField.value.month" 
         class="field-datepicker__input" 
         type="text" 
         name="month"
@@ -20,7 +20,7 @@
       />
 
       <input
-        v-model="selectedYear"
+        v-model="selectedDateField.value.year"
         class="field-datepicker__input field-datepicker__input--year"
         type="text"
         name="year"
@@ -38,9 +38,7 @@
     />
 
     <span class="field-datepicker__error-message">
-      {{ selectedDayErrorMessage || 
-         selectedMonthErrorMessage || 
-         selectedYearErrorMessage }}
+      {{ selectedDateField.errorMessage }}
     </span>
   </div>
 </template>
@@ -49,12 +47,7 @@
   import { useDatepicker } from "vue-air-datepicker";
   import { useField } from "vee-validate";
 
-  const { value: selectedDay, errorMessage: 
-    selectedDayErrorMessage } = useField("date.day");
-  const { value: selectedMonth, errorMessage: 
-    selectedMonthErrorMessage } = useField("date.month");
-  const { value: selectedYear, errorMessage: 
-    selectedYearErrorMessage } = useField("date.year");
+  const selectedDateField = reactive(useField("date"));
 
   const datepickerConfing = {
     autoClose: true,
@@ -62,16 +55,20 @@
     navTitles: {
       days: "MMMM <i>yyyy</i>",
     },
-    onSelect: ({ date }) => {
-      selectedDay.value = date 
+    onSelect: async ({ date }) => {
+      selectedDateField.value.day = date 
         ? ("0" + date.getDate()).slice(-2) 
         : "";
 
-      selectedMonth.value = date
+      selectedDateField.value.month = date
         ? ("0" + (date.getMonth() + 1)).slice(-2)
         : "";
 
-      selectedYear.value = date ? date.getFullYear() : "";
+      selectedDateField.value.year = date 
+        ? date.getFullYear() 
+        : "";
+
+      await selectedDateField.validate();
     },
   };
 

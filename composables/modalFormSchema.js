@@ -6,8 +6,8 @@ export const useModalFormSchema = () => {
   const errorMessages = useCustomErrorMessages();
 
   const schema = toTypedSchema(
-    yup.object({
-      date: yup.object({
+    yup.object().shape({
+      date: yup.object().shape({
         day: yup.string().required(),
         month: yup.string().required(),
         year: yup.string().required(),
