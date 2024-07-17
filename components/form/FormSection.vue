@@ -9,9 +9,9 @@
       <component 
         v-for="(item, itemIndex) in props.items" 
         :key="itemIndex"
-        :is="componentName" 
+        :is="componentName"
+        class="form-section__field" 
         :data="item"
-        class="form-section__field"
         :class="props.componentClass"
       />
     </div>

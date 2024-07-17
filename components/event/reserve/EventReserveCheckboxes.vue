@@ -6,11 +6,11 @@
       <EventReserveCheckbox
         v-for="checkbox in store.getReserveItems['checkboxes']"
         :key="checkbox.id"
+        class="reserve-checkboxes__checkbox"
         :red="checkbox.red"
         :disabled="checkbox.disabled"
         :label="`${checkbox.id} стол`"
         :id="checkbox.id"
-        class="reserve-checkboxes__checkbox"
       />
     </div>
   </section>

@@ -6,7 +6,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       };
       window.addEventListener("scroll", binding.dir.listener);
     },
-    unmounted(el, binding) {
+    unmounted(_el, binding) {
       window.removeEventListener("scroll", binding.dir.listener);
     },
   });

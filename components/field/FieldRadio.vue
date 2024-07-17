@@ -3,8 +3,8 @@
     <div class="field__radio radio">
       <label 
         v-for="(eventFormat, eventFormatIndex) in eventFormats"
-        class="radio__label"
         :key="eventFormatIndex"
+        class="radio__label"
       >
         <input
           v-model="checkedFormat"

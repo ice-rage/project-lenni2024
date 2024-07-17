@@ -1,16 +1,25 @@
 <template>
-  <VeeForm
+  <form 
+    ref="reserveForm" 
     class="event-reserve" 
-    @submit="useOnSubmit"
+    @submit.prevent="onSubmit"
   >
     <EventReserveCheckboxes class="event-reserve__checkboxes"/>
     <EventReserveScheme class="event-reserve__scheme"/>
     <EventReserveOrder class="event-reserve__order"/>
     <EventReserveLegend class="event-reserve__legend"/>
-  </VeeForm>
+  </form>
 </template>
 
-<script setup></script>
+<script setup>
+  const reserveForm = ref();
+
+  const onSubmit = () => {
+    const formData = new FormData(reserveForm.value);
+
+    useOnSubmit(formData, () => reserveForm.value.reset());
+  }
+</script>
 
 <style lang="less">
   .event-reserve {

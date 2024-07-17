@@ -7,7 +7,8 @@
       <thead class="service-table__head">
         <tr class="service-table__head-tr">
           <th 
-            v-for="cell in headerCells" 
+            v-for="(cell, cellIndex) in headerCells" 
+            :key="cellIndex"
             class="service-table__th"
           >
             {{ cell.content }}
@@ -15,7 +16,8 @@
         </tr>
       </thead>
       <tbody  
-        v-for="column in rows" 
+        v-for="(column, columnIndex) in rows" 
+        :key="columnIndex"
         class="service-table__body"
       >
         <template v-if="isBreakpointReached">
@@ -25,7 +27,11 @@
             </th>
           </tr>
           <tr class="service-table__tr">
-            <td v-for="cell in column.cells" class="service-table__td">
+            <td 
+              v-for="(cell, cellIndex) in column.cells" 
+              :key="cellIndex"
+              class="service-table__td"
+            >
               {{ cell.content }}
             <span v-if="cell.checked" class="ok"></span>
             </td>
@@ -35,7 +41,11 @@
         <template v-else>
           <tr class="service-table__tr">
             <th class="service-table__body-th">{{ column.header }}</th>
-            <td v-for="cell in column.cells" class="service-table__td">
+            <td 
+              v-for="(cell, cellIndex) in column.cells" 
+              :key="cellIndex" 
+              class="service-table__td"
+            >
               {{ cell.content }}
               <span v-if="cell.checked" class="ok"></span>
             </td>
@@ -45,7 +55,8 @@
       <tfoot class="service-table__footer">
         <tr class="service-table__footer-tr">
           <th 
-            v-for="cell in footerCells" 
+            v-for="(cell, cellIndex) in footerCells" 
+            :key="cellIndex"
             class="service-table__footer-th"
           >
             {{ cell.content }}
@@ -71,15 +82,16 @@
 
   const viewportWidth = ref();
 
-  const isBreakpointReached = computed(() => 
+  const isBreakpointReached = computed(() =>
     viewportWidth.value < 450);
 
   onMounted(() => {
     window.addEventListener("resize", onWindowResize);
+
     onWindowResize();
   });
 
-  onUnmounted(() => window.removeEventListener("resize", 
+  onBeforeUnmount(() => window.removeEventListener("resize", 
     onWindowResize));
 
   const onWindowResize = () => viewportWidth.value = 

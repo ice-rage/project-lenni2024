@@ -21,13 +21,13 @@
     <EventReserveSceneTable 
       v-for="table in store.reserve.tables"
       :key="table.id"
+      class="scene__table"
       :id="table.id"
       :red="table.red"
       :disabled="table.disabled"
       :group="table.group"
       :number="table.number"
       :box="table.box"
-      class="scene__table"
     />
   </svg>
 </template>
