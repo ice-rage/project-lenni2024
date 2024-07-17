@@ -88,17 +88,13 @@
 
   const { closeEventPp } = store;
 
-  const isSubmitSuccessful = computed(() => 
-    store.eventPp.isSubmitSuccessful);
+  const onSubmit = handleSubmit(async (values, { resetForm }) => {
+    const submitResult = await useOnSubmit(values, resetForm);
 
-  watch(isSubmitSuccessful, () => {
-    if (isSubmitSuccessful.value) {
+    if (submitResult) {
       closeEventPp();
     }
   });
-
-  const onSubmit = handleSubmit((values, { resetForm }) => 
-    useOnSubmit(values, resetForm));
 </script>
 
 <style lang="less">

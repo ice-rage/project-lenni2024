@@ -15,7 +15,6 @@ export const useMainStore = defineStore("mainStore", {
     },
     eventPp: {
       isActive: false,
-      isSubmitSuccessful: undefined,
     },
     reserve: {
       checkboxes: reserveCheckboxes,
@@ -79,20 +78,11 @@ export const useMainStore = defineStore("mainStore", {
       this.eventPp.isActive = false;
     },
     notifySuccess() {
-      this.eventPp.isSubmitSuccessful = true;
-
       useNuxtApp().$toast.success("Форма успешно отправлена");
-      this.resetSubmitState();
     },
     notifyError() {
-      this.eventPp.isSubmitSuccessful = false;
-
       useNuxtApp().$toast.error(
         "Что-то пошло не так. Пожалуйста, попробуйте еще раз");
-      this.resetSubmitState();
-    },
-    resetSubmitState() {
-      this.eventPp.isSubmitSuccessful = undefined;
     },
     toggleReserveItemState(type, id) {
       if (this.getReserveItems.hasOwnProperty(type)) {
