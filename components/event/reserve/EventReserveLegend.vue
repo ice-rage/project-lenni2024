@@ -1,19 +1,34 @@
 <template>
   <section class="reserve-legend">
-    <h4 class="reserve-legend__section-title">Стоимость пригласительного билета</h4>
+    <h4 class="reserve-legend__section-title">
+      Стоимость пригласительного билета
+    </h4>
 
     <div class="reserve-legend__price-list">
       <div class="reserve-legend__prices">
-        <div class="reserve-legend__price-mark reserve-legend__price-mark--red"></div>
-        <div class="reserve-legend__price" data-caption="1 персона" data-currency="₽">
-          {{ store.getSelectedTicketType['red'].price }}
+        <div 
+          class="reserve-legend__price-mark 
+            reserve-legend__price-mark--red">
+        </div>
+
+        <div 
+          class="reserve-legend__price" 
+          data-caption="1 персона" 
+          data-currency="₽"
+        >
+          {{ redTicketPrice }}
         </div>
       </div>
 
       <div class="reserve-legend__prices">
         <div class="reserve-legend__price-mark"></div>
-        <div class="reserve-legend__price" data-caption="1 персона" data-currency="₽">
-          {{ store.getSelectedTicketType['black'].price }}
+
+        <div 
+          class="reserve-legend__price" 
+          data-caption="1 персона" 
+          data-currency="₽"
+        >
+          {{ blackTicketPrice }}
         </div>
       </div>
     </div>
@@ -24,7 +39,10 @@
       <div class="reserve-legend__note">
         <div class="reserve-legend__mark-container">
           <div class="reserve-legend__note-mark"></div>
-          <div class="reserve-legend__note-mark reserve-legend__note-mark--red"></div>
+
+          <div class="reserve-legend__note-mark 
+            reserve-legend__note-mark--red">
+          </div>
         </div>
 
         <div class="reserve-legend__designation">Доступные места</div>
@@ -32,7 +50,9 @@
 
       <div class="reserve-legend__note">
         <div class="reserve-legend__mark-container">
-          <div class="reserve-legend__note-mark reserve-legend__note-mark--filled"></div>
+          <div class="reserve-legend__note-mark 
+            reserve-legend__note-mark--filled">
+          </div>
         </div>
 
         <div class="reserve-legend__designation">Забронировано</div>
@@ -42,7 +62,18 @@
 </template>
 
 <script setup>
-  const store = useMainStore();
+  const props = defineProps({
+    redTicketPrice: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
+    blackTicketPrice: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
+  });
 </script>
 
 <style lang="less">

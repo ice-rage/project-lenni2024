@@ -10,9 +10,9 @@
           v-model="checkedFormat"
           type="radio"
           name="format"
+          class="radio__input"
           :value="eventFormat.value"
           :uncheckedValue="''"
-          class="radio__input"
         />
 
         <span class="radio__mark"></span>

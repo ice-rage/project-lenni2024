@@ -10,7 +10,9 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+  const emit = defineEmits(["tableToggled"]);
+</script>
 
 <style lang="less">
   .reserve-scheme {

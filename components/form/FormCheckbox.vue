@@ -8,12 +8,12 @@
     </span>
             
     <input
-      v-model="checkedValue"
+      v-model="isChecked"
       type="checkbox"
       name="agreement"
+      class="checkbox__input"
       :value="true"
       :uncheckedValue="false"
-      class="checkbox__input"
     />
 
     <span class="error-message">{{ errorMessage }}</span>
@@ -25,7 +25,7 @@
 <script setup>
   import { useField } from "vee-validate";
 
-  const { value: checkedValue, errorMessage } =
+  const { value: isChecked, errorMessage } =
     useField("agreement");
 
   const props = defineProps({

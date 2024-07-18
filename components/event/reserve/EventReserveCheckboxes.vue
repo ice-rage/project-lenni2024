@@ -1,23 +1,34 @@
 <template>
   <section class="reserve-checkboxes">
-    <h4 class="reserve-checkboxes__section-title">Забронировать столик</h4>
+    <h4 class="reserve-checkboxes__section-title">
+      Забронировать столик
+    </h4>
 
     <div class="reserve-checkboxes__wrapper">
       <EventReserveCheckbox
-        v-for="checkbox in store.getReserveItems['checkboxes']"
+        v-for="checkbox in props.checkboxes"
         :key="checkbox.id"
+        v-model="checkbox.active"
         class="reserve-checkboxes__checkbox"
         :red="checkbox.red"
         :disabled="checkbox.disabled"
         :label="`${checkbox.id} стол`"
         :id="checkbox.id"
+        @update:modelValue="$emit('checkboxToggled', 'tables', 
+          checkbox.id, checkbox.active)"
       />
     </div>
   </section>
 </template>
 
 <script setup>
-  const store = useMainStore();
+  const props = defineProps({
+    checkboxes: {
+      type: Array,
+      default: () => [],
+      required: true,
+    },
+  });
 </script>
 
 <style lang="less">

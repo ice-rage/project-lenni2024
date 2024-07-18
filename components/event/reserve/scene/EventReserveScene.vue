@@ -19,8 +19,9 @@
     </g>
 
     <EventReserveSceneTable 
-      v-for="table in store.reserve.tables"
+      v-for="table in tables"
       :key="table.id"
+      v-model="table.active"
       class="scene__table"
       :id="table.id"
       :red="table.red"
@@ -28,22 +29,14 @@
       :group="table.group"
       :number="table.number"
       :box="table.box"
+      @update:modelValue="$parent.$emit('tableToggled', 'checkboxes',
+        table.id, table.active)"
     />
   </svg>
 </template>
 
 <script setup>
-  const store = useMainStore();
-
-  // const getTable = (tableId) => store.reserve.tables[tableId - 1];
-
-  // const getActive = (tableId) => getTable(tableId).active;
-
-  // const toggleActive = (id) => {
-  //   getTable(id).active = !getTable(id).active;
-
-  //   toggleReserveItemState("checkboxes", id);
-  // }
+  const tables = inject("tables");
 </script>
 
 <style lang="less"></style>

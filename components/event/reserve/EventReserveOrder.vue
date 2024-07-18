@@ -1,19 +1,22 @@
 <template>
   <section class="reserve-order">
-    <h4 class="reserve-order__section-title">Ваши пригласительные билеты</h4>
+    <h4 class="reserve-order__section-title">
+      Ваши пригласительные билеты
+    </h4>
 
     <div class="reserve-order__ticket-list">
       <div class="reserve-order__tickets">
         <div
           class="reserve-order__qty"
           data-caption="шт."
-          :data-price="store.getSelectedTicketType['red'].price"
+          :data-price="props.tickets.red.price"
           data-currency="₽"
         >
-          {{ store.getSelectedTicketType['red'].count }}
+          {{ props.tickets.red.count }}
         </div>
+
         <div class="reserve-order__sum" data-currency="₽">
-          {{ store.getSelectedTicketType['red'].sum }}
+          {{ props.tickets.red.sum }}
         </div>
       </div>
 
@@ -21,13 +24,14 @@
         <div
           class="reserve-order__qty"
           data-caption="шт."
-          :data-price="store.getSelectedTicketType['black'].price"
+          :data-price="props.tickets.black.price"
           data-currency="₽"
         >
-          {{ store.getSelectedTicketType['black'].count }}
+          {{ props.tickets.black.count }}
         </div>
+        
         <div class="reserve-order__sum" data-currency="₽">
-          {{ store.getSelectedTicketType['black'].sum }}
+          {{ props.tickets.black.sum }}
         </div>
       </div>
     </div>
@@ -37,13 +41,13 @@
       data-caption="Сумма"
       data-currency="₽"
     >
-      {{ store.getSelectedTicketsTotalSum.value }}
+      {{ props.tickets.totalSum }}
     </div>
 
     <button
       type="submit"
       class="reserve-order__submit btn btn--red"
-      :disabled="store.getReserveSubmitBtnState.value"
+      :disabled="props.tickets.totalSum === 0"
     >
       Купить билеты
     </button>
@@ -51,7 +55,13 @@
 </template>
 
 <script setup>
-  const store = useMainStore();
+  const props = defineProps({
+    tickets: {
+      type: Object,
+      default: () => {},
+      required: true,
+    },
+  });
 </script>
 
 <style lang="less">

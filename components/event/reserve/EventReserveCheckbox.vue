@@ -11,11 +11,10 @@
     </span>
             
     <input
-      v-model="checked"
+      v-model="isChecked"
       type="checkbox"
-      :name="id"
+      :name="props.id"
       class="checkbox__input"
-      @change="toggleReserveItemState('tables', props.id)"
     />
 
     <span class="checkbox__mark"></span>
@@ -23,8 +22,6 @@
 </template>
 
 <script setup>
-  const store = useMainStore();
-
   const props = defineProps({
     red: {
       type: Boolean,
@@ -46,10 +43,7 @@
     },
   });
 
-  const { toggleReserveItemState } = store;
-
-  const checked = store.getReserveItemState("checkboxes", 
-    props.id);
+  const isChecked = defineModel();
 </script>
 
 <style lang="less"></style>

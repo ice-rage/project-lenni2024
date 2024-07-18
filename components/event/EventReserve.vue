@@ -4,20 +4,104 @@
     class="event-reserve" 
     @submit.prevent="onSubmit"
   >
-    <EventReserveCheckboxes class="event-reserve__checkboxes"/>
-    <EventReserveScheme class="event-reserve__scheme"/>
-    <EventReserveOrder class="event-reserve__order"/>
-    <EventReserveLegend class="event-reserve__legend"/>
+    <EventReserveCheckboxes
+      class="event-reserve__checkboxes"
+      :checkboxes="reservationItems.checkboxes"
+      @checkboxToggled="toggleReservation"
+    />
+    <EventReserveScheme 
+      class="event-reserve__scheme" 
+      @tableToggled="toggleReservation"
+    />
+    <EventReserveOrder 
+      class="event-reserve__order"
+      :tickets="selectedTickets"
+    />
+    <EventReserveLegend 
+      class="event-reserve__legend" 
+      :redTicketPrice="selectedTickets.red.price"
+      :blackTicketPrice="selectedTickets.black.price"
+    />
   </form>
 </template>
 
 <script setup>
+  import checkboxData from "~/data/reserveCheckboxes.json";
+  import tableData from "~/data/sceneTables.json";
+
   const reserveForm = ref();
+
+  const reservationItems = {
+    checkboxes: reactive(checkboxData),
+    tables: reactive(tableData),
+  };
+
+  let selectedTickets = reactive({
+    red: { price: 1400, count: 0, sum: 0 },
+    black: { price: 1250, count: 0, sum: 0 },
+    totalSum: 0,
+  });
+
+  provide("tables", reservationItems.tables);
+
+  const toggleReservation = (type, id, state) => {
+    if (reservationItems.hasOwnProperty(type)) {
+      const itemById = reservationItems[type]
+        .find(item => item.id == id);
+      
+      if (itemById) {
+        itemById.active = state;
+
+        calculateTicketSum();
+      }
+    }
+  }
+
+  const calculateTicketSum = () => {
+    resetSelectedTickets();
+
+    const activeCheckboxes = reservationItems.checkboxes
+      .filter(checkbox => checkbox.active);
+    
+    activeCheckboxes.forEach(checkbox => {
+      if (checkbox.red) {
+        selectedTickets.red.count++;
+      } else {
+        selectedTickets.black.count++;
+      }
+    });
+
+    selectedTickets.red.sum = selectedTickets.red.price *
+      selectedTickets.red.count;
+    selectedTickets.black.sum = selectedTickets.black.price *
+      selectedTickets.black.count;
+    
+    selectedTickets.totalSum = selectedTickets.red.sum +
+      selectedTickets.black.sum;
+  }
+
+  const resetSelectedTickets = () => {
+    selectedTickets.red.count = 0;
+    selectedTickets.red.sum = 0;
+    selectedTickets.black.count = 0;
+    selectedTickets.black.sum = 0;
+    selectedTickets.totalSum = 0;
+  }
 
   const onSubmit = () => {
     const formData = new FormData(reserveForm.value);
 
-    useOnSubmit(formData, () => reserveForm.value.reset());
+    useOnSubmit(formData, () => {
+      for (const type in reservationItems) {
+        if (reservationItems.hasOwnProperty(type)) {
+          reservationItems[type]
+            .filter(item => item.active)
+            .forEach(activeItem => activeItem.active = false);
+        }
+      }
+
+      resetSelectedTickets();
+    });
   }
 </script>
 

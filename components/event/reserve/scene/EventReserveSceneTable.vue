@@ -4,8 +4,8 @@
     :class="{ 
       'scene-table--red' : props.red,
       'scene-table--disabled' : props.disabled,
-      'scene-table--active' : active }"
-    @click="toggleReserveItemState('checkboxes', props.id)"
+      'scene-table--active' : isActive }"
+    @click="toggleTableState"
   >
     <g class="scene-table__group">
       <path v-if="props.group.path" :d="props.group.path"/>
@@ -39,8 +39,6 @@
 </template>
 
 <script setup>
-  const store = useMainStore();
-
   const props = defineProps({
     id: {
       type: Number,
@@ -73,10 +71,10 @@
     },
   });
 
-  const active = store.getReserveItemState('checkboxes', 
-    props.id);
+  const isActive = defineModel();
 
-  const { toggleReserveItemState } = store;
+  const toggleTableState = () => isActive.value = 
+    !isActive.value;
 </script>
 
 <style lang="less">
